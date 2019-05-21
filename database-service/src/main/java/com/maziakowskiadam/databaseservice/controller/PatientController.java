@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.controller;
 
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
+import com.maziakowskiadam.databaseservice.dto.RegisterDto;
 import com.maziakowskiadam.databaseservice.entity.Patient;
 import com.maziakowskiadam.databaseservice.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class PatientController {
     public String addAddressToPatient(@PathVariable Long patientId, @PathVariable Long addressId) {
 
         return patientService.addAddressToPatient(patientId, addressId);
+    }
+
+    @PostMapping("/addWithAddress")
+    public String addWithAddress(@RequestBody RegisterDto registerDto) {
+        return patientService.addPatientWithAddress(registerDto);
     }
 
 }

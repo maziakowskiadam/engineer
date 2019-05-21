@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
+import com.maziakowskiadam.databaseservice.dto.RegisterDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.entity.Patient;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -21,6 +23,9 @@ public class PatientService {
 
     @Autowired
     AddressRepository addressRepository;
+
+    @Autowired
+    AddressService addressService;
 
     public List<PatientDto> getPatients() {
         List<Patient> patients = patientRepository.findAll();
@@ -71,7 +76,42 @@ public class PatientService {
         }
     }
 
+    @Transactional
+    public String addPatientWithAddress(RegisterDto registerDto) {
+        try {
+            String street = registerDto.getStreet();
+            String house = registerDto.getHouse();
+            String zipcode = registerDto.getZipcode();
+            String city = registerDto.getCity();
+            Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
 
+            Patient newPatient = new Patient();
+            newPatient.setFirstName(registerDto.getFirstName());
+            newPatient.setLastName(registerDto.getLastName());
+            newPatient.setPesel(registerDto.getPesel());
+            newPatient.setGender(registerDto.getGender());
+
+
+            if (optionalAddress.isPresent()) {
+                Address address = optionalAddress.get();
+                newPatient.setAddress(address);
+                patientRepository.save(newPatient);
+            } else {
+                Address address = optionalAddress.get();
+                addressService.addAddress(address);
+                Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
+                newPatient.setAddress(newAddress);
+                patientRepository.save(newPatient);
+
+            }
+
+
+            return "Patient and address added.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Patient and address couldn't be added.";
+        }
+    }
 
 
     public PatientDto turnPatientIntoDto(Patient patient) {
