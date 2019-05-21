@@ -2,18 +2,14 @@ package com.maziakowskiadam.databaseservice.entity;
 
 
 import javax.persistence.*;
-
-
-
+import java.util.List;
 
 @Entity
-@Table(name = "address", uniqueConstraints={@UniqueConstraint(columnNames={"street", "house"})})
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "address_id")
-    private Long addressId;
+    private Long id;
 
     private String street;
 
@@ -23,12 +19,16 @@ public class Address {
 
     private String city;
 
-    public Long getAddressId() {
-        return addressId;
+    @OneToMany
+    @JoinColumn(name = "address_id")
+    private List<Patient> patients;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setAddressId(Long addressId) {
-        this.addressId = addressId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreet() {
@@ -61,5 +61,13 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 }

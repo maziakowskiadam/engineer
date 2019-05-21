@@ -1,10 +1,9 @@
 package com.maziakowskiadam.databaseservice.controller;
 
-
+import com.maziakowskiadam.databaseservice.dto.PatientDto;
 import com.maziakowskiadam.databaseservice.entity.Patient;
 import com.maziakowskiadam.databaseservice.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,42 +15,25 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Patient getPatient(@PathVariable Long id) {
-
-        return patientService.getPatient(id);
-    }
-
     @GetMapping("/all")
-    public List<Patient> getAllPatients() {
-        return patientService.getAllPatients();
+    public List<PatientDto> getPatients() {
+        return patientService.getPatients();
     }
 
-    @GetMapping("/delete/{id}")
-    @Transactional
-    public String deleteMedication(@PathVariable Long id) {
-
-        return patientService.deletePatient(id);
+    @GetMapping("/{id}")
+    public PatientDto getSinglePatient(@PathVariable Long id) {
+        return patientService.getSinglePatient(id);
     }
-
 
     @PostMapping("/register")
-    @ResponseBody
     public String registerPatient(@RequestBody Patient patient) {
-
-        return patientService.registerPatient(patient);
+        return patientService.addPatient(patient);
     }
 
+    @GetMapping("/{patientId}/addAddress/{addressId}")
+    public String addAddressToPatient(@PathVariable Long patientId, @PathVariable Long addressId) {
 
-    @PostMapping("/edit")
-    public String editPatient(@RequestBody Patient patient) {
-
-        return patientService.editPatient(patient);
-
+        return patientService.addAddressToPatient(patientId, addressId);
     }
-
-
-
 
 }

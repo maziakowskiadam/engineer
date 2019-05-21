@@ -1,26 +1,13 @@
-package com.maziakowskiadam.databaseservice.entity;
+package com.maziakowskiadam.databaseservice.dto;
 
+public class PatientDto {
 
-import javax.persistence.*;
-
-@Entity
-public class Patient {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String pesel;
-
     private String gender;
-
-    @ManyToOne
-    private Address address;
-
+    private Long addressId;
 
     public Long getId() {
         return id;
@@ -62,11 +49,11 @@ public class Patient {
         this.gender = gender;
     }
 
-    public Address getAddress() {
-        return address;
+    public Long getAddressId() {
+        return addressId;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressId(Long addressId) {
+        this.addressId = addressId;
     }
 }

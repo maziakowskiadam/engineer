@@ -1,13 +1,17 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.maziakowskiadam.databaseservice.dto.PatientDto;
+import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.entity.Patient;
+import com.maziakowskiadam.databaseservice.repository.AddressRepository;
 import com.maziakowskiadam.databaseservice.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class PatientService {
@@ -15,54 +19,71 @@ public class PatientService {
     @Autowired
     PatientRepository patientRepository;
 
-    public Patient getPatient(Long id) {
-        return patientRepository.findPatientById(id);
+    @Autowired
+    AddressRepository addressRepository;
+
+    public List<PatientDto> getPatients() {
+        List<Patient> patients = patientRepository.findAll();
+        List<PatientDto> patientsDto = new ArrayList<>();
+
+        for (Patient p : patients) {
+            PatientDto patientDto = turnPatientIntoDto(p);
+            patientsDto.add(patientDto);
+        }
+
+        return patientsDto;
     }
 
-    public String registerPatient(Patient patient) {
+    public PatientDto getSinglePatient(Long id) {
+        Patient patient = patientRepository.findById(id).get();
+        PatientDto patientDto = turnPatientIntoDto(patient);
 
+        return patientDto;
+    }
+
+    public String addPatient(Patient patient) {
         try {
+
             patientRepository.save(patient);
+
+            Patient justSaved = patientRepository.findPatientByPesel(patient.getPesel());
+
             return "Patient added.";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Adding patient failed.";
+            return "Patient couldn't be added.";
         }
-    }
-
-    public List<Patient> getAllPatients() {
-        return patientRepository.findAll();
     }
 
     @Transactional
-    public String deletePatient(Long id) {
+    public String addAddressToPatient(Long patientId, Long addressId) {
         try {
-            patientRepository.deleteById(id);
-            return "Patient " + id + " deleted.";
+
+            Patient patient = patientRepository.findById(patientId).get();
+            Address address = addressRepository.findById(addressId).get();
+
+            patient.setAddress(address);
+
+            return "Address added to patient.";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Deletion failed.";
+            return "Address couldn't be added to patient.";
         }
     }
 
-    public String editPatient(Patient patient) {
-
-        try {
-            Patient editedPatient = patientRepository.getOne(patient.getId());
-            editedPatient.setFirstName(patient.getFirstName());
-            editedPatient.setLastName(patient.getLastName());
-            editedPatient.setPesel(patient.getPesel());
-            editedPatient.setGender(patient.getGender());
-            patientRepository.save(editedPatient);
-
-            return "Patient " + editedPatient.getId() + " edited.";
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Something wrong with edition.";
-        }
 
 
+
+    public PatientDto turnPatientIntoDto(Patient patient) {
+        PatientDto patientDto = new PatientDto();
+
+        patientDto.setId(patient.getId());
+        patientDto.setFirstName(patient.getFirstName());
+        patientDto.setLastName(patient.getLastName());
+        patientDto.setPesel(patient.getPesel());
+        patientDto.setGender(patient.getGender());
+        patientDto.setAddressId(patient.getAddress().getId());
+
+        return patientDto;
     }
-
 }
