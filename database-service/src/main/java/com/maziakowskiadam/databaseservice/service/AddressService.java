@@ -1,12 +1,15 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.maziakowskiadam.databaseservice.dto.AddressDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AddressService {
@@ -14,14 +17,36 @@ public class AddressService {
     @Autowired
     AddressRepository addressRepository;
 
-    public List<Address> getAddresses() {
-        return addressRepository.findAll();
+    public List<AddressDto> getAddresses() {
+
+        List<Address> addresses = new ArrayList<>();
+        List<AddressDto> dtos = new ArrayList<>();
+        addresses = addressRepository.findAll();
+
+        for (Address a : addresses) {
+            dtos.add(turnAdressIntoDto(a));
+        }
+
+        return dtos;
     }
 
     public String addAddress(Address newAddress) {
         try {
-            addressRepository.save(newAddress);
-            return "Address added.";
+
+            String street = newAddress.getStreet();
+            String house = newAddress.getHouse();
+            String zipcode = newAddress.getZipcode();
+            String city = newAddress.getCity();
+
+            Optional<Address> optAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house,zipcode, city);
+
+            if (!optAddress.isPresent()){
+                addressRepository.save(newAddress);
+                return "Address added.";
+            } else {
+                throw new Exception("Address already in database");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return "Address couldn't be added.";
@@ -38,9 +63,22 @@ public class AddressService {
         }
     }
 
-    public Address getAddressById(Long id) {
+    public AddressDto getAddressById(Long id) {
+        Address address = addressRepository.findById(id).get();
+        return turnAdressIntoDto(address);
+    }
 
-        return addressRepository.findAddressById(id);
+    private AddressDto turnAdressIntoDto(Address address) {
+
+        AddressDto addressDto = new AddressDto();
+
+        addressDto.setId(address.getId());
+        addressDto.setStreet(address.getStreet());
+        addressDto.setHouse(address.getHouse());
+        addressDto.setZipcode(address.getZipcode());
+        addressDto.setCity(address.getCity());
+
+        return addressDto;
     }
 
     @Transactional

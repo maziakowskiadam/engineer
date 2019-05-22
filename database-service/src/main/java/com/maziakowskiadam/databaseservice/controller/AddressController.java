@@ -1,5 +1,6 @@
 package com.maziakowskiadam.databaseservice.controller;
 
+import com.maziakowskiadam.databaseservice.dto.AddressDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ public class AddressController {
     AddressService addressService;
 
     @GetMapping("/all")
-    public List<Address> getAddresses() {
+    public List<AddressDto> getAddresses() {
         return addressService.getAddresses();
     }
 
     @GetMapping("{id}")
     @ResponseBody
-    public Address getAddressById(@PathVariable Long id) {
+    public AddressDto getAddressById(@PathVariable Long id) {
         return addressService.getAddressById(id);
     }
 

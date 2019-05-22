@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface AddressRepository extends JpaRepository<Address, Long> {
     Address findAddressById(Long id);
     Optional<Address> findAddressByStreetAndHouseAndZipcodeAndCity(String street, String house, String zipcode, String city);
-
 }

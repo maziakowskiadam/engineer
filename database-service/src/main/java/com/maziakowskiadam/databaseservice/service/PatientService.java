@@ -1,7 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
-import com.maziakowskiadam.databaseservice.dto.RegisterDto;
+import com.maziakowskiadam.databaseservice.dto.RegisterPatientDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.entity.Patient;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
@@ -46,58 +46,33 @@ public class PatientService {
         return patientDto;
     }
 
-    public String addPatient(Patient patient) {
-        try {
-
-            patientRepository.save(patient);
-
-            Patient justSaved = patientRepository.findPatientByPesel(patient.getPesel());
-
-            return "Patient added.";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Patient couldn't be added.";
-        }
-    }
 
     @Transactional
-    public String addAddressToPatient(Long patientId, Long addressId) {
+    public String addPatient(RegisterPatientDto registerPatientDto) {
         try {
-
-            Patient patient = patientRepository.findById(patientId).get();
-            Address address = addressRepository.findById(addressId).get();
-
-            patient.setAddress(address);
-
-            return "Address added to patient.";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "Address couldn't be added to patient.";
-        }
-    }
-
-    @Transactional
-    public String addPatientWithAddress(RegisterDto registerDto) {
-        try {
-            String street = registerDto.getStreet();
-            String house = registerDto.getHouse();
-            String zipcode = registerDto.getZipcode();
-            String city = registerDto.getCity();
-            Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
+            String street = registerPatientDto.getStreet();
+            String house = registerPatientDto.getHouse();
+            String zipcode = registerPatientDto.getZipcode();
+            String city = registerPatientDto.getCity();
 
             Patient newPatient = new Patient();
-            newPatient.setFirstName(registerDto.getFirstName());
-            newPatient.setLastName(registerDto.getLastName());
-            newPatient.setPesel(registerDto.getPesel());
-            newPatient.setGender(registerDto.getGender());
+            newPatient.setFirstName(registerPatientDto.getFirstName());
+            newPatient.setLastName(registerPatientDto.getLastName());
+            newPatient.setPesel(registerPatientDto.getPesel());
+            newPatient.setGender(registerPatientDto.getGender());
 
+            Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
 
             if (optionalAddress.isPresent()) {
                 Address address = optionalAddress.get();
                 newPatient.setAddress(address);
                 patientRepository.save(newPatient);
             } else {
-                Address address = optionalAddress.get();
+                Address address = new Address();
+                address.setStreet(street);
+                address.setHouse(house);
+                address.setZipcode(zipcode);
+                address.setCity(city);
                 addressService.addAddress(address);
                 Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
                 newPatient.setAddress(newAddress);
@@ -125,5 +100,60 @@ public class PatientService {
         patientDto.setAddressId(patient.getAddress().getId());
 
         return patientDto;
+    }
+
+    @Transactional
+    public String deletePatientById(Long id) {
+
+        try {
+            patientRepository.deleteById(id);
+            return "Patient deleted.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Patient couldn't be deleted.";
+        }
+    }
+
+    @Transactional
+    public String editPatient(Long id, RegisterPatientDto registerPatientDto) {
+        try {
+
+            Patient oldPatient = patientRepository.findById(id).get();
+
+            oldPatient.setFirstName(registerPatientDto.getFirstName());
+            oldPatient.setLastName(registerPatientDto.getLastName());
+            oldPatient.setPesel(registerPatientDto.getPesel());
+            oldPatient.setGender(registerPatientDto.getGender());
+
+            String street = registerPatientDto.getStreet();
+            String house = registerPatientDto.getHouse();
+            String zipcode = registerPatientDto.getZipcode();
+            String city = registerPatientDto.getCity();
+
+            Address address = new Address();
+            address.setStreet(street);
+            address.setHouse(house);
+            address.setZipcode(zipcode);
+            address.setCity(city);
+
+            Optional<Address> optionalAddress = addressRepository
+                    .findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
+
+            if (optionalAddress.isPresent()) {
+                System.out.println("adres istnieje");
+            } else {
+                addressService.addAddress(address);
+                Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
+                oldPatient.setAddress(newAddress);
+                Address adres = oldPatient.getAddress();
+                System.out.println(adres);
+
+            }
+
+            return "Patient and his address edited.";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Patient couldn't be edited.";
+        }
     }
 }
