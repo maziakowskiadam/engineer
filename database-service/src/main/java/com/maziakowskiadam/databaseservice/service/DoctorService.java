@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.AddDoctorDto;
+import com.maziakowskiadam.databaseservice.dto.DoctorDto;
 import com.maziakowskiadam.databaseservice.entity.Doctor;
 import com.maziakowskiadam.databaseservice.entity.Specialization;
 import com.maziakowskiadam.databaseservice.repository.DoctorRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,12 +50,33 @@ public class DoctorService {
     }
 
 
-    public Doctor getDoctor(Long id) {
-        return doctorRepository.findById(id).get();
+    public DoctorDto getDoctor(Long id) {
+        Doctor doctor = doctorRepository.findById(id).get();
+
+        return turnDoctorIntoDto(doctor);
     }
 
-    public List<Doctor> getAllDoctors() {
-        return doctorRepository.findAll();
+    public DoctorDto turnDoctorIntoDto(Doctor doctor) {
+
+        DoctorDto doctorDto = new DoctorDto();
+
+        doctorDto.setId(doctor.getId());
+        doctorDto.setFirstName(doctor.getFirstName());
+        doctorDto.setLastName(doctor.getLastName());
+        doctorDto.setSpecName(doctor.getSpec().getName());
+
+        return doctorDto;
+    }
+
+    public List<DoctorDto> getAllDoctors() {
+        List<Doctor> doctors = doctorRepository.findAll();
+        List<DoctorDto> dtos = new ArrayList<>();
+
+        for (Doctor d : doctors) {
+            dtos.add(turnDoctorIntoDto(d));
+        }
+
+        return dtos;
     }
 
     public String deleteDoctor(Long id) {

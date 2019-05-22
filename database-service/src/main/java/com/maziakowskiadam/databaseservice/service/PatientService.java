@@ -32,8 +32,7 @@ public class PatientService {
         List<PatientDto> patientsDto = new ArrayList<>();
 
         for (Patient p : patients) {
-            PatientDto patientDto = turnPatientIntoDto(p);
-            patientsDto.add(patientDto);
+            patientsDto.add(turnPatientIntoDto(p));
         }
 
         return patientsDto;
@@ -50,36 +49,39 @@ public class PatientService {
     @Transactional
     public String addPatient(RegisterPatientDto registerPatientDto) {
         try {
-            String street = registerPatientDto.getStreet();
-            String house = registerPatientDto.getHouse();
-            String zipcode = registerPatientDto.getZipcode();
-            String city = registerPatientDto.getCity();
+            Optional<Patient> optPatient = patientRepository.findPatientByPesel(registerPatientDto.getPesel());
 
-            Patient newPatient = new Patient();
-            newPatient.setFirstName(registerPatientDto.getFirstName());
-            newPatient.setLastName(registerPatientDto.getLastName());
-            newPatient.setPesel(registerPatientDto.getPesel());
-            newPatient.setGender(registerPatientDto.getGender());
+            if (!optPatient.isPresent()) {
+                String street = registerPatientDto.getStreet();
+                String house = registerPatientDto.getHouse();
+                String zipcode = registerPatientDto.getZipcode();
+                String city = registerPatientDto.getCity();
+                Patient newPatient = new Patient();
+                newPatient.setFirstName(registerPatientDto.getFirstName());
+                newPatient.setLastName(registerPatientDto.getLastName());
+                newPatient.setPesel(registerPatientDto.getPesel());
+                newPatient.setGender(registerPatientDto.getGender());
 
-            Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
+                Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
 
-            if (optionalAddress.isPresent()) {
-                Address address = optionalAddress.get();
-                newPatient.setAddress(address);
-                patientRepository.save(newPatient);
+                if (optionalAddress.isPresent()) {
+                    Address address = optionalAddress.get();
+                    newPatient.setAddress(address);
+                    patientRepository.save(newPatient);
+                } else {
+                    Address address = new Address();
+                    address.setStreet(street);
+                    address.setHouse(house);
+                    address.setZipcode(zipcode);
+                    address.setCity(city);
+                    addressService.addAddress(address);
+                    Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
+                    newPatient.setAddress(newAddress);
+                    patientRepository.save(newPatient);
+                }
             } else {
-                Address address = new Address();
-                address.setStreet(street);
-                address.setHouse(house);
-                address.setZipcode(zipcode);
-                address.setCity(city);
-                addressService.addAddress(address);
-                Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
-                newPatient.setAddress(newAddress);
-                patientRepository.save(newPatient);
-
+                throw new Exception("Patient already in database.");
             }
-
 
             return "Patient and address added.";
         } catch (Exception e) {
