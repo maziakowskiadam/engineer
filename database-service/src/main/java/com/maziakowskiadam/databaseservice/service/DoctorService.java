@@ -23,26 +23,34 @@ public class DoctorService {
     @Autowired
     SpecializationRepository specializationRepository;
 
-    public String addDoctor(AddDoctorDto doctorDto) {
+    public String addDoctor(AddDoctorDto addDoctorDto) {
         try {
-            Doctor newDoctor = new Doctor();
-            newDoctor.setFirstName(doctorDto.getFirstName());
-            newDoctor.setLastName(doctorDto.getLastName());
 
-            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(doctorDto.getSpecialization());
+            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization());
 
-            if (optionalSpec.isPresent()) {
-                newDoctor.setSpec(optionalSpec.get());
-            } else {
+            if (!optionalSpec.isPresent()) {
                 Specialization newSpec = new Specialization();
-                newSpec.setName(doctorDto.getSpecialization());
+                newSpec.setName(addDoctorDto.getSpecialization());
                 specializationRepository.save(newSpec);
-                Specialization spec = specializationRepository.findSpecializationByName(doctorDto.getSpecialization()).get();
-                newDoctor.setSpec(spec);
             }
 
-            doctorRepository.save(newDoctor);
+            Specialization spec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization()).get();
+            String firstName = addDoctorDto.getFirstName();
+            String lastName = addDoctorDto.getLastName();
+            Optional<Doctor> optionalDoc = doctorRepository.findDoctorByFirstNameAndLastNameAndSpec(firstName, lastName, spec);
+
+            if (!optionalDoc.isPresent()) {
+                Doctor newDoctor = new Doctor();
+                newDoctor.setFirstName(firstName);
+                newDoctor.setLastName(lastName);
+                newDoctor.setSpec(spec);
+                doctorRepository.save(newDoctor);
+            } else {
+                throw new Exception("Doctor already in database!");
+            }
+
             return "Doctor added.";
+
         } catch (Exception e) {
             e.printStackTrace();
             return "Doctor couldn't be added.";

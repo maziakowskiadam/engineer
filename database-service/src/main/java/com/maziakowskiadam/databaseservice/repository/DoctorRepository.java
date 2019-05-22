@@ -1,8 +1,11 @@
 package com.maziakowskiadam.databaseservice.repository;
 
 import com.maziakowskiadam.databaseservice.entity.Doctor;
+import com.maziakowskiadam.databaseservice.entity.Specialization;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DoctorRepository extends JpaRepository<Doctor, Long> {
+import java.util.Optional;
 
+public interface DoctorRepository extends JpaRepository<Doctor, Long> {
+    Optional<Doctor> findDoctorByFirstNameAndLastNameAndSpec(String firstName, String lastName, Specialization specialization);
 }

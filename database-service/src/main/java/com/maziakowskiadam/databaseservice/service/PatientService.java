@@ -80,7 +80,7 @@ public class PatientService {
                     patientRepository.save(newPatient);
                 }
             } else {
-                throw new Exception("Patient already in database.");
+                throw new Exception("Patient already in database. Pesel duplicated.");
             }
 
             return "Patient and address added.";
@@ -120,6 +120,8 @@ public class PatientService {
     public String editPatient(Long id, RegisterPatientDto registerPatientDto) {
         try {
 
+            Optional<Patient> optionalPatient = patientRepository.findById(id);
+            System.out.println(optionalPatient.get());
             Patient oldPatient = patientRepository.findById(id).get();
 
             oldPatient.setFirstName(registerPatientDto.getFirstName());
