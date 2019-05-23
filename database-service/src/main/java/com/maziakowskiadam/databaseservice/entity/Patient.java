@@ -2,6 +2,7 @@ package com.maziakowskiadam.databaseservice.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Patient {
@@ -20,6 +21,10 @@ public class Patient {
 
     @ManyToOne
     private Address address;
+
+    @OneToMany
+    @JoinColumn(name = "patient_id")
+    private List<Appointment> appointments;
 
 
     public Long getId() {

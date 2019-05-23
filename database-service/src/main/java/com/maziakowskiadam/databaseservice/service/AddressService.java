@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.AddressDto;
+import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class AddressService {
         addresses = addressRepository.findAll();
 
         for (Address a : addresses) {
-            dtos.add(turnAdressIntoDto(a));
+            dtos.add(Mapping.addressAsDto(a));
         }
 
         return dtos;
@@ -65,20 +66,7 @@ public class AddressService {
 
     public AddressDto getAddressById(Long id) {
         Address address = addressRepository.findById(id).get();
-        return turnAdressIntoDto(address);
-    }
-
-    private AddressDto turnAdressIntoDto(Address address) {
-
-        AddressDto addressDto = new AddressDto();
-
-        addressDto.setId(address.getId());
-        addressDto.setStreet(address.getStreet());
-        addressDto.setHouse(address.getHouse());
-        addressDto.setZipcode(address.getZipcode());
-        addressDto.setCity(address.getCity());
-
-        return addressDto;
+        return Mapping.addressAsDto(address);
     }
 
     @Transactional

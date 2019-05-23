@@ -1,5 +1,6 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
 import com.maziakowskiadam.databaseservice.dto.RegisterPatientDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
@@ -32,7 +33,7 @@ public class PatientService {
         List<PatientDto> patientsDto = new ArrayList<>();
 
         for (Patient p : patients) {
-            patientsDto.add(turnPatientIntoDto(p));
+            patientsDto.add(Mapping.patientAsDto(p));
         }
 
         return patientsDto;
@@ -40,7 +41,7 @@ public class PatientService {
 
     public PatientDto getSinglePatient(Long id) {
         Patient patient = patientRepository.findById(id).get();
-        PatientDto patientDto = turnPatientIntoDto(patient);
+        PatientDto patientDto = Mapping.patientAsDto(patient);
 
         return patientDto;
     }
@@ -91,18 +92,7 @@ public class PatientService {
     }
 
 
-    public PatientDto turnPatientIntoDto(Patient patient) {
-        PatientDto patientDto = new PatientDto();
 
-        patientDto.setId(patient.getId());
-        patientDto.setFirstName(patient.getFirstName());
-        patientDto.setLastName(patient.getLastName());
-        patientDto.setPesel(patient.getPesel());
-        patientDto.setGender(patient.getGender());
-        patientDto.setAddressId(patient.getAddress().getId());
-
-        return patientDto;
-    }
 
     @Transactional
     public String deletePatientById(Long id) {

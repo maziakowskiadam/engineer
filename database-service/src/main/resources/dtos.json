@@ -1,0 +1,28 @@
+[
+  {
+    "firstName":"Adam",
+    "lastName":"Maziakowski",
+    "pesel":"95120805170",
+    "gender":"M",
+    "street":"Wilsona",
+    "house":"38",
+    "zipcode":"45-429",
+    "city":"Opole"
+  },
+  {
+    "firstName":"Adam",
+    "lastName":"Maziakowski",
+    "specialization":"ortopeda"
+  },
+  {
+    "date": "21.06.2019",
+    "time": "12:00",
+    "description": "Wizyta się odbyła",
+    "patientId": 1,
+    "doctorId": 1
+  },
+  {
+    "name": "ortopeda",
+    "description": "Lekarz od kości"
+  }
+]

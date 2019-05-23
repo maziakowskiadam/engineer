@@ -2,7 +2,6 @@ package com.maziakowskiadam.databaseservice.entity;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,6 +17,10 @@ public class Doctor {
 
     @ManyToOne
     private Specialization spec;
+
+    @OneToMany
+    @JoinColumn(name = "doctor_id")
+    private List<Appointment> appointments;
 
     public Long getId() {
         return id;

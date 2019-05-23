@@ -23,6 +23,8 @@ public class Address {
     @JoinColumn(name = "address_id")
     private List<Patient> patients;
 
+
+
     public Long getId() {
         return id;
     }

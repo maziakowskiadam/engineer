@@ -2,7 +2,6 @@ package com.maziakowskiadam.databaseservice.controller;
 
 import com.maziakowskiadam.databaseservice.dto.AddDoctorDto;
 import com.maziakowskiadam.databaseservice.dto.DoctorDto;
-import com.maziakowskiadam.databaseservice.entity.Doctor;
 import com.maziakowskiadam.databaseservice.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +41,10 @@ public class DoctorController {
         return doctorService.editDoctor(id, addDoctorDto);
     }
 
+    @GetMapping("/specialization/{id}")
+    public List<DoctorDto> getDoctorsBySpec(@PathVariable Long id) {
+        return doctorService.getDoctorsBySpec(id);
+    }
 
 
 }

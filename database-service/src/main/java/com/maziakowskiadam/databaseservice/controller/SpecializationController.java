@@ -31,8 +31,8 @@ public class SpecializationController {
         return specializationService.getAllSpecializations();
     }
 
-    @PostMapping("/addDescription")
-    public String addDescription(@RequestBody Specialization specialization) {
-        return specializationService.addDescription(specialization);
+    @PostMapping("/edit/{id}")
+    public String editSpecialization(@PathVariable Long id, @RequestBody Specialization specialization) {
+        return specializationService.editSpecialization(id, specialization);
     }
 }
