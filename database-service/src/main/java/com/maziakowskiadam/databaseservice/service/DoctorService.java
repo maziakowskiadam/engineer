@@ -2,6 +2,7 @@ package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.AddDoctorDto;
 import com.maziakowskiadam.databaseservice.dto.DoctorDto;
+import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.entity.Doctor;
 import com.maziakowskiadam.databaseservice.entity.Specialization;
 import com.maziakowskiadam.databaseservice.repository.DoctorRepository;
@@ -61,27 +62,17 @@ public class DoctorService {
     public DoctorDto getDoctor(Long id) {
         Doctor doctor = doctorRepository.findById(id).get();
 
-        return turnDoctorIntoDto(doctor);
+        return Mapping.doctorAsDto(doctor);
     }
 
-    public DoctorDto turnDoctorIntoDto(Doctor doctor) {
 
-        DoctorDto doctorDto = new DoctorDto();
-
-        doctorDto.setId(doctor.getId());
-        doctorDto.setFirstName(doctor.getFirstName());
-        doctorDto.setLastName(doctor.getLastName());
-        doctorDto.setSpecName(doctor.getSpec().getName());
-
-        return doctorDto;
-    }
 
     public List<DoctorDto> getAllDoctors() {
         List<Doctor> doctors = doctorRepository.findAll();
         List<DoctorDto> dtos = new ArrayList<>();
 
         for (Doctor d : doctors) {
-            dtos.add(turnDoctorIntoDto(d));
+            dtos.add(Mapping.doctorAsDto(d));
         }
 
         return dtos;
@@ -122,5 +113,17 @@ public class DoctorService {
             e.printStackTrace();
             return "Doctor couldn't be edited";
         }
+    }
+
+    public List<DoctorDto> getDoctorsBySpec(Long id) {
+        Specialization spec = specializationRepository.findById(id).get();
+        List<Doctor> doctors = doctorRepository.findDoctorsBySpec(spec);
+        List<DoctorDto> dtos = new ArrayList<>();
+
+        for (Doctor d : doctors) {
+            dtos.add(Mapping.doctorAsDto(d));
+        }
+
+        return dtos;
     }
 }

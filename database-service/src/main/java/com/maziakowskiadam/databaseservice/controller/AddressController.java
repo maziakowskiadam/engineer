@@ -29,7 +29,6 @@ public class AddressController {
     @PostMapping("/add")
     @ResponseBody
     public String addAddress(@RequestBody Address address) {
-
         return addressService.addAddress(address);
     }
 

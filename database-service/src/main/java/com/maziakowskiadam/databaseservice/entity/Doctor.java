@@ -19,6 +19,10 @@ public class Doctor {
     @ManyToOne
     private Specialization spec;
 
+    @OneToMany
+    @JoinColumn(name = "doctor_id")
+    private List<Appointment> appointments;
+
     public Long getId() {
         return id;
     }

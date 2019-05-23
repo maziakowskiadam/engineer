@@ -42,6 +42,10 @@ public class DoctorController {
         return doctorService.editDoctor(id, addDoctorDto);
     }
 
+    @GetMapping("/specialization/{id}")
+    public List<DoctorDto> getDoctorsBySpec(@PathVariable Long id) {
+        return doctorService.getDoctorsBySpec(id);
+    }
 
 
 }

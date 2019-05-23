@@ -1,5 +1,6 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.dto.SpecializationDto;
 import com.maziakowskiadam.databaseservice.entity.Specialization;
 import com.maziakowskiadam.databaseservice.repository.SpecializationRepository;
@@ -38,17 +39,10 @@ public class SpecializationService {
 
     public SpecializationDto getSpecialization(Long id) {
         Specialization specialization = specializationRepository.findById(id).get();
-        return turnSpecializationIntoDto(specialization);
+        return Mapping.specAsDto(specialization);
     }
 
-    private SpecializationDto turnSpecializationIntoDto(Specialization specialization) {
-        SpecializationDto specializationDto = new SpecializationDto();
-        specializationDto.setId(specialization.getId());
-        specializationDto.setName(specialization.getName());
-        specializationDto.setDescription(specialization.getDescription());
 
-        return specializationDto;
-    }
 
     public List<SpecializationDto> getAllSpecializations() {
 
@@ -56,22 +50,23 @@ public class SpecializationService {
         List<SpecializationDto> dtos = new ArrayList<>();
 
         for (Specialization s : specs) {
-            dtos.add(turnSpecializationIntoDto(s));
+            dtos.add(Mapping.specAsDto(s));
         }
 
         return dtos;
     }
 
     @Transactional
-    public String addDescription(Specialization specialization) {
+    public String editSpecialization(Long id, Specialization specialization) {
         try {
-            Specialization spec = specializationRepository.findSpecializationByName(specialization.getName()).get();
+            Specialization spec = specializationRepository.findById(id).get();
+            spec.setName(specialization.getName());
             spec.setDescription(specialization.getDescription());
 
-            return "Description added.";
+            return "Specialization edited.";
         } catch (Exception e) {
             e.printStackTrace();
-            return "Description not added.";
+            return "Specialization not edited.";
         }
     }
 }
