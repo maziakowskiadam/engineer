@@ -22,6 +22,15 @@ public class Appointment {
     @ManyToOne
     private Doctor doctor;
 
+    @ManyToOne
+    private Result result;
+
+    @ManyToOne
+    private Room room;
+
+    @ManyToOne
+    private ExaminationType examinationType;
+
     public Long getId() {
         return id;
     }

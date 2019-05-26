@@ -19,6 +19,8 @@ public class Patient {
 
     private String gender;
 
+    private Long identityId;
+
     @ManyToOne
     private Address address;
 

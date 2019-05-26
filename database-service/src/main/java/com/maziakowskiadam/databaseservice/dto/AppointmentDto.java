@@ -8,6 +8,9 @@ public class AppointmentDto {
     private String description;
     private Long patientId;
     private Long doctorId;
+    private Long resultId;
+    private Long roomId;
+    private Long examinationTypeId;
 
     public Long getId() {
         return id;
@@ -55,5 +58,29 @@ public class AppointmentDto {
 
     public void setDoctorId(Long doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public Long getResultId() {
+        return resultId;
+    }
+
+    public void setResultId(Long resultId) {
+        this.resultId = resultId;
+    }
+
+    public Long getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Long roomId) {
+        this.roomId = roomId;
+    }
+
+    public Long getExaminationTypeId() {
+        return examinationTypeId;
+    }
+
+    public void setExaminationTypeId(Long examinationTypeId) {
+        this.examinationTypeId = examinationTypeId;
     }
 }
