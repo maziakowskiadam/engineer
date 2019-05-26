@@ -110,8 +110,6 @@ public class PatientService {
     public String editPatient(Long id, RegisterPatientDto registerPatientDto) {
         try {
 
-            Optional<Patient> optionalPatient = patientRepository.findById(id);
-            System.out.println(optionalPatient.get());
             Patient oldPatient = patientRepository.findById(id).get();
 
             oldPatient.setFirstName(registerPatientDto.getFirstName());
@@ -133,9 +131,8 @@ public class PatientService {
             Optional<Address> optionalAddress = addressRepository
                     .findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
 
-            if (optionalAddress.isPresent()) {
-                System.out.println("adres istnieje");
-            } else {
+            if (!optionalAddress.isPresent()) {
+
                 addressService.addAddress(address);
                 Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
                 oldPatient.setAddress(newAddress);
