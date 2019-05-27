@@ -46,7 +46,7 @@ public class JwtTokenFilter implements BeforeHandler {
             String role = tokenBody.get("UserRole", String.class);
 
             List<String> requiredRoles = Arrays.asList(flags);
-            if (requiredRoles.contains(role)) {
+            if (requiredRoles.size() == 0 || requiredRoles.contains(role)) {
                 return Flow.CONTINUE;
             }
         } catch (Exception ex)

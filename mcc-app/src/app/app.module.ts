@@ -4,6 +4,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
+import { CounterState } from './store/states/counter.state';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
     declarations: [
@@ -13,10 +17,11 @@ import { LayoutModule } from './layout/layout.module';
         BrowserModule,
         AppRoutingModule,
         LayoutModule,
-        NgbModule
-    ],
-    exports: [
-        NgbModule
+        NgbModule,
+        NgxsModule.forRoot([
+            CounterState
+        ]),
+        NgxsReduxDevtoolsPluginModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]
