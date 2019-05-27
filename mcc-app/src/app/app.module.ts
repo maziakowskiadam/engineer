@@ -7,7 +7,6 @@ import { LayoutModule } from './layout/layout.module';
 import { CounterState } from './store/states/counter.state';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { PagesModule } from './pages/pages.module';
 
 @NgModule({
     declarations: [
