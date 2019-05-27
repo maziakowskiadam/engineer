@@ -25,7 +25,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/all")
-    public List<AppointmentDto> getSingleAppointment() {
+    public List<AppointmentDto> getAllAppointments() {
         return appointmentService.getAllAppointments();
     }
 

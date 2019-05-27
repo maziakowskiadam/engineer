@@ -1,26 +1,13 @@
-package com.maziakowskiadam.databaseservice.entity;
+package com.maziakowskiadam.databaseservice.dto;
 
-import javax.persistence.*;
-import java.util.List;
+public class RoomDto {
 
-@Entity
-public class Room {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String number;
-
     private String building;
-
     private String floor;
-
     private String description;
 
-    @OneToMany
-    @JoinColumn(name = "room_id")
-    private List<Appointment> appointments;
 
     public Long getId() {
         return id;
@@ -60,13 +47,5 @@ public class Room {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
     }
 }

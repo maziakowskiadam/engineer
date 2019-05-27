@@ -1,26 +1,13 @@
-package com.maziakowskiadam.databaseservice.entity;
+package com.maziakowskiadam.databaseservice.dto;
 
+public class ResultDto {
 
-import javax.persistence.*;
-import java.util.List;
-
-@Entity
-public class Result {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String observations;
-
     private String procedures;
-
     private String conclusions;
-
     private String recommendations;
-
-    @ManyToOne
-    private Appointment appointment;
+    private Long appointmentId;
 
 
     public Long getId() {
@@ -63,11 +50,11 @@ public class Result {
         this.recommendations = recommendations;
     }
 
-    public Appointment getAppointment() {
-        return appointment;
+    public Long getAppointmentId() {
+        return appointmentId;
     }
 
-    public void setAppointment(Appointment appointment) {
-        this.appointment = appointment;
+    public void setAppointmentId(Long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 }

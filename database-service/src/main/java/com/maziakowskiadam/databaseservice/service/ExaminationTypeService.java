@@ -1,11 +1,14 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.ExaminationTypeDto;
+import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.entity.ExaminationType;
 import com.maziakowskiadam.databaseservice.repository.ExaminationTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -14,7 +17,7 @@ public class ExaminationTypeService {
     @Autowired
     ExaminationTypeRepository examinationTypeRepository;
 
-    public  ExaminationTypeDto getSingleExaminationType(Long id) {
+    public ExaminationTypeDto getSingleExaminationType(Long id) {
         try {
             Optional<ExaminationType> type = examinationTypeRepository.findById(id);
 
@@ -57,4 +60,39 @@ public class ExaminationTypeService {
         }
 
     }
+
+    public List<ExaminationTypeDto> getAllExaminationTypes() {
+        List<ExaminationType> types = examinationTypeRepository.findAll();
+        List<ExaminationTypeDto> dtos = new ArrayList<>();
+
+        for (ExaminationType e : types) {
+            dtos.add(Mapping.examinationTypeAsDto(e));
+        }
+
+        return dtos;
+    }
+
+    public String editExaminationType(ExaminationTypeDto dto, Long id) {
+
+        try {
+            Optional<ExaminationType> optionalType = examinationTypeRepository.findById(id);
+
+            if (optionalType.isPresent()) {
+                ExaminationType type = optionalType.get();
+                type.setName(dto.getName());
+                type.setDescription(dto.getDescription());
+                type.setDuration(dto.getDuration());
+                examinationTypeRepository.save(type);
+                return "Type edited";
+            } else {
+                throw new Exception("No such type in database.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Type couldn't be deleted.";
+        }
+    }
+
+
 }

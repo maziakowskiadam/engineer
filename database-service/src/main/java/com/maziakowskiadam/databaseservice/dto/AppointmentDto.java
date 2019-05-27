@@ -1,14 +1,15 @@
 package com.maziakowskiadam.databaseservice.dto;
 
+import java.util.List;
+
 public class AppointmentDto {
 
     private Long id;
     private String date;
     private String time;
-    private String description;
     private Long patientId;
     private Long doctorId;
-    private Long resultId;
+    private List<Long> resultIds;
     private Long roomId;
     private Long examinationTypeId;
 
@@ -36,14 +37,6 @@ public class AppointmentDto {
         this.time = time;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Long getPatientId() {
         return patientId;
     }
@@ -60,12 +53,12 @@ public class AppointmentDto {
         this.doctorId = doctorId;
     }
 
-    public Long getResultId() {
-        return resultId;
+    public List<Long> getResultIds() {
+        return resultIds;
     }
 
-    public void setResultId(Long resultId) {
-        this.resultId = resultId;
+    public void setResultIds(List<Long> resultIds) {
+        this.resultIds = resultIds;
     }
 
     public Long getRoomId() {

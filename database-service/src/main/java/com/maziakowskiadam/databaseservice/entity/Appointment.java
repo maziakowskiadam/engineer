@@ -2,6 +2,7 @@ package com.maziakowskiadam.databaseservice.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Appointment {
@@ -14,16 +15,15 @@ public class Appointment {
 
     private String time;
 
-    private String description;
-
     @ManyToOne
     private Patient patient;
 
     @ManyToOne
     private Doctor doctor;
 
-    @ManyToOne
-    private Result result;
+    @OneToMany
+    @JoinColumn(name = "appointment_id")
+    private List<Result> results;
 
     @ManyToOne
     private Room room;
@@ -55,14 +55,6 @@ public class Appointment {
         this.time = time;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Patient getPatient() {
         return patient;
     }
@@ -77,5 +69,29 @@ public class Appointment {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
+    }
+
+    public List<Result> getResults() {
+        return results;
+    }
+
+    public void setResults(List<Result> results) {
+        this.results = results;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public ExaminationType getExaminationType() {
+        return examinationType;
+    }
+
+    public void setExaminationType(ExaminationType examinationType) {
+        this.examinationType = examinationType;
     }
 }

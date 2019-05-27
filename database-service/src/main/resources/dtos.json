@@ -19,10 +19,31 @@
     "time": "12:00",
     "description": "Wizyta się odbyła",
     "patientId": 1,
-    "doctorId": 1
+    "doctorId": 1,
+    "examinationTypeId": 1,
+    "roomId": 1
   },
   {
     "name": "ortopeda",
     "description": "Lekarz od kości"
+  },
+  {
+    "name": "EEG",
+    "description": "elektroencefalografia",
+    "duration": "30 minut"
+  },
+  {
+    "number": "15",
+    "building": "A-1",
+    "floor": "1",
+    "description": "izolatka"
+  },
+  {
+    "appointmentId": "2",
+    "observations": "Pacjent kaszle, gorączkuje",
+    "procedures":"Zmierzono ciśnienie, gorączkę, pobrano krew",
+    "conclusions":"Stwierdzono przeziębienie",
+    "recommendations":"Przepisano antybiotyk, tydzień zwolnienia"
   }
+
 ]
