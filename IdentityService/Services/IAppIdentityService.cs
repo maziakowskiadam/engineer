@@ -5,7 +5,7 @@ namespace IdentityService.Services
 {
     public interface IAppIdentityService
     {
-        Task<string> LoginAsync(UserDto userDto);
+        Task<UserAuthenticationResultDto> LoginAsync(UserDto userDto);
         Task<string> RegisterAsync(UserDto userDto);
     }
 }

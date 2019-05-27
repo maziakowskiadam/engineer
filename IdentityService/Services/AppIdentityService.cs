@@ -10,7 +10,6 @@ using System;
 using System.Security.Claims;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdentityService.Services
 {
@@ -46,7 +45,7 @@ namespace IdentityService.Services
             this.EnsureRolesCreated();
         }
 
-        public async Task<string> LoginAsync(UserDto user)
+        public async Task<UserAuthenticationResultDto> LoginAsync(UserDto user)
         {
             var result = await this._signInManager
                 .PasswordSignInAsync(user.Email, user.Password, false, false);
@@ -81,7 +80,11 @@ namespace IdentityService.Services
             );
 
             var handler = new JwtSecurityTokenHandler();
-            return handler.WriteToken(token);
+            return new UserAuthenticationResultDto
+            {
+                Role = role,
+                Token = handler.WriteToken(token)
+            };
         }
 
         public async Task<string> RegisterAsync(UserDto user)
@@ -108,7 +111,11 @@ namespace IdentityService.Services
                 return null;
             }
 
-            await _userManager.AddToRoleAsync(createdUser, user.Role);
+            var roleResult = await _userManager.AddToRoleAsync(createdUser, user.Role);
+            if (!roleResult.Succeeded)
+            {
+                return null;
+            }
 
             return newUser.Id;
         }
@@ -120,7 +127,8 @@ namespace IdentityService.Services
                 var roles = Roles
                     .Select(roleName => new IdentityRole
                     {
-                        Name = roleName
+                        Name = roleName,
+                        NormalizedName = roleName
                     });
 
                 this._context.AddRange(roles);
