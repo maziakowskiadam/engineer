@@ -7,6 +7,10 @@ import { LayoutModule } from './layout/layout.module';
 import { CounterState } from './store/states/counter.state';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { AppConfigModule } from './app-config.module';
+import { ApiDataService } from './services/api-data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { states } from './store/store';
 
 @NgModule({
     declarations: [
@@ -17,12 +21,18 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
         AppRoutingModule,
         LayoutModule,
         NgbModule,
+        AppConfigModule,
         NgxsModule.forRoot([
-            CounterState
+            ...states
         ]),
-        NgxsReduxDevtoolsPluginModule.forRoot()
+        NgxsReduxDevtoolsPluginModule.forRoot(),
+        HttpClientModule
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: [
+        ApiDataService
+    ],
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

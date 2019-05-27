@@ -6,6 +6,7 @@ import { PatientPageComponent } from './pages/patient-page/patient-page.componen
 import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorized-page.component';
 import { ManagementPageComponent } from './pages/management-page/management-page.component';
 import { DefaultPageComponent } from './pages/default-page/default-page.component';
+import { PagesModule } from './pages/pages.module';
 
 const routes: Routes = [
     {
@@ -36,15 +37,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    declarations: [
-        LoginPageComponent,
-        DoctorsPageComponent,
-        PatientPageComponent,
-        UnauthorizedPageComponent,
-        ManagementPageComponent,
-        DefaultPageComponent
-    ],
+    // declarations: [
+    // ],
     imports: [
+        PagesModule,
         RouterModule.forRoot(routes)
     ],
     exports: [
