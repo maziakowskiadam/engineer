@@ -4,6 +4,7 @@ import com.kastkode.springsandwich.filter.annotation.Before;
 import com.kastkode.springsandwich.filter.annotation.BeforeElement;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
 import com.maziakowskiadam.databaseservice.dto.RegisterPatientDto;
+import com.maziakowskiadam.databaseservice.security.JwtConfig;
 import com.maziakowskiadam.databaseservice.security.JwtTokenFilter;
 import com.maziakowskiadam.databaseservice.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {"KOTEK"}))
+    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("/all")
     public List<PatientDto> getPatients() {
         return patientService.getPatients();
