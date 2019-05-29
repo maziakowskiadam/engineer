@@ -7,6 +7,7 @@ import { UnauthorizedPageComponent } from './pages/unauthorized-page/unauthorize
 import { ManagementPageComponent } from './pages/management-page/management-page.component';
 import { DefaultPageComponent } from './pages/default-page/default-page.component';
 import { PagesModule } from './pages/pages.module';
+import { AddPatientPageComponent } from './pages/add-patient-page/add-patient-page.component';
 
 const routes: Routes = [
     {
@@ -28,6 +29,10 @@ const routes: Routes = [
     {
         path: 'management',
         component: ManagementPageComponent
+    },
+    {
+        path: 'add-patient',
+        component: AddPatientPageComponent
     },
     {
         path: '',

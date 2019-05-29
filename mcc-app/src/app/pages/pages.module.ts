@@ -6,6 +6,7 @@ import { UnauthorizedPageComponent } from './unauthorized-page/unauthorized-page
 import { ManagementPageComponent } from './management-page/management-page.component';
 import { DefaultPageComponent } from './default-page/default-page.component';
 import { CommonModule } from '@angular/common';
+import { AddPatientPageComponent } from './add-patient-page/add-patient-page.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
         PatientPageComponent,
         UnauthorizedPageComponent,
         ManagementPageComponent,
-        DefaultPageComponent
+        DefaultPageComponent,
+        AddPatientPageComponent
     ],
     imports: [
         CommonModule
@@ -25,7 +27,8 @@ import { CommonModule } from '@angular/common';
         PatientPageComponent,
         UnauthorizedPageComponent,
         ManagementPageComponent,
-        DefaultPageComponent
+        DefaultPageComponent,
+        AddPatientPageComponent
     ]
 })
-export class PagesModule {}
+export class PagesModule { }

@@ -1,0 +1,89 @@
+<br>
+<br>
+<br>
+
+<form action="" class="main-form ">
+
+    <div class="form-group">
+        <h5>Dane logowania</h5>
+        <label for="login">Login:</label>
+        <input type="text" name="login" id="login" class="form-control">
+        <label for="password">Hasło:</label>
+        <input type="text" name="password" id="password" class="form-control">
+        <label for="passwordRepeat">Powtórz hasło:</label>
+        <input type="text" name="passwordRepeat" id="passwordRepeat" class="form-control">
+    </div>
+
+    <br>
+
+    <div class="form-group">
+
+        <h5>Dane osobowe</h5>
+
+        <div class="row my-row">
+            <div class="col my-col">
+                <label for="firstName">Imię:</label>
+                <input type="text" name="firstName" id="firstName" class="form-control is-invalid">
+                <div class="invalid-feedback">Niepoprawne imię!</div>
+            </div>
+            <div class="col my-col">
+                <label for="lastName">Nazwisko:</label>
+                <input type="text" name="lastName" id="lastName" class="form-control">
+            </div>
+        </div>
+        <div class="row my-row align-items-end">
+            <div class="col my-col">
+                <label for="pesel">PESEL:</label>
+                <input type="text" name="pesel" id="pesel" class="form-control">
+            </div>
+            <div class="col my-col">
+                <fieldset id="gender" class="form-check">
+                    <div class="row ">
+                        <div class="col ">
+                            <input type="radio" value="M" name="gender" id="male" class="form-check-input">
+                            <label for="male"> Mężczyzna</label>
+                        </div>
+                        <div class="col ">
+                            <input type="radio" value="F" name="gender" id="female" class="form-check-input">
+                            <label for="female" class="form-check-label"> Kobieta</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <div class="form-group">
+
+        <h5>Dane adresowe</h5>
+
+        <div class="row my-row">
+            <div class="col my-col">
+                <label for="street">Ulica:</label>
+                <input type="text" name="street" id="street" class="form-control">
+            </div>
+            <div class="col my-col">
+                <label for="house">Nr domu/nr mieszkania:</label>
+                <input type="text" name="house" id="house" class="form-control">
+            </div>
+        </div>
+
+        <div class="row my-row">
+            <div class="col my-col">
+                <label for="zipcode">Kod pocztowy:</label>
+                <input type="text" name="zipcode" id="zipcode" class="form-control">
+            </div>
+            <div class="col my-col">
+                <label for="city">Miasto:</label>
+                <input type="text" name="city" id="city" class="form-control">
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn btn-primary btn-block">Zarejestruj</button>
+
+</form>
