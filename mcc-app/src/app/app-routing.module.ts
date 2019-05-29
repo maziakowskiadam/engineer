@@ -8,6 +8,7 @@ import { ManagementPageComponent } from './pages/management-page/management-page
 import { DefaultPageComponent } from './pages/default-page/default-page.component';
 import { PagesModule } from './pages/pages.module';
 import { AddPatientPageComponent } from './pages/add-patient-page/add-patient-page.component';
+import { AddAppointmentPageComponent } from './pages/add-appointment-page/add-appointment-page.component';
 
 const routes: Routes = [
     {
@@ -33,6 +34,10 @@ const routes: Routes = [
     {
         path: 'add-patient',
         component: AddPatientPageComponent
+    },
+    {
+        path: 'add-appointment',
+        component: AddAppointmentPageComponent
     },
     {
         path: '',
