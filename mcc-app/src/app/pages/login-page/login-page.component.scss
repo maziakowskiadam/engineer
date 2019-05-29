@@ -1,13 +1,28 @@
-.my-div {
-    border: 3px solid green;
+.login-page {
+    max-width: 400px;
+    margin: 100px auto;
+
+    .form-control:focus {
+        outline: none;
+        box-shadow: none;
+        border-color: #ced4da;
+    }
+
+    &__email-input {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom: 0;
+    }
+
+    &__password-input {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    &__error {
+        color: red;
+        margin-bottom: 12px;
+    }
+
 }
 
-.content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 30%;
-    margin: auto;
-}

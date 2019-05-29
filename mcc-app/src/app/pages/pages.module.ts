@@ -8,6 +8,7 @@ import { DefaultPageComponent } from './default-page/default-page.component';
 import { CommonModule } from '@angular/common';
 import { AddPatientPageComponent } from './add-patient-page/add-patient-page.component';
 import { AddAppointmentPageComponent } from './add-appointment-page/add-appointment-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AddAppointmentPageComponent } from './add-appointment-page/add-appointm
         AddAppointmentPageComponent
     ],
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
     exports: [
         LoginPageComponent,

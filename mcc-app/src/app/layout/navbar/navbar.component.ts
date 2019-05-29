@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavbarLink } from '../models/NavbarLink';
 import { Router, NavigationEnd } from '@angular/router';
+import { Store } from '@ngxs/store';
+import { SetIdentity } from 'src/app/store/actions/IdentityActions';
 
 @Component({
     selector: 'app-navbar',
@@ -13,7 +15,10 @@ export class NavbarComponent implements OnInit {
 
     private path = '';
 
-    constructor(private router: Router) { }
+    constructor(
+        private router: Router,
+        private store: Store
+    ) { }
 
     ngOnInit() {
         this.router.events
@@ -23,7 +28,11 @@ export class NavbarComponent implements OnInit {
                     this.pathChanged();
                 }
             });
-        window['navbar'] = this;
+    }
+
+    logout(): void {
+        this.store.dispatch(new SetIdentity(null, null));
+        this.router.navigate(['']);
     }
 
     private pathChanged(): void {

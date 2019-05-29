@@ -19,6 +19,7 @@ namespace IdentityService
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls(new string[] { "http://0.0.0.0:5000" })
                 .UseStartup<Startup>();
     }
 }

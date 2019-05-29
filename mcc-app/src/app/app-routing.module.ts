@@ -9,26 +9,30 @@ import { DefaultPageComponent } from './pages/default-page/default-page.componen
 import { PagesModule } from './pages/pages.module';
 import { AddPatientPageComponent } from './pages/add-patient-page/add-patient-page.component';
 import { AddAppointmentPageComponent } from './pages/add-appointment-page/add-appointment-page.component';
+import { IdentityGuard } from './guards/identity.guard';
+import { RouteUrl } from './constants/route.constants';
 
 const routes: Routes = [
     {
-        path: 'login',
+        path: RouteUrl.LOGIN,
         component: LoginPageComponent
     },
     {
-        path: 'doctors',
-        component: DoctorsPageComponent
+        path: RouteUrl.DOCTORS,
+        component: DoctorsPageComponent,
+        canActivate: [IdentityGuard],
     },
     {
-        path: 'patients',
-        component: PatientPageComponent
+        path: RouteUrl.PATIENTS,
+        component: PatientPageComponent,
+        canActivate: [IdentityGuard],
     },
     {
-        path: 'unauthorized',
+        path: RouteUrl.UNAUTHORIZED,
         component: UnauthorizedPageComponent
     },
     {
-        path: 'management',
+        path: RouteUrl.MANAGEMENT,
         component: ManagementPageComponent
     },
     {

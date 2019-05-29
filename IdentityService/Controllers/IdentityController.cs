@@ -31,7 +31,7 @@ namespace IdentityService.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm] UserDto user)
+        public async Task<IActionResult> Login(UserDto user)
         {
             var loginResult = await this._identityService.LoginAsync(user);
 

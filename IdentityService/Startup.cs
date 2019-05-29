@@ -47,7 +47,14 @@ namespace IdentityService
             });
 
             services.AddTransient<IAppIdentityService, AppIdentityService>();
-
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("AllowAnyOrigin", obj => {
+                    obj.AllowAnyOrigin();
+                    obj.AllowAnyHeader();
+                    obj.AllowAnyMethod();
+                });
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -63,6 +70,7 @@ namespace IdentityService
                 app.UseHsts();
             }
 
+            app.UseCors("AllowAnyOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

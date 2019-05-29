@@ -1,19 +1,37 @@
-<div class="text-center content">
-    <form class="form-signin">
+<div class="login-page">
+    <div *ngIf="!loading; else loadingBlock"
+        class="login-page__login-form">
         <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
-        <label for="inputLogin" class="sr-only">Login</label>
-        <input type="email" id="inputLogin" class="form-control" placeholder="Login" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Hasło</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Hasło" required="">
-        <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
-        <div class="checkbox mb-3">
-            <!-- <label>
-                 <input type="checkbox" value="remember-me"> Remember me
-            </label> -->
+
+        <div *ngIf="error"
+            class="login-page__error">
+            Logowanie nieudane
         </div>
-        <p class="mt-8 mb-3 text-muted">MCC App</p>
-    </form>
 
+        <label for="inputLogin" class="sr-only">Login</label>
+        <input type="email"
+            class="form-control login-page__email-input"
+            [(ngModel)]="email"
+            placeholder="Login"
+            required
+            autofocus>
 
+        <label for="inputPassword" class="sr-only">Hasło</label>
+        <input type="password"
+            class="form-control login-page__password-input"
+            [(ngModel)]="password"
+            placeholder="Hasło"
+            required>
+        <br>
+        <button type="submit"
+            class="btn btn-lg btn-primary btn-block"
+            (click)="onSubmit()">
+            Zaloguj
+        </button>
+    </div>
+    <ng-template #loadingBlock>
+        <div class="login-page_loader">
+            Loading ...
+        </div>
+    </ng-template>
 </div>
