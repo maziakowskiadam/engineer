@@ -79,6 +79,10 @@ const routes: Routes = [
     {
         path: 'account',
         loadChildren: () => import('./modules/account/account.module').then(mod => mod.AccountModule)
+    },
+    {
+        path: 'management',
+        loadChildren: () => import('./modules/management/management.module').then(mod => mod.ManagementModule)
     }
 ];
 
