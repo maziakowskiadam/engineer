@@ -1,5 +1,12 @@
 .my-container {
-    border: 1px dashed green;
-    width: 300px;
-    margin: 200px auto;
+    border: 2px dashed green;
+    margin: auto;
+}
+
+.my-row {
+    border: 2px solid red;
+}
+
+.my-col {
+    border: 2px dotted blue;
 }

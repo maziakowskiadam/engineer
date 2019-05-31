@@ -1,3 +1,36 @@
-<div class="my-container">
-    <textarea class="form-control" rows="3"></textarea>
+<div class="row">
+    <div class="col-3 align-items-end">
+        <div class="row text-muted">
+            Dane pacjenta:
+            <br>
+            Imię: {{currentPatient.firstName}}
+            <br>
+            Nazwisko: {{currentPatient.lastName}}
+            <br>
+            Data urodzenia: {{currentPatient.dateOfBirth}}
+        </div>
+        <br>
+        <div class="row text-muted ">
+            Dane wizyty:
+            <br>
+            Rodzaj badania: {{currentAppointment.examType}}
+            <br>
+            Rodzaj badania: {{currentAppointment.room}}
+            <br>
+            Rodzaj badania: {{currentAppointment.date}}
+        </div>
+    </div>
+    <div class="col-9">
+        <div class="form-group">
+            <label for="observations">Obserwacje:</label>
+            <textarea class="form-control" id="observations" name="observations" rows="5"></textarea>
+            <label for="procedures">Badania:</label>
+            <textarea class="form-control" id="procedures" name="procedures" rows="5"></textarea>
+            <label for="conclusions">Wnioski:</label>
+            <textarea class="form-control" id="conclusions" name="conclusions" rows="5"></textarea>
+            <label for="recommencations">Zalecenia</label>
+            <textarea class="form-control" id="recommencations" name="recommencations" rows="5"></textarea>
+        </div>
+        <button class="btn btn-lg btn-success btn-block" (click)="finishAppointment()">Zakończ wizytę</button>
+    </div>
 </div>

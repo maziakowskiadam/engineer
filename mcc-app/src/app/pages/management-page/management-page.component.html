@@ -3,8 +3,20 @@
 </div>
 
 <div class="container my-container">
-    <button type="button" class="btn btn-primary btn-lg btn-block my-btn">Rozpocznij nową wizytę</button>
-    <button type="button" class="btn btn-primary btn-lg btn-block my-btn">Przeglądaj wyniki</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddAppointment()">
+        Umów wizytę</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddPatient()">
+        Dodaj pacjenta</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddDoctor()">
+        Dodaj nowego lekarza</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddRoom()">
+        Dodaj nowy gabinet</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddExamType()">
+        Dodaj nowy rodzaj badania</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoActivateAccount()">
+        Aktywuj konto pacjenta</button>
+
+
 </div>
 
 

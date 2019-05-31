@@ -16,6 +16,9 @@ import { ResultsPageComponent } from './pages/results-page/results-page.componen
 import { PasswordRecoveryPageComponent } from './pages/password-recovery-page/password-recovery-page.component';
 import { AccountSettingsPageComponent } from './pages/account-settings-page/account-settings-page.component';
 import { NewAppointmentPageComponent } from './pages/new-appointment-page/new-appointment-page.component';
+import { AddDoctorPageComponent } from './pages/add-doctor-page/add-doctor-page.component';
+import { AddRoomPageComponent } from './pages/add-room-page/add-room-page.component';
+import { ActivateAccountPageComponent } from './pages/activate-account-page/activate-account-page.component';
 
 const routes: Routes = [
     {
@@ -45,8 +48,20 @@ const routes: Routes = [
         component: ManagementPageComponent
     },
     {
+        path: 'add-doctor',
+        component: AddDoctorPageComponent
+    },
+    {
+        path: 'add-room',
+        component: AddRoomPageComponent
+    },
+    {
         path: 'add-patient',
         component: AddPatientPageComponent
+    },
+    {
+        path: 'activate-account',
+        component: ActivateAccountPageComponent
     },
     {
         path: 'add-appointment',

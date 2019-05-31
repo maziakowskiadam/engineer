@@ -50,4 +50,12 @@ export class LoginPageComponent {
         }
     }
 
+    gotoRegister() {
+        this.router.navigate(['add-patient']);
+    }
+
+    gotoPasswordRecovery() {
+        this.router.navigate(['password-recovery']);
+    }
+
 }

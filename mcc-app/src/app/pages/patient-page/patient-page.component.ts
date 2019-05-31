@@ -12,8 +12,8 @@ export class PatientPageComponent {
         private router: Router,
     ) { }
 
-    goToNewAppointment() {
-        this.router.navigate(['new-appointment']);
+    goToAddAppointment() {
+        this.router.navigate(['add-appointment']);
     }
 
     goToAppointments() {

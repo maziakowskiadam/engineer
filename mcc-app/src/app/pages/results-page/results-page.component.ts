@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-results-page',
@@ -6,6 +7,10 @@ import { Component } from '@angular/core';
     styleUrls: ['results-page.component.scss']
 })
 export class ResultsPageComponent {
+
+    constructor(
+        private router: Router,
+    ) { }
 
     results: Result[] =
         [
@@ -25,6 +30,10 @@ export class ResultsPageComponent {
                 doctor: 'Kacper Cygan'
             },
         ]
+
+    provideMore() {
+        this.router.navigate(['patients']);
+    }
 }
 
 export interface Result {

@@ -14,6 +14,9 @@ import { ResultsPageComponent } from './results-page/results-page.component';
 import { PasswordRecoveryPageComponent } from './password-recovery-page/password-recovery-page.component';
 import { AccountSettingsPageComponent } from './account-settings-page/account-settings-page.component';
 import { NewAppointmentPageComponent } from './new-appointment-page/new-appointment-page.component';
+import { AddDoctorPageComponent } from './add-doctor-page/add-doctor-page.component';
+import { AddRoomPageComponent } from './add-room-page/add-room-page.component';
+import { ActivateAccountPageComponent } from './activate-account-page/activate-account-page.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +32,10 @@ import { NewAppointmentPageComponent } from './new-appointment-page/new-appointm
         ResultsPageComponent,
         PasswordRecoveryPageComponent,
         AccountSettingsPageComponent,
-        NewAppointmentPageComponent
+        NewAppointmentPageComponent,
+        AddDoctorPageComponent,
+        AddRoomPageComponent,
+        ActivateAccountPageComponent
     ],
     imports: [
         CommonModule,

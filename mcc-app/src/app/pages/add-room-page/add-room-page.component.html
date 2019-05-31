@@ -1,0 +1,20 @@
+<div class="container-fluid my-container">
+    <div class="form-group">
+        <h5>Dodawanie gabinetu</h5>
+        <br>
+        <div class="row">
+            <div class="col">
+                <label for="roomNumber">Numer gabinetu:</label>
+                <input type="text" name="roomNumber" id="roomNumber" class="form-control">
+            </div>
+            <div class="col">
+                <label for="building">Budynek:</label>
+                <input type="text" name="building" id="building" class="form-control">
+            </div>
+        </div>
+        <label for="description">Opis gabinetu:</label>
+        <input type="text" name="description" id="description" class="form-control">
+    </div>
+    <button class="btn btn-success btn-block my-btn btn-lg" (click)="goToManagement()">Zarejestruj</button>
+
+</div>

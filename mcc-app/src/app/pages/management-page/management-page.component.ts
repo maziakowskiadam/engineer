@@ -4,6 +4,7 @@ import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
 import { Doctor } from 'src/app/models/Doctor';
 import { DoctorsState } from 'src/app/store/states/doctors.state';
 import { combineLatest } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-management-page',
@@ -15,7 +16,9 @@ export class ManagementPageComponent implements OnInit {
     loading: boolean;
     doctors: Doctor[];
 
-    constructor(private store: Store) {
+    constructor(
+        private store: Store,
+        private router: Router, ) {
         this.store.dispatch(new GetAllDoctors());
     }
 
@@ -35,5 +38,28 @@ export class ManagementPageComponent implements OnInit {
         });
     }
 
+    gotoAddDoctor() {
+        this.router.navigate(['add-doctor']);
+    }
+
+    gotoAddRoom() {
+        this.router.navigate(['add-room']);
+    }
+
+    gotoAddPatient() {
+        this.router.navigate(['add-patient']);
+    }
+
+    gotoActivateAccount() {
+        this.router.navigate(['activate-account']);
+    }
+
+    gotoAddAppointment() {
+        this.router.navigate(['add-appointment']);
+    }
+
+    gotoAddExamType() {
+        this.router.navigate(['add-exam-type']);
+    }
 
 }

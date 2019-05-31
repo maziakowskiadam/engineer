@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-appointments-page',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./appointments-page.component.scss']
 })
 export class AppointmentsPageComponent implements OnInit {
+
+    constructor(
+        private router: Router,
+    ) { }
 
     appointments: Appointment[] =
         [
@@ -34,6 +39,10 @@ export class AppointmentsPageComponent implements OnInit {
         ;
 
     ngOnInit() { }
+
+    cancelAppointment() {
+        this.router.navigate(['patients']);
+    }
 }
 
 export interface Appointment {

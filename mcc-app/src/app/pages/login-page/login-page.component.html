@@ -17,8 +17,9 @@
         <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="onSubmit()">
             Zaloguj
         </button>
-        <button type="button" class="btn btn-link btn-block">Zapomniałeś hasła?</button>
-        <button type="button" class="btn btn-link btn-block">Zarejestruj się</button>
+        <button type="button" class="btn btn-link btn-block" (click)="gotoPasswordRecovery()">Zapomniałeś
+            hasła?</button>
+        <button type="button" class="btn btn-link btn-block" (click)="gotoRegister()">Zarejestruj się</button>
     </div>
     <ng-template #loadingBlock>
         <div class="login-page_loader">
