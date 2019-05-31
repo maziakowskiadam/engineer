@@ -41,9 +41,9 @@ export class NavbarComponent implements OnInit {
     }
 
     private updateShowNavbar(): boolean {
-        if (this.path.startsWith('/login')) {
-            return false;
-        }
+        // if (this.path.startsWith('/login')) {
+        //     return false;
+        // }
 
         return true;
     }

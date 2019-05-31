@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './components/login/login.component';
 import { RestorePasswordComponent } from './components/restore-password/restore-password.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
     {
@@ -20,6 +21,10 @@ const routes: Routes = [
     {
         path: 'unauthorized',
         component: UnauthorizedComponent
+    },
+    { 
+        path: 'register',
+        component: RegisterComponent
     }
 ];
 
