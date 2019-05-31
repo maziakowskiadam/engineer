@@ -1,5 +1,17 @@
 .register-form {
+
     &__form-component {
         margin-bottom: 32px;
     }
+
+    &__input-row {
+        margin-bottom: 16px;
+    }
+
+    &__personal-data {
+        @media screen and (min-width: 992px){
+            border-right: 1px solid #ccc;
+        }
+    }
+
 }

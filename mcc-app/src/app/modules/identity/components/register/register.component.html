@@ -11,18 +11,18 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="login">Email:</label>
-                    <input type="email" class="form-control">
+                    <input type="email" name="login" id="login" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="login">Powtórz email:</label>
-                    <input type="email" class="form-control">
+                    <label for="login2">Powtórz email:</label>
+                    <input type="email" name="login2" id="login2" class="form-control">
                 </div>
             </div>
             <hr />
             <div class="row">
                 <div class="col-md-6">
                     <label for="password">Hasło:</label>
-                    <input type="text" class="form-control">
+                    <input type="text" name="password" id="password" class="form-control">
                 </div>
                 <div class="col-md-6">
                     <label for="passwordRepeat">Powtórz hasło:</label>
@@ -37,82 +37,71 @@
             Dane osobowe
         </div>
         <div class="card-body">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptatum, suscipit blanditiis animi doloremque iste, beatae aut a repellendus earum qui, at odit! Incidunt consequuntur aliquam facilis unde ratione? Dolore!
-            Pariatur reiciendis at quod repellat voluptas! Rerum recusandae pariatur hic sapiente impedit libero repudiandae, similique quia officia dicta ipsa sed, sint aut nihil illo perspiciatis. Explicabo nihil dolores soluta nisi.
-            A, adipisci reiciendis odio esse, fugiat, suscipit consectetur impedit corrupti atque excepturi accusantium ducimus. Commodi, maxime obcaecati. Voluptate sunt porro aspernatur maxime, dolore pariatur reiciendis tempora corrupti labore ea iure.
-            Expedita quibusdam perspiciatis libero tenetur maiores tempora officiis, maxime recusandae illo ipsam suscipit natus consequatur sunt fugit amet corrupti at itaque. Quas perspiciatis magnam inventore eligendi illum excepturi neque dolore.
+            <div class="row">
+                <div class="col-lg-7 register-form__personal-data">
+                    <div class="row register-form__input-row">
+                        <div class="col">
+                            <label for="firstName">Imię:</label>
+                            <input type="text" name="firstName" id="firstName" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="lastName">Nazwisko:</label>
+                            <input type="text" name="lastName" id="lastName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row register-form__input-row">
+                        <div class="col-9">
+                            <label for="pesel">PESEL:</label>
+                            <input type="text" name="pesel" id="pesel" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <label for="gender">Płeć:</label>
+                            <fieldset name="gender" id="gender" class="form-check">
+                                <div class="row ">
+                                    <div class="col">
+                                        <input type="radio" value="M" name="gender" id="male" class="form-check-input">
+                                        <label for="male"> Mężczyzna</label>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col">
+                                        <input type="radio" value="F" name="gender" id="female" class="form-check-input">
+                                        <label for="female" class="form-check-label"> Kobieta</label>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-5">
+                    <div class="row register-form__input-row">
+                        <div class="col">
+                            <label for="street">Ulica:</label>
+                            <input type="text" name="street" id="street" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="house">Nr domu/nr mieszkania:</label>
+                            <input type="text" name="house" id="house" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row register-form__input-row">
+                        <div class="col">
+                            <label for="zipcode">Kod pocztowy:</label>
+                            <input type="text" name="zipcode" id="zipcode" class="form-control">
+                        </div>
+                        <div class="col">
+                            <label for="city">Miasto:</label>
+                            <input type="text" name="city" id="city" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <!-- <div class="main-form">
-        
-        <div class="form-group">
-
-            <h5></h5>
-
-            <div class="row my-row">
-                <div class="col my-col">
-                    <label for="firstName">Imię:</label>
-                    <input type="text" name="firstName" id="firstName" class="form-control is-invalid">
-                    <div class="invalid-feedback">Niepoprawne imię!</div>
-                </div>
-                <div class="col my-col">
-                    <label for="lastName">Nazwisko:</label>
-                    <input type="text" name="lastName" id="lastName" class="form-control">
-                </div>
-            </div>
-            <div class="row my-row align-items-end">
-                <div class="col my-col">
-                    <label for="pesel">PESEL:</label>
-                    <input type="text" name="pesel" id="pesel" class="form-control">
-                </div>
-                <div class="col my-col">
-                    <fieldset id="gender" class="form-check">
-                        <div class="row ">
-                            <div class="col ">
-                                <input type="radio" value="M" name="gender" id="male" class="form-check-input">
-                                <label for="male"> Mężczyzna</label>
-                            </div>
-                            <div class="col ">
-                                <input type="radio" value="F" name="gender" id="female" class="form-check-input">
-                                <label for="female" class="form-check-label"> Kobieta</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-success btn-block btn-lg" (click)="addPatient()">Zarejestruj</button>
         </div>
-
-        <br>
-
-        <div class="form-group">
-
-            <h5>Dane adresowe</h5>
-
-            <div class="row my-row">
-                <div class="col my-col">
-                    <label for="street">Ulica:</label>
-                    <input type="text" name="street" id="street" class="form-control">
-                </div>
-                <div class="col my-col">
-                    <label for="house">Nr domu/nr mieszkania:</label>
-                    <input type="text" name="house" id="house" class="form-control">
-                </div>
-            </div>
-
-            <div class="row my-row">
-                <div class="col my-col">
-                    <label for="zipcode">Kod pocztowy:</label>
-                    <input type="text" name="zipcode" id="zipcode" class="form-control">
-                </div>
-                <div class="col my-col">
-                    <label for="city">Miasto:</label>
-                    <input type="text" name="city" id="city" class="form-control">
-                </div>
-            </div>
-
-        </div>
-        <br>
-        <button class="btn btn-success btn-block btn-lg" (click)="addPatient()">Zarejestruj</button>
-    </div> -->
+    </div>
 </div>
