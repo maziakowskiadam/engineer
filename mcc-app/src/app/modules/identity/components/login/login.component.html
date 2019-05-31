@@ -1,1 +1,39 @@
-To jest Login :)
+<div class="login-page">
+    <div *ngIf="!loading; else loadingBlock" class="login-page__login-form">
+        <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
+
+        <div *ngIf="error" class="login-page__error">
+            Logowanie nieudane
+        </div>
+
+        <label for="inputLogin" class="sr-only">Login</label>
+        <input type="email" class="form-control login-page__email-input" [(ngModel)]="email" placeholder="Login" required
+            autofocus />
+
+        <label for="inputPassword" class="sr-only">Hasło</label>
+        <input type="password" class="form-control login-page__password-input" [(ngModel)]="password"
+            placeholder="Hasło" required>
+        <br>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="onSubmit()">
+            Zaloguj
+        </button>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <button type="button" class="btn btn-link btn-block" routerLink="../restore">
+                    Zapomniałeś hasła?
+                </button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-link btn-block" routerLink="../register">
+                    Zarejestruj się
+                </button>
+            </div>
+        </div>
+    </div>
+    <ng-template #loadingBlock>
+        <div class="login-page_loader">
+            Loading ...
+        </div>
+    </ng-template>
+</div>

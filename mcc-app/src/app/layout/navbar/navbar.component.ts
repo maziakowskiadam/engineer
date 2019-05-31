@@ -1,8 +1,10 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarLink } from '../models/NavbarLink';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { SetIdentity } from 'src/app/store/actions/IdentityActions';
+import { NavbarState } from 'src/app/store/states/navbar.state';
+import { combineLatest } from 'rxjs';
 
 @Component({
     selector: 'app-navbar',
@@ -10,10 +12,8 @@ import { SetIdentity } from 'src/app/store/actions/IdentityActions';
 })
 export class NavbarComponent implements OnInit {
 
-    showNavbar = true;
-    links: NavbarLink[] = [];
-
-    private path = '';
+    showNavbar;
+    links: NavbarLink[];
 
     constructor(
         private router: Router,
@@ -21,48 +21,21 @@ export class NavbarComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.router.events
-            .subscribe((event: any) => {
-                if (event instanceof NavigationEnd) {
-                    this.path = (event as NavigationEnd).url;
-                    this.pathChanged();
-                }
+        const links$ = this.store.select(NavbarState.navLinks);
+        const showNavbar$ = this.store.select(NavbarState.showNavbar);
+        combineLatest(links$, showNavbar$)
+            .subscribe(([
+                links,
+                showNavbar
+            ]) => {
+                this.links = links;
+                this.showNavbar = showNavbar;
             });
     }
 
     logout(): void {
         this.store.dispatch(new SetIdentity(null, null));
         this.router.navigate(['']);
-    }
-
-    private pathChanged(): void {
-        this.showNavbar = this.updateShowNavbar();
-        this.links = this.updateLinks();
-    }
-
-    private updateShowNavbar(): boolean {
-        // if (this.path.startsWith('/login')) {
-        //     return false;
-        // }
-
-        return true;
-    }
-
-    private updateLinks(): NavbarLink[] {
-        if (this.path.includes('/doctors')) {
-            return [
-                {
-                    name: 'Moje wizyty',
-                    path: 'doctors/visits'
-                },
-                {
-                    name: 'Moi pacjenci',
-                    path: 'doctors/patients'
-                }
-            ];
-        }
-
-        return [];
     }
 
 }

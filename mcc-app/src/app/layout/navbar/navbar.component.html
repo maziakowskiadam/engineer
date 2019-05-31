@@ -1,4 +1,4 @@
-<nav *ngIf="showNavbar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav *ngIf="showNavbar; else noNavSpacer" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="/">MCC</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,3 +23,7 @@
 
     </div>
 </nav>
+
+<ng-template #noNavSpacer>
+    <div style="min-height: 60px;">&nbsp;</div>
+</ng-template>
