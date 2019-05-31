@@ -11,6 +11,11 @@ import { AddPatientPageComponent } from './pages/add-patient-page/add-patient-pa
 import { AddAppointmentPageComponent } from './pages/add-appointment-page/add-appointment-page.component';
 import { IdentityGuard } from './guards/identity.guard';
 import { RouteUrl } from './constants/route.constants';
+import { AppointmentsPageComponent } from './pages/appointments-page/appointments-page.component';
+import { ResultsPageComponent } from './pages/results-page/results-page.component';
+import { PasswordRecoveryPageComponent } from './pages/password-recovery-page/password-recovery-page.component';
+import { AccountSettingsPageComponent } from './pages/account-settings-page/account-settings-page.component';
+import { NewAppointmentPageComponent } from './pages/new-appointment-page/new-appointment-page.component';
 
 const routes: Routes = [
     {
@@ -18,14 +23,18 @@ const routes: Routes = [
         component: LoginPageComponent
     },
     {
+        path: 'password-recovery',
+        component: PasswordRecoveryPageComponent
+    },
+    {
         path: RouteUrl.DOCTORS,
         component: DoctorsPageComponent,
-        canActivate: [IdentityGuard],
+        // canActivate: [IdentityGuard],
     },
     {
         path: RouteUrl.PATIENTS,
         component: PatientPageComponent,
-        canActivate: [IdentityGuard],
+        // canActivate: [IdentityGuard],
     },
     {
         path: RouteUrl.UNAUTHORIZED,
@@ -42,6 +51,22 @@ const routes: Routes = [
     {
         path: 'add-appointment',
         component: AddAppointmentPageComponent
+    },
+    {
+        path: 'appointments',
+        component: AppointmentsPageComponent
+    },
+    {
+        path: 'results',
+        component: ResultsPageComponent
+    },
+    {
+        path: 'account-settings',
+        component: AccountSettingsPageComponent
+    },
+    {
+        path: 'new-appointment',
+        component: NewAppointmentPageComponent
     },
     {
         path: '',

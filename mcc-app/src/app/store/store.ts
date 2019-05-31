@@ -3,5 +3,5 @@ import { IdentityState } from './states/identity.state';
 
 export const states = [
     IdentityState,
-    DoctorsState
+    DoctorsState,
 ];

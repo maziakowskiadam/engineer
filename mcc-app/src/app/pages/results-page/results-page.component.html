@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Wizyty
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Badanie</th>
+                            <th>Lekarz</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of results">
+                            <td>{{ res.date }}</td>
+                            <td>{{ res.examType }}</td>
+                            <td>{{ res.doctor }}</td>
+                            <td>
+                                <button class="btn btn-info">Więcej</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,11 @@ import { CommonModule } from '@angular/common';
 import { AddPatientPageComponent } from './add-patient-page/add-patient-page.component';
 import { AddAppointmentPageComponent } from './add-appointment-page/add-appointment-page.component';
 import { FormsModule } from '@angular/forms';
+import { AppointmentsPageComponent } from './appointments-page/appointments-page.component';
+import { ResultsPageComponent } from './results-page/results-page.component';
+import { PasswordRecoveryPageComponent } from './password-recovery-page/password-recovery-page.component';
+import { AccountSettingsPageComponent } from './account-settings-page/account-settings-page.component';
+import { NewAppointmentPageComponent } from './new-appointment-page/new-appointment-page.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +24,12 @@ import { FormsModule } from '@angular/forms';
         ManagementPageComponent,
         DefaultPageComponent,
         AddPatientPageComponent,
-        AddAppointmentPageComponent
+        AddAppointmentPageComponent,
+        AppointmentsPageComponent,
+        ResultsPageComponent,
+        PasswordRecoveryPageComponent,
+        AccountSettingsPageComponent,
+        NewAppointmentPageComponent
     ],
     imports: [
         CommonModule,
