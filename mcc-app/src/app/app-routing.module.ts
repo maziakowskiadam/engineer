@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+<<<<<<< HEAD
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { DoctorsPageComponent } from './pages/doctors-page/doctors-page.component';
 import { PatientPageComponent } from './pages/patient-page/patient-page.component';
@@ -19,6 +20,8 @@ import { NewAppointmentPageComponent } from './pages/new-appointment-page/new-ap
 import { AddDoctorPageComponent } from './pages/add-doctor-page/add-doctor-page.component';
 import { AddRoomPageComponent } from './pages/add-room-page/add-room-page.component';
 import { ActivateAccountPageComponent } from './pages/activate-account-page/activate-account-page.component';
+=======
+>>>>>>> 6cfd958e340337aa35093ce5329441fa1bc8535b
 
 // const routes: Routes = [
 //     {

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
 import { SetNavbarState } from 'src/app/store/actions/NavbarActions';
+import { Store } from '@ngxs/store';
 
 @Component({
-    selector: 'app-unauthorized',
-    templateUrl: './unauthorized.component.html'
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss']
 })
-export class UnauthorizedComponent {
+export class RegisterComponent {
 
     constructor(
         store: Store
