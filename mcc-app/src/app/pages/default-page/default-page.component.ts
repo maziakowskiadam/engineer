@@ -17,24 +17,24 @@ export class DefaultPageComponent {
     ) {
         store.select(IdentityState.role)
             .subscribe(role => {
-                if (!role) {
-                    router.navigate(['login']);
-                }
+                // if (!role) {
+                //     router.navigate(['login']);
+                // }
 
-                switch (role) {
-                    case IdentityRole.Doctor:
-                        router.navigate([RouteUrl.DOCTORS]);
-                        break;
-                    case IdentityRole.Patient:
-                        router.navigate([RouteUrl.PATIENTS]);
-                        break;
-                    case IdentityRole.PatientUnauthorized:
-                        router.navigate([RouteUrl.UNAUTHORIZED]);
-                        break;
-                    case IdentityRole.Management:
-                        router.navigate([RouteUrl.MANAGEMENT]);
-                        break;
-                }
+                // switch (role) {
+                //     case IdentityRole.Doctor:
+                //         router.navigate([RouteUrl.DOCTORS]);
+                //         break;
+                //     case IdentityRole.Patient:
+                //         router.navigate([RouteUrl.PATIENTS]);
+                //         break;
+                //     case IdentityRole.PatientUnauthorized:
+                //         router.navigate([RouteUrl.UNAUTHORIZED]);
+                //         break;
+                //     case IdentityRole.Management:
+                //         router.navigate([RouteUrl.MANAGEMENT]);
+                //         break;
+                // }
             });
     }
 
