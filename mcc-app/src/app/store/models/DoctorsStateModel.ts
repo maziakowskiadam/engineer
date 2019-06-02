@@ -1,4 +1,5 @@
-import { Doctor } from 'src/app/models/Doctor';
+import { Doctor } from 'src/app/shared/models/Doctor';
+
 
 export interface DoctorsStateModel {
     doctors: Doctor[];

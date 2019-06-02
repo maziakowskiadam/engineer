@@ -1,8 +1,8 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DoctorsStateModel } from '../models/DoctorsStateModel';
-import { ApiDataService } from 'src/app/services/api-data.service';
+import { ApiDataService } from 'src/app/shared/services/api-data.service';
 import { GetAllDoctors } from '../actions/DoctorsActions';
-import { Doctor } from 'src/app/models/Doctor';
+import { Doctor } from 'src/app/shared/models/Doctor';
 
 @State<DoctorsStateModel>({
     defaults: {

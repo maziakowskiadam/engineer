@@ -1,0 +1,42 @@
+<div class="container-fluid my-container">
+    <app-card
+        [title]="'Dodaj lekarza'">
+        <app-card-body>
+            <!-- <app-input-field
+                [(value)]="superValue"></app-input-field> -->
+
+            <app-input-field
+                [name]="'firstName'"
+                [title]="'Imię:'"
+                [(value)]="firstName">
+            </app-input-field>
+            <app-input-field
+                [name]="'lastName'"
+                [title]="'Nazwisko:'"
+                [(value)]="lastName">
+            </app-input-field>
+            <app-input-field
+                [name]="'specialization'"
+                [title]="'Specjalizacja:'"
+                [(value)]="specialization">
+            </app-input-field>
+            <!-- <label for="firstName">Imię:</label>
+            <input type="text" name="firstName" id="firstName" class="form-control">
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" name="lastName" id="lastName" class="form-control">
+            <label for="specialization">Specjalizacja:</label>
+            <input type="text" name="specialization" id="specialization" class="form-control"> -->
+        </app-card-body>
+        <app-card-footer>
+            <div class="row">
+                <div class="col text-left">
+                    <a class="btn btn-warning" routerLink="../index">Anuluj</a>
+                </div>
+                <div class="col text-right">
+                    <a class="btn btn-success text-white"
+                        (click)="onSubmit()">Zapisz</a>
+                </div>
+            </div>
+        </app-card-footer>
+    </app-card>
+</div>

@@ -1,6 +1,6 @@
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { NavbarStateModel } from '../models/NavbarStateModel';
-import { NavbarLink } from 'src/app/layout/models/NavbarLink';
+import { NavbarLink } from 'src/app/shared/layout/models/NavbarLink';
 import { SetNavbarState } from '../actions/NavbarActions';
 
 @State<NavbarStateModel>({

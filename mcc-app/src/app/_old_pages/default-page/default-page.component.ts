@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Router } from '@angular/router';
 import { IdentityState } from 'src/app/store/states/identity.state';
-import { IdentityRole } from 'src/app/models/IdentityRole';
-import { RouteUrl } from 'src/app/constants/route.constants';
 
 @Component({
     selector: 'app-default-page',

@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { IdentityState } from '../store/states/identity.state';
 import { combineLatest } from 'rxjs';
-import { RouteUrl } from '../constants/route.constants';
-import { IdentityRole } from '../models/IdentityRole';
+import { RouteUrl } from '../shared/constants/route.constants';
+import { IdentityRole } from '../shared/models/IdentityRole';
+
 
 @Injectable({
     providedIn: 'root'

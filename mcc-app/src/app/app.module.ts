@@ -3,15 +3,15 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from './layout/layout.module';
+import { LayoutModule } from './shared/layout/layout.module';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { AppConfigModule } from './app-config.module';
-import { ApiDataService } from './services/api-data.service';
+import { ApiDataService } from './shared/services/api-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { states } from './store/store';
-import { ApiIdentityService } from './services/api-identity.service';
+import { ApiIdentityService } from './shared/services/api-identity.service';
 
 @NgModule({
     declarations: [

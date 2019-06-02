@@ -1,4 +1,4 @@
-import { IdentityRole } from 'src/app/models/IdentityRole';
+import { IdentityRole } from 'src/app/shared/models/IdentityRole';
 
 export class LoginIdentity {
     static readonly type = '[IdentityState] LoginIdentity';

@@ -1,4 +1,4 @@
-import { NavbarLink } from 'src/app/layout/models/NavbarLink';
+import { NavbarLink } from 'src/app/shared/layout/models/NavbarLink';
 
 export class SetNavbarState {
     static readonly type = '[NavbarState] SetNavbarState';
