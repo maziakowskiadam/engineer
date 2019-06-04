@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/specializations")
+@CrossOrigin
 public class SpecializationController {
 
     @Autowired

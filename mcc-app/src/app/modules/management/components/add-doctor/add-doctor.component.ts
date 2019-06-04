@@ -3,6 +3,7 @@ import { Store } from '@ngxs/store';
 import { SetNavbarState } from 'src/app/store/actions/NavbarActions';
 import { MANAGEMENT_NAV_LINKS } from '../../constants/management-navbar';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
+import { AddDoctorDto } from 'src/app/shared/models/AddDoctorDto';
 
 @Component({
     selector: 'app-add-doctor',
@@ -11,9 +12,13 @@ import { ApiDataService } from 'src/app/shared/services/api-data.service';
 })
 export class AddDoctorComponent {
 
-    firstName: string;
-    lastName: string;
-    specialization: string;
+
+    doctor: AddDoctorDto = {
+        firstName: '',
+        lastName: '',
+        specialization: ''
+    };
+
 
     constructor(
         store: Store,
@@ -23,13 +28,14 @@ export class AddDoctorComponent {
     }
 
     onSubmit(): void {
-        this.apiDataService.addDoctor({
-            firstName: this.firstName,
-            lastName: this.lastName,
-            specialization: this.specialization
-        }).subscribe(result => {
-            console.log(result);
-        });
+        this.apiDataService.addDoctor(this.doctor)
+            .subscribe(result => {
+                // console.log(result);
+            });
+        this.doctor.firstName = '';
+        this.doctor.lastName = '';
+        this.doctor.specialization = '';
     }
 
 }
+

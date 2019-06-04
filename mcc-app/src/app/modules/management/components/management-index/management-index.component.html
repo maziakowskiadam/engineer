@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <b>Pacjenci</b>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddPatient()">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" routerLink="../add-patient">
                     Dodaj pacjenta</button>
                 <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddAppointment()">
                     Umów wizytę</button>
@@ -16,8 +16,7 @@
         <div class="card">
             <div class="card-body">
                 <b>Lekarze</b>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" 
-                    routerLink="../add-doctor">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" routerLink="../add-doctor">
                     Dodaj nowego lekarza</button>
                 <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddAppointment()">
                     Umów wizytę</button>
@@ -28,9 +27,10 @@
         <div class="card">
             <div class="card-body">
                 <b>Przychodnia</b>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddRoom()">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn " routerLink="../add-room">
                     Dodaj nowy gabinet</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddExamType()">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn"
+                    routerLink="../add-examination-type">
                     Dodaj nowy rodzaj badania</button>
             </div>
         </div>

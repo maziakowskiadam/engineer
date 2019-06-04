@@ -1,14 +1,16 @@
 <div class="container-fluid ">
-    <app-card [title]="'Dodaj lekarza'">
+    <app-card [title]="'Dodaj gabinet'">
         <app-card-body>
             <!-- <app-input-field
                 [(value)]="superValue"></app-input-field> -->
 
-            <app-input-field [name]="'firstName'" [title]="'Imię:'" [(value)]="doctor.firstName">
+            <app-input-field [name]="'number'" [title]="'Numer gabinetu:'" [(value)]="room.number">
             </app-input-field>
-            <app-input-field [name]="'lastName'" [title]="'Nazwisko:'" [(value)]="doctor.lastName">
+            <app-input-field [name]="'building'" [title]="'Budynek:'" [(value)]="room.building">
             </app-input-field>
-            <app-input-field [name]="'specialization'" [title]="'Specjalizacja:'" [(value)]="doctor.specialization">
+            <app-input-field [name]="'floor'" [title]="'Piętro:'" [(value)]="room.floor">
+            </app-input-field>
+            <app-input-field [name]="'description'" [title]="'Opis:'" [(value)]="room.description">
             </app-input-field>
         </app-card-body>
         <app-card-footer>

@@ -4,11 +4,17 @@ import { CommonModule } from '@angular/common';
 import { ManagementRoutingModule } from './management-routing.module';
 import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { AddRoomComponent } from './components/add-room/add-room.component';
+import { AddExaminationTypeComponent } from './components/add-examination-type/add-examination-type.component';
+import { AddPatientComponent } from './components/add-patient/add-patient.component';
 
 @NgModule({
     declarations: [
         ManagementIndexComponent,
-        AddDoctorComponent
+        AddDoctorComponent,
+        AddRoomComponent,
+        AddExaminationTypeComponent,
+        AddPatientComponent
     ],
     imports: [
         CommonModule,

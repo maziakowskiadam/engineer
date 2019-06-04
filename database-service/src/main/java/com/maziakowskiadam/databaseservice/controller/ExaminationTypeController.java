@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/examinationTypes")
+@CrossOrigin
 public class ExaminationTypeController {
 
     @Autowired

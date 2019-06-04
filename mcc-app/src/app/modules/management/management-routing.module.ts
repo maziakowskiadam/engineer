@@ -2,6 +2,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ManagementIndexComponent } from './components/management-index/management-index.component';
 import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
+import { AddRoomComponent } from './components/add-room/add-room.component';
+import { AddExaminationTypeComponent } from './components/add-examination-type/add-examination-type.component';
+import { AddPatientComponent } from './components/add-patient/add-patient.component';
 
 const routes: Routes = [
     {
@@ -15,7 +18,19 @@ const routes: Routes = [
     {
         path: 'add-doctor',
         component: AddDoctorComponent
-    }
+    },
+    {
+        path: 'add-room',
+        component: AddRoomComponent
+    },
+    {
+        path: 'add-examination-type',
+        component: AddExaminationTypeComponent
+    },
+    {
+        path: 'add-patient',
+        component: AddPatientComponent
+    },
 ];
 
 @NgModule({
@@ -26,4 +41,4 @@ const routes: Routes = [
         RouterModule
     ]
 })
-export class ManagementRoutingModule {}
+export class ManagementRoutingModule { }
