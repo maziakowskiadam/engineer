@@ -32,7 +32,7 @@ public class PatientController {
         return patientService.getSinglePatient(id);
     }
 
-    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
+//    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @PostMapping("/add")
     public String addPatient(@RequestBody RegisterPatientDto registerPatientDto) {
         return patientService.addPatient(registerPatientDto);

@@ -5,9 +5,9 @@
                 <b>Pacjenci</b>
                 <button type="button" class="btn btn-primary btn-lg btn-block my-btn" routerLink="../add-patient">
                     Dodaj pacjenta</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddAppointment()">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn">
                     Umów wizytę</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoActivateAccount()">
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn">
                     Aktywuj konto pacjenta</button>
             </div>
         </div>
@@ -18,8 +18,10 @@
                 <b>Lekarze</b>
                 <button type="button" class="btn btn-primary btn-lg btn-block my-btn" routerLink="../add-doctor">
                     Dodaj nowego lekarza</button>
-                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" (click)="gotoAddAppointment()">
-                    Umów wizytę</button>
+                <!-- <button type="button" class="btn btn-primary btn-lg btn-block my-btn">
+                    Umów wizytę</button> -->
+                <button type="button" class="btn btn-primary btn-lg btn-block my-btn" routerLink="../doctors-list">
+                    Lista lekarzy</button>
             </div>
         </div>
     </div>

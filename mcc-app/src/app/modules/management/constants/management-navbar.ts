@@ -10,12 +10,20 @@ export const MANAGEMENT_NAV_LINKS: NavbarLink[] = [
         path: 'management/add-doctor'
     },
     {
+        name: 'Lista lekarzy',
+        path: 'management/doctors-list'
+    },
+    {
         name: 'Dodaj gabinet',
         path: 'management/add-room'
     },
     {
         name: 'Dodaj rodzaj badania',
         path: 'management/add-examination-type'
+    },
+    {
+        name: 'Dodaj pacjenta',
+        path: 'management/add-patient'
     },
 
 ];

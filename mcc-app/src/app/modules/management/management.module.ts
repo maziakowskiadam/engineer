@@ -7,6 +7,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { AddRoomComponent } from './components/add-room/add-room.component';
 import { AddExaminationTypeComponent } from './components/add-examination-type/add-examination-type.component';
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
+import { DoctorsListComponent } from './components/doctors-list/doctors-list.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { AddPatientComponent } from './components/add-patient/add-patient.compon
         AddDoctorComponent,
         AddRoomComponent,
         AddExaminationTypeComponent,
-        AddPatientComponent
+        AddPatientComponent,
+        DoctorsListComponent
     ],
     imports: [
         CommonModule,
