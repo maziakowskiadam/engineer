@@ -51,5 +51,16 @@ namespace IdentityService.Controllers
             return Ok(registerResult);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RegisterPatient([FromForm] UserDto user)
+        {
+            user.Role = "PATIENT";
+
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
+
+
+
     }
 }

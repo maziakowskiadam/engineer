@@ -8,6 +8,7 @@ import { AddRoomComponent } from './components/add-room/add-room.component';
 import { AddExaminationTypeComponent } from './components/add-examination-type/add-examination-type.component';
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { DoctorsListComponent } from './components/doctors-list/doctors-list.component';
+import { PatientsListComponent } from './components/patients-list/patients-list.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import { DoctorsListComponent } from './components/doctors-list/doctors-list.com
         AddRoomComponent,
         AddExaminationTypeComponent,
         AddPatientComponent,
-        DoctorsListComponent
+        DoctorsListComponent,
+        PatientsListComponent
     ],
     imports: [
         CommonModule,
