@@ -1,5 +1,6 @@
 <div class="card">
-    <div class="card-header">
+    <div *ngIf="title"
+        class="card-header">
         {{ title }}
     </div>
     <ng-content select="app-card-body"></ng-content>

@@ -1,10 +1,7 @@
+import { Patient } from './Patient';
+import { LoginDto } from './LoginDto';
+
 export interface AddPatientDto {
-    firstName: string;
-    lastName: string;
-    pesel: string;
-    gender: string;
-    street: string;
-    house: string;
-    zipcode: string;
-    city: string;
+    patient: Patient;
+    identity: LoginDto;
 }
