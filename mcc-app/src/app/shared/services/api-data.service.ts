@@ -24,8 +24,8 @@ export class ApiDataService {
         return this.http.get<Doctor[]>(`${this.apiUrl}/doctors/all`);
     }
 
-    addDoctor(doctor: AddDoctorDto): Observable<string> {
-        return this.http.post<string>(`${this.apiUrl}/doctors/add`, doctor);
+    addDoctor(doctor: AddDoctorDto): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/doctors/add`, doctor);
     }
 
     addRoom(room: AddRoomDto): Observable<string> {

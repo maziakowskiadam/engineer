@@ -29,12 +29,17 @@ export class AddDoctorComponent {
 
     onSubmit(): void {
         this.apiDataService.addDoctor(this.doctor)
-            .subscribe(result => {
-                // console.log(result);
-            });
-        this.doctor.firstName = '';
-        this.doctor.lastName = '';
-        this.doctor.specialization = '';
+            .subscribe(
+                (result) => {
+                    console.log(result);
+                    this.doctor.firstName = '';
+                    this.doctor.lastName = '';
+                    this.doctor.specialization = '';
+                },
+                () => {
+                    console.log('Error');
+                }
+            );
     }
 
 }

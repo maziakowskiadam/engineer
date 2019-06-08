@@ -24,7 +24,7 @@ public class DoctorService {
     @Autowired
     SpecializationRepository specializationRepository;
 
-    public String addDoctor(AddDoctorDto addDoctorDto) {
+    public boolean addDoctor(AddDoctorDto addDoctorDto) {
         try {
 
             Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization());
@@ -50,11 +50,11 @@ public class DoctorService {
                 throw new Exception("Doctor already in database!");
             }
 
-            return "Doctor added.";
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Doctor couldn't be added.";
+            return false;
         }
     }
 
