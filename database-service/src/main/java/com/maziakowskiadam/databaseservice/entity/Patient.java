@@ -19,7 +19,7 @@ public class Patient {
 
     private String gender;
 
-    private Long identityId;
+    private String identityId;
 
     @ManyToOne
     private Address address;
@@ -75,5 +75,21 @@ public class Patient {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public String getIdentityId() {
+        return identityId;
+    }
+
+    public void setIdentityId(String identityId) {
+        this.identityId = identityId;
     }
 }

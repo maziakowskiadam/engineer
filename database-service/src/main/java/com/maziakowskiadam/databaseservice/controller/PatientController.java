@@ -8,13 +8,15 @@ import com.maziakowskiadam.databaseservice.security.JwtConfig;
 import com.maziakowskiadam.databaseservice.security.JwtTokenFilter;
 import com.maziakowskiadam.databaseservice.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
-@CrossOrigin
+@CrossOrigin()
 public class PatientController {
 
     @Autowired
@@ -34,8 +36,10 @@ public class PatientController {
 
 //    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @PostMapping("/add")
-    public String addPatient(@RequestBody RegisterPatientDto registerPatientDto) {
-        return patientService.addPatient(registerPatientDto);
+    public ResponseEntity addPatient(@RequestBody RegisterPatientDto registerPatientDto) {
+        return patientService.addPatient(registerPatientDto)
+                ? new ResponseEntity(HttpStatus.OK)
+                : new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))

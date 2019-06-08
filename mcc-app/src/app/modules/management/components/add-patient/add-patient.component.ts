@@ -4,6 +4,9 @@ import { ApiDataService } from 'src/app/shared/services/api-data.service';
 import { MANAGEMENT_NAV_LINKS } from '../../constants/management-navbar';
 import { SetNavbarState } from 'src/app/store/actions/NavbarActions';
 import { Patient } from 'src/app/shared/models/Patient';
+import { LoginDto } from 'src/app/shared/models/LoginDto';
+import { RegisterService } from 'src/app/shared/services/register.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-add-patient',
@@ -12,7 +15,7 @@ import { Patient } from 'src/app/shared/models/Patient';
 })
 export class AddPatientComponent {
 
-    patientIdentity = {
+    patientIdentity: LoginDto = {
         email: '',
         password: ''
     };
@@ -21,37 +24,41 @@ export class AddPatientComponent {
         firstName: '',
         lastName: '',
         pesel: '',
-        gender: '',
+        gender: 'M',
         street: '',
         house: '',
         zipcode: '',
         city: '',
     };
 
+    gender = {
+        male: true,
+        female: false
+    };
+
     constructor(
         store: Store,
-        private apiDataService: ApiDataService
+        private registerService: RegisterService,
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         store.dispatch(new SetNavbarState(MANAGEMENT_NAV_LINKS, true));
-
-
-        window['add'] = this;
     }
 
     onSubmit(): void {
-        // this.apiDataService.addPatient(this.patient)
-        //     .subscribe(result => {
-        //         console.log(result);
-        //     });
-        // this.patient.firstName = '';
-        // this.patient.lastName = '';
-        // this.patient.pesel = '';
-        // this.patient.gender = '';
-        // this.patient.street = '';
-        // this.patient.house = '';
-        // this.patient.zipcode = '';
-        // this.patient.city = '';
+        this.registerService.addPatient({
+            identity: this.patientIdentity,
+            patient: this.patient
+        }).subscribe(() => {
+            this.router.navigate(['../patients-list'], {relativeTo: this.route});
+        }, error => {
+            alert('Nie udało się dodać pacjenta');
+            console.error(error);
+        });
     }
 
+    onGenderChange(gender: string): void {
+        this.patient.gender = gender;
+    }
 
 }

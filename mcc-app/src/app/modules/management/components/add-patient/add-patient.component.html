@@ -33,13 +33,13 @@
                     <fieldset name="gender" id="gender" class="form-check">
                         <div class="row ">
                             <div class="col">
-                                <input type="radio" value="M" name="gender" id="male" class="form-check-input">
+                                <input type="radio" value="M" name="gender" id="male" class="form-check-input" checked (change)="onGenderChange($event.target.value)">
                                 <label for="male"> Mężczyzna</label>
                             </div>
                         </div>
                         <div class="row ">
                             <div class="col">
-                                <input type="radio" value="F" name="gender" id="female" class="form-check-input">
+                                <input type="radio" value="F" name="gender" id="female" class="form-check-input" (change)="onGenderChange($event.target.value)">
                                 <label for="female" class="form-check-label"> Kobieta</label>
                             </div>
                         </div>

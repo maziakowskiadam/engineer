@@ -12,6 +12,7 @@ import { ApiDataService } from './shared/services/api-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { states } from './store/store';
 import { ApiIdentityService } from './shared/services/api-identity.service';
+import { RegisterService } from './shared/services/register.service';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { ApiIdentityService } from './shared/services/api-identity.service';
     ],
     providers: [
         ApiDataService,
-        ApiIdentityService
+        ApiIdentityService,
+        RegisterService
     ],
     bootstrap: [
         AppComponent

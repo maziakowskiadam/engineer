@@ -6,6 +6,7 @@ import { AddRoomComponent } from './components/add-room/add-room.component';
 import { AddExaminationTypeComponent } from './components/add-examination-type/add-examination-type.component';
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { DoctorsListComponent } from './components/doctors-list/doctors-list.component';
+import { PatientsListComponent } from './components/patients-list/patients-list.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
         path: 'doctors-list',
         component: DoctorsListComponent
     },
+    {
+        path: 'patients-list',
+        component: PatientsListComponent
+    }
 ];
 
 @NgModule({
