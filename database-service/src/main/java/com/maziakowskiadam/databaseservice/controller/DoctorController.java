@@ -4,6 +4,8 @@ import com.maziakowskiadam.databaseservice.dto.AddDoctorDto;
 import com.maziakowskiadam.databaseservice.dto.DoctorDto;
 import com.maziakowskiadam.databaseservice.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +20,10 @@ public class DoctorController {
 
 
     @PostMapping("/add")
-    public String addDoctor(@RequestBody AddDoctorDto doctorDto) {
-        return doctorService.addDoctor(doctorDto);
+    public ResponseEntity<Void> addDoctor(@RequestBody AddDoctorDto doctorDto) {
+        return doctorService.addDoctor(doctorDto)
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{id}")
