@@ -17,6 +17,10 @@ export class RegisterService {
         this.apiUrl = appConfig.apiUrl;
     }
 
+    addPatientUnauthorized(addPatientDto: AddPatientDto): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/patients/addUnauthorized`, addPatientDto);
+    }
+
     addPatient(addPatientDto: AddPatientDto): Observable<void> {
         return this.http.post<void>(`${this.apiUrl}/patients/add`, addPatientDto);
     }

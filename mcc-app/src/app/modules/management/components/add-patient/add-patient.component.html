@@ -2,81 +2,9 @@
 
     <h4>Dodaj pacjenta</h4>
 
-    <app-identity-form [(value)]="patientIdentity"></app-identity-form>
-
-    <br><br>
-
-    <app-card [title]="'Dane osobowe'">
-        <app-card-body>
-            <div class="row">
-                <div class="col-md-6">
-                    <app-input-field [name]="'firstName'" [title]="'Imię:'" [(value)]="patient.firstName">
-                    </app-input-field>
-                </div>
-                <div class="col-md-6">
-                    <app-input-field [name]="'lastName'" [title]="'Nazwisko:'" [(value)]="patient.lastName">
-                    </app-input-field>
-                </div>
-                <div class="col-md-6">
-                    <app-input-field [name]="'pesel'" [title]="'PESEL:'" [(value)]="patient.pesel">
-                    </app-input-field>
-                </div>
-                <div class="col-md-6">
-                    <label for="gender">Płeć:</label>
-                    <fieldset name="gender" id="gender" class="form-check">
-                        <div class="row ">
-                            <div class="col">
-                                <input type="radio" value="M" name="gender" id="male" class="form-check-input" checked (change)="onGenderChange($event.target.value)">
-                                <label for="male"> Mężczyzna</label>
-                            </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col">
-                                <input type="radio" value="F" name="gender" id="female" class="form-check-input" (change)="onGenderChange($event.target.value)">
-                                <label for="female" class="form-check-label"> Kobieta</label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-
-            <hr>
-
-            <h5>Dane adresowe</h5>
-            <div class="row">
-                <div class="col-md-3">
-                    <app-input-field [name]="'street'" [title]="'Ulica:'" [(value)]="patient.street">
-                    </app-input-field>
-                </div>
-                <div class="col-md-3">
-                    <app-input-field [name]="'house'" [title]="'Nr domu/nr mieszkania:'" [(value)]="patient.house">
-                    </app-input-field>
-                </div>
-                <div class="col-md-3">
-                    <app-input-field [name]="'zipcode'" [title]="'Kod pocztowy:'" [(value)]="patient.zipcode">
-                    </app-input-field>
-                </div>
-                <div class="col-md-3">
-                    <app-input-field [name]="'city'" [title]="'Miasto:'" [(value)]="patient.city">
-                    </app-input-field>
-                </div>
-            </div>
-        </app-card-body>
-    </app-card>
-
-    <br><br>
-
-    <app-card>
-        <app-card-body>
-            <div class="row">
-                <div class="col text-left">
-                    <a class="btn btn-warning" routerLink="../index">Anuluj</a>
-                </div>
-                <div class="col text-right">
-                    <a class="btn btn-success text-white" (click)="onSubmit()">Zapisz</a>
-                </div>
-            </div>
-        </app-card-body>
-    </app-card>
+    <app-add-patient-form
+        (submit)="onSubmit($event)"
+        (cancel)="onCancel()">
+    </app-add-patient-form>
 
 </div>
