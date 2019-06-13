@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { SetNavbarState } from 'src/app/store/actions/NavbarActions';
-import { MANAGEMENT_NAV_LINKS } from '../../constants/management-navbar';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
 import { AddDoctorDto } from 'src/app/shared/models/AddDoctorDto';
 
@@ -12,20 +9,15 @@ import { AddDoctorDto } from 'src/app/shared/models/AddDoctorDto';
 })
 export class AddDoctorComponent {
 
-
     doctor: AddDoctorDto = {
         firstName: '',
         lastName: '',
         specialization: ''
     };
 
-
     constructor(
-        store: Store,
         private apiDataService: ApiDataService
-    ) {
-        store.dispatch(new SetNavbarState(MANAGEMENT_NAV_LINKS, true));
-    }
+    ) { }
 
     onSubmit(): void {
         this.apiDataService.addDoctor(this.doctor)

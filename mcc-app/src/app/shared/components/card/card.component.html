@@ -1,8 +1,7 @@
-<div class="card">
-    <div *ngIf="title"
-        class="card-header">
-        {{ title }}
-    </div>
+<mat-card class="example-card">
+    <mat-card-header *ngIf="title">
+        <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
     <ng-content select="app-card-body"></ng-content>
     <ng-content select="app-card-footer"></ng-content>
-</div>
+</mat-card>

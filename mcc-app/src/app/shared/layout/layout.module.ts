@@ -1,15 +1,21 @@
 import { NgModule } from '@angular/core';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { MatToolbarModule, MatButtonModule, MatMenuModule } from '@angular/material';
+import { ManagementNavbarComponent } from './management-navbar/management-navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
-        NavbarComponent
+        NavbarComponent,
+        ManagementNavbarComponent
     ],
     imports: [
-        NgbModule,
-        CommonModule
+        CommonModule,
+        RouterModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatButtonModule
     ],
     exports: [
         NavbarComponent

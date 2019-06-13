@@ -5,6 +5,7 @@ import { CardFooterComponent } from './card-footer/card-footer.component';
 import { InputFieldComponent } from './input-field/input-field.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material';
 
 const components = [
     CardBodyComponent,
@@ -16,7 +17,8 @@ const components = [
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        MatCardModule
     ],
     declarations: [
         components

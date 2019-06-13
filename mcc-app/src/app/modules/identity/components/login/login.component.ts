@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { SetNavbarState } from 'src/app/store/actions/NavbarActions';
 import { Router } from '@angular/router';
 import { LoginIdentity } from 'src/app/store/actions/IdentityActions';
 import { IdentityState } from 'src/app/store/states/identity.state';
@@ -23,7 +22,6 @@ export class LoginComponent {
         private store: Store,
         private router: Router
     ) {
-        this.store.dispatch(new SetNavbarState([], false));
         this.store.select(IdentityState.jwt)
             .subscribe(this.handleLoginResult.bind(this));
     }
