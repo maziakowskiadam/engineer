@@ -3,7 +3,7 @@ package com.maziakowskiadam.databaseservice.service;
 import com.maziakowskiadam.databaseservice.dto.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDataDto;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
-import com.maziakowskiadam.databaseservice.dto.RegisterPatientDto;
+import com.maziakowskiadam.databaseservice.dto.AddPatientDto;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.entity.Patient;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
@@ -52,10 +52,10 @@ public class PatientService {
 
 
     @Transactional
-    public boolean addPatient(RegisterPatientDto registerPatientDto) {
+    public boolean addPatient(AddPatientDto addPatientDto) {
         String identityId;
         try {
-            identityId = identityService.registerPatientIdentity(registerPatientDto.getIdentity());
+            identityId = identityService.registerPatientIdentity(addPatientDto.getIdentity());
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
@@ -66,7 +66,7 @@ public class PatientService {
         }
 
         try {
-            PatientDataDto patientDataDto = registerPatientDto.getPatient();
+            PatientDataDto patientDataDto = addPatientDto.getPatient();
             Optional<Patient> optPatient = patientRepository.findPatientByPesel(patientDataDto.getPesel());
 
             if (!optPatient.isPresent()) {
@@ -125,20 +125,20 @@ public class PatientService {
     }
 
     @Transactional
-    public String editPatient(Long id, RegisterPatientDto registerPatientDto) {
+    public String editPatient(Long id, AddPatientDto addPatientDto) {
 //        try {
 //
 //            Patient oldPatient = patientRepository.findById(id).get();
 //
-//            oldPatient.setFirstName(registerPatientDto.getFirstName());
-//            oldPatient.setLastName(registerPatientDto.getLastName());
-//            oldPatient.setPesel(registerPatientDto.getPesel());
-//            oldPatient.setGender(registerPatientDto.getGender());
+//            oldPatient.setFirstName(addPatientDto.getFirstName());
+//            oldPatient.setLastName(addPatientDto.getLastName());
+//            oldPatient.setPesel(addPatientDto.getPesel());
+//            oldPatient.setGender(addPatientDto.getGender());
 //
-//            String street = registerPatientDto.getStreet();
-//            String house = registerPatientDto.getHouse();
-//            String zipcode = registerPatientDto.getZipcode();
-//            String city = registerPatientDto.getCity();
+//            String street = addPatientDto.getStreet();
+//            String house = addPatientDto.getHouse();
+//            String zipcode = addPatientDto.getZipcode();
+//            String city = addPatientDto.getCity();
 //
 //            Address address = new Address();
 //            address.setStreet(street);

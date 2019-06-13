@@ -18,6 +18,8 @@ public class Doctor {
     @ManyToOne
     private Specialization spec;
 
+    private String identityId;
+
     @OneToMany
     @JoinColumn(name = "doctor_id")
     private List<Appointment> appointments;
@@ -53,4 +55,21 @@ public class Doctor {
     public void setSpec(Specialization spec) {
         this.spec = spec;
     }
+
+    public String getIdentityId() {
+        return identityId;
+    }
+
+    public void setIdentityId(String identityId) {
+        this.identityId = identityId;
+    }
+
+    public List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
 }

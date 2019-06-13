@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
-import { AddExaminationTypeDto } from 'src/app/shared/models/AddExaminationTypeDto';
+import { AddExaminationTypeDto } from 'src/app/shared/models/dtos/AddExaminationTypeDto';
 
 @Component({
     selector: 'app-add-examination-type',

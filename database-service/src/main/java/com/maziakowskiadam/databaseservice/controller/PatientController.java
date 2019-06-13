@@ -3,7 +3,7 @@ package com.maziakowskiadam.databaseservice.controller;
 import com.kastkode.springsandwich.filter.annotation.Before;
 import com.kastkode.springsandwich.filter.annotation.BeforeElement;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
-import com.maziakowskiadam.databaseservice.dto.RegisterPatientDto;
+import com.maziakowskiadam.databaseservice.dto.AddPatientDto;
 import com.maziakowskiadam.databaseservice.security.JwtConfig;
 import com.maziakowskiadam.databaseservice.security.JwtTokenFilter;
 import com.maziakowskiadam.databaseservice.service.PatientService;
@@ -36,8 +36,8 @@ public class PatientController {
 
 //    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @PostMapping("/add")
-    public ResponseEntity addPatient(@RequestBody RegisterPatientDto registerPatientDto) {
-        return patientService.addPatient(registerPatientDto)
+    public ResponseEntity addPatient(@RequestBody AddPatientDto addPatientDto) {
+        return patientService.addPatient(addPatientDto)
                 ? new ResponseEntity(HttpStatus.OK)
                 : new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
@@ -51,8 +51,8 @@ public class PatientController {
     @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @PostMapping("/edit/{id}")
     @ResponseBody
-    public String editAddress(@PathVariable Long id, @RequestBody RegisterPatientDto registerPatientDto) {
-        return patientService.editPatient(id, registerPatientDto);
+    public String editAddress(@PathVariable Long id, @RequestBody AddPatientDto addPatientDto) {
+        return patientService.editPatient(id, addPatientDto);
     }
 
 

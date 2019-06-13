@@ -1,4 +1,4 @@
-import { Doctor } from 'src/app/shared/models/Doctor';
+import { Doctor } from 'src/app/shared/models/entities/Doctor';
 
 
 export interface DoctorsStateModel {

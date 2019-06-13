@@ -2,7 +2,7 @@ import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DoctorsStateModel } from '../models/DoctorsStateModel';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
 import { GetAllDoctors } from '../actions/DoctorsActions';
-import { Doctor } from 'src/app/shared/models/Doctor';
+import { Doctor } from 'src/app/shared/models/entities/Doctor';
 
 @State<DoctorsStateModel>({
     defaults: {

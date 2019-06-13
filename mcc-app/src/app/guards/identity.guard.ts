@@ -4,7 +4,7 @@ import { Store } from '@ngxs/store';
 import { IdentityState } from '../store/states/identity.state';
 import { combineLatest } from 'rxjs';
 import { RouteUrl } from '../shared/constants/route.constants';
-import { IdentityRole } from '../shared/models/IdentityRole';
+import { IdentityRole } from '../shared/models/entities/IdentityRole';
 
 
 @Injectable({

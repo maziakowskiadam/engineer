@@ -1,9 +1,13 @@
 <div class="container-fluid ">
+
+    <h4>Dodaj lekarza</h4>
+
+    <app-identity-form [(value)]="doctorIdentity"></app-identity-form>
+
+    <br><br>
+
     <app-card [title]="'Dodaj lekarza'">
         <app-card-body>
-            <!-- <app-input-field
-                [(value)]="superValue"></app-input-field> -->
-
             <app-input-field [name]="'firstName'" [title]="'Imię:'" [(value)]="doctor.firstName">
             </app-input-field>
             <app-input-field [name]="'lastName'" [title]="'Nazwisko:'" [(value)]="doctor.lastName">

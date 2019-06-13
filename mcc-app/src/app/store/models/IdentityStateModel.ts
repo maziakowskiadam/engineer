@@ -1,4 +1,4 @@
-import { IdentityRole } from 'src/app/shared/models/IdentityRole';
+import { IdentityRole } from 'src/app/shared/models/entities/IdentityRole';
 
 export interface IdentityStateModel {
     jwt: string;

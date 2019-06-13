@@ -2,14 +2,7 @@
 
     <h4>Dodaj pacjenta</h4>
 
-    <app-card [title]="'Dane logowania'">
-        <app-card-body>
-            <app-input-field [name]="'email'" [title]="'E-mail:'" [(value)]="patientIdentity.email">
-            </app-input-field>
-            <app-input-field [name]="'password'" [title]="'Hasło:'" [(value)]="patientIdentity.password">
-            </app-input-field>
-        </app-card-body>
-    </app-card>
+    <app-identity-form [(value)]="patientIdentity"></app-identity-form>
 
     <br><br>
 

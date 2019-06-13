@@ -19,25 +19,42 @@ import java.util.Optional;
 public class DoctorService {
 
     @Autowired
+    IdentityService identityService;
+
+    @Autowired
     DoctorRepository doctorRepository;
 
     @Autowired
     SpecializationRepository specializationRepository;
 
     public boolean addDoctor(AddDoctorDto addDoctorDto) {
-        try {
 
-            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization());
+        String identityId;
+        try {
+            identityId = identityService.registerDoctorIdentity(addDoctorDto.getIdentity());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        if (identityId == null) {
+            return false;
+        }
+
+        try {
+            DoctorDto doctor = addDoctorDto.getDoctor();
+
+            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(doctor.getSpecialization());
 
             if (!optionalSpec.isPresent()) {
                 Specialization newSpec = new Specialization();
-                newSpec.setName(addDoctorDto.getSpecialization());
+                newSpec.setName(doctor.getSpecialization());
                 specializationRepository.save(newSpec);
             }
 
-            Specialization spec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization()).get();
-            String firstName = addDoctorDto.getFirstName();
-            String lastName = addDoctorDto.getLastName();
+            Specialization spec = specializationRepository.findSpecializationByName(doctor.getSpecialization()).get();
+            String firstName = doctor.getFirstName();
+            String lastName = doctor.getLastName();
             Optional<Doctor> optionalDoc = doctorRepository.findDoctorByFirstNameAndLastNameAndSpec(firstName, lastName, spec);
 
             if (!optionalDoc.isPresent()) {
@@ -45,6 +62,7 @@ public class DoctorService {
                 newDoctor.setFirstName(firstName);
                 newDoctor.setLastName(lastName);
                 newDoctor.setSpec(spec);
+                newDoctor.setIdentityId(identityId);
                 doctorRepository.save(newDoctor);
             } else {
                 throw new Exception("Doctor already in database!");
@@ -90,29 +108,29 @@ public class DoctorService {
 
     @Transactional
     public String editDoctor(Long id, AddDoctorDto addDoctorDto) {
-        try {
-            Doctor doctor = doctorRepository.findById(id).get();
-
-            doctor.setFirstName(addDoctorDto.getFirstName());
-            doctor.setLastName(addDoctorDto.getLastName());
-
-            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization());
-
-            if (optionalSpec.isPresent()) {
-                System.out.println("specka istnieje");
-            } else {
-                Specialization newSpec = new Specialization();
-                newSpec.setName(addDoctorDto.getSpecialization());
-                specializationRepository.save(newSpec);
-                Specialization spec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization()).get();
-                doctor.setSpec(spec);
-            }
-
-            return "Doctor edited";
-        } catch (Exception e) {
-            e.printStackTrace();
+//        try {
+//            Doctor doctor = doctorRepository.findById(id).get();
+//
+//            doctor.setFirstName(addDoctorDto.getFirstName());
+//            doctor.setLastName(addDoctorDto.getLastName());
+//
+//            Optional<Specialization> optionalSpec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization());
+//
+//            if (optionalSpec.isPresent()) {
+//                System.out.println("specka istnieje");
+//            } else {
+//                Specialization newSpec = new Specialization();
+//                newSpec.setName(addDoctorDto.getSpecialization());
+//                specializationRepository.save(newSpec);
+//                Specialization spec = specializationRepository.findSpecializationByName(addDoctorDto.getSpecialization()).get();
+//                doctor.setSpec(spec);
+//            }
+//
+//            return "Doctor edited";
+//        } catch (Exception e) {
+//            e.printStackTrace();
             return "Doctor couldn't be edited";
-        }
+//        }
     }
 
     public List<DoctorDto> getDoctorsBySpec(Long id) {

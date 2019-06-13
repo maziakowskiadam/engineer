@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Patient } from 'src/app/shared/models/Patient';
-import { LoginDto } from 'src/app/shared/models/LoginDto';
+import { Patient } from 'src/app/shared/models/entities/Patient';
+import { LoginDto } from 'src/app/shared/models/dtos/LoginDto';
 import { RegisterService } from 'src/app/shared/services/register.service';
 import { Router, ActivatedRoute } from '@angular/router';
 

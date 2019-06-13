@@ -9,6 +9,7 @@ import { AddExaminationTypeComponent } from './components/add-examination-type/a
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { DoctorsListComponent } from './components/doctors-list/doctors-list.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { PatientsListComponent } from './components/patients-list/patients-list.
     imports: [
         CommonModule,
         ComponentsModule,
-        ManagementRoutingModule
+        ManagementRoutingModule,
+        SharedModule
     ]
 })
 export class ManagementModule { }

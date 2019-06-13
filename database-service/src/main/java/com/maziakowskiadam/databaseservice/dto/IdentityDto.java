@@ -1,6 +1,6 @@
 package com.maziakowskiadam.databaseservice.dto;
 
-public class PatientIdentityDto {
+public class IdentityDto {
 
     private String email;
     private String password;
