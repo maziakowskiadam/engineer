@@ -1,0 +1,17 @@
+<mat-menu #doctorsMenu="matMenu">
+    <button mat-menu-item routerLink="/management/doctors-list">Lista</button>
+    <button mat-menu-item routerLink="/management/add-doctor">Dodaj</button>
+</mat-menu>
+
+<button class="navbar-button" mat-button [matMenuTriggerFor]="doctorsMenu">
+    Lekarze
+</button>
+
+<mat-menu #patientsMenu="matMenu">
+    <button mat-menu-item routerLink="/management/doctors-list">Lista</button>
+    <button mat-menu-item routerLink="/management/add-doctor">Dodaj</button>
+</mat-menu>
+
+<button class="navbar-button" mat-button [matMenuTriggerFor]="patientsMenu">
+    Pacjenci
+</button>

@@ -1,6 +1,6 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './shared/layout/layout.module';
@@ -19,10 +19,10 @@ import { RegisterService } from './shared/services/register.service';
         AppComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         AppRoutingModule,
         LayoutModule,
-        NgbModule,
         AppConfigModule,
         NgxsModule.forRoot([
             ...states
