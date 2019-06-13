@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { AppConfig, APP_CONFIG } from '../../app-config.module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Login } from '../models/Login';
+import { Login } from '../models/entities/Login';
 
 @Injectable()
 export class ApiIdentityService {

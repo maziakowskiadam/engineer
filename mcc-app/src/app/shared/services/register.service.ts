@@ -2,7 +2,8 @@ import { Injectable, Inject } from '@angular/core';
 import { AppConfig, APP_CONFIG } from 'src/app/app-config.module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AddPatientDto } from '../models/AddPatientDto';
+import { AddPatientDto } from '../models/dtos/AddPatientDto';
+import { AddDoctorDto } from '../models/dtos/AddDoctorDto';
 
 @Injectable()
 export class RegisterService {
@@ -18,6 +19,10 @@ export class RegisterService {
 
     addPatient(addPatientDto: AddPatientDto): Observable<void> {
         return this.http.post<void>(`${this.apiUrl}/patients/add`, addPatientDto);
+    }
+
+    addDoctor(addDoctorDto: AddDoctorDto): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/doctors/add`, addDoctorDto);
     }
 
 

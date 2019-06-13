@@ -60,6 +60,24 @@ namespace IdentityService.Controllers
             return Ok(registerResult);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> RegisterDoctor([FromForm] UserDto user)
+        {
+            user.Role = "DOCTOR";
+
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterManagement([FromForm] UserDto user)
+        {
+            user.Role = "MANAGEMENT";
+
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
+
 
 
     }

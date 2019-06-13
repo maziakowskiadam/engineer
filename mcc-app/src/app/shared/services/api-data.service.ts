@@ -2,11 +2,11 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppConfig, APP_CONFIG } from '../../app-config.module';
 import { Observable } from 'rxjs';
-import { AddDoctorDto } from '../models/AddDoctorDto';
-import { AddRoomDto } from '../models/AddRoomDto';
-import { Doctor } from '../models/Doctor';
-import { AddExaminationTypeDto } from '../models/AddExaminationTypeDto';
-import { AddPatientDto } from '../models/AddPatientDto';
+import { AddDoctorDto } from '../models/dtos/AddDoctorDto';
+import { AddRoomDto } from '../models/dtos/AddRoomDto';
+import { Doctor } from '../models/entities/Doctor';
+import { AddExaminationTypeDto } from '../models/dtos/AddExaminationTypeDto';
+import { AddPatientDto } from '../models/dtos/AddPatientDto';
 
 @Injectable()
 export class ApiDataService {

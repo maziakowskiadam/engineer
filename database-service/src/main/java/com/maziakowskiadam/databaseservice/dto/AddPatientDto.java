@@ -1,9 +1,9 @@
 package com.maziakowskiadam.databaseservice.dto;
 
-public class RegisterPatientDto {
+public class AddPatientDto {
 
     private PatientDataDto patient;
-    private PatientIdentityDto identity;
+    private IdentityDto identity;
 
     public PatientDataDto getPatient() {
         return patient;
@@ -13,11 +13,11 @@ public class RegisterPatientDto {
         this.patient = patient;
     }
 
-    public PatientIdentityDto getIdentity() {
+    public IdentityDto getIdentity() {
         return identity;
     }
 
-    public void setIdentity(PatientIdentityDto identity) {
+    public void setIdentity(IdentityDto identity) {
         this.identity = identity;
     }
 }

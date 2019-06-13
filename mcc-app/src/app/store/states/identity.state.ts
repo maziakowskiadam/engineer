@@ -1,6 +1,6 @@
 import { State, Selector, StateContext, Action } from '@ngxs/store';
 import { IdentityStateModel } from '../models/IdentityStateModel';
-import { IdentityRole } from 'src/app/shared/models/IdentityRole';
+import { IdentityRole } from 'src/app/shared/models/entities/IdentityRole';
 import { LoginIdentity, SetIdentity } from '../actions/IdentityActions';
 import { ApiIdentityService } from 'src/app/shared/services/api-identity.service';
 

@@ -2,31 +2,24 @@ package com.maziakowskiadam.databaseservice.dto;
 
 public class AddDoctorDto {
 
-    private String firstName;
-    private String lastName;
-    private String specialization;
+    private DoctorDto doctor;
 
-    public String getFirstName() {
-        return firstName;
+    private IdentityDto identity;
+
+
+    public DoctorDto getDoctor() {
+        return doctor;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setDoctor(DoctorDto doctor) {
+        this.doctor = doctor;
     }
 
-    public String getLastName() {
-        return lastName;
+    public IdentityDto getIdentity() {
+        return identity;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSpecialization() {
-        return specialization;
-    }
-
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setIdentity(IdentityDto identity) {
+        this.identity = identity;
     }
 }

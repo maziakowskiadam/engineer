@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Doctor } from 'src/app/shared/models/Doctor';
+import { Doctor } from 'src/app/shared/models/entities/Doctor';
 import { Store } from '@ngxs/store';
 import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
 import { DoctorsState } from 'src/app/store/states/doctors.state';

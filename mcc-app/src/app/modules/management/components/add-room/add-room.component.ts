@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
-import { AddRoomDto } from 'src/app/shared/models/AddRoomDto';
+import { AddRoomDto } from 'src/app/shared/models/dtos/AddRoomDto';
 
 @Component({
     selector: 'app-add-room',

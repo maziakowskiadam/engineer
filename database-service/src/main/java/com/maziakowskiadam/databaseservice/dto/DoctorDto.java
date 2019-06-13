@@ -5,7 +5,7 @@ public class DoctorDto {
     private Long id;
     private String firstName;
     private String lastName;
-    private String specName;
+    private String specialization;
 
     public Long getId() {
         return id;
@@ -31,11 +31,12 @@ public class DoctorDto {
         this.lastName = lastName;
     }
 
-    public String getSpecName() {
-        return specName;
+    public String getSpecialization() {
+        return specialization;
     }
 
-    public void setSpecName(String specName) {
-        this.specName = specName;
+    public void setSpecialization(String specialization) {
+        this.specialization = specialization;
     }
+
 }
