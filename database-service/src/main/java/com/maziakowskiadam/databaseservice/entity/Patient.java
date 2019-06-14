@@ -92,4 +92,5 @@ public class Patient {
     public void setIdentityId(String identityId) {
         this.identityId = identityId;
     }
+
 }

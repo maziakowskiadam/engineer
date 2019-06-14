@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.IdentityDto;
+import com.maziakowskiadam.databaseservice.dto.UserRoleDto;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -8,6 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class IdentityService {
@@ -29,6 +34,20 @@ public class IdentityService {
     public String registerDoctorIdentity(IdentityDto identityDto) {
         return sendRequest(identityDto, "RegisterDoctor");
     }
+
+    public List<UserRoleDto> getUserRoles() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        RestTemplate restTemplate = new RestTemplate();
+        UserRoleDto[] result = restTemplate.getForObject(IDENTITY_URL + "/Patients/All", UserRoleDto[].class);
+
+        return Arrays.asList(result);
+    }
+
 
     private String sendRequest(IdentityDto identityDto, String path) {
         HttpHeaders headers = new HttpHeaders();

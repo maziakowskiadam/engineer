@@ -40,6 +40,7 @@ public class Mapping {
         patientDto.setPesel(patient.getPesel());
         patientDto.setGender(patient.getGender());
         patientDto.setAddressId(patient.getAddress().getId());
+        patientDto.setIdentityId(patient.getIdentityId());
 
         return patientDto;
     }

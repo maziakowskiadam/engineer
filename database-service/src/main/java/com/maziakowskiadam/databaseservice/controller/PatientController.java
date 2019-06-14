@@ -22,7 +22,7 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
+//    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("/all")
     public List<PatientDto> getPatients() {
 
