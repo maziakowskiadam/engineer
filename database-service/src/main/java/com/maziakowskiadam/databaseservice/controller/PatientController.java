@@ -25,6 +25,7 @@ public class PatientController {
     @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("/all")
     public List<PatientDto> getPatients() {
+
         return patientService.getPatients();
     }
 

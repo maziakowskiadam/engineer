@@ -34,6 +34,7 @@ public class PatientService {
 
     public List<PatientDto> getPatients() {
         List<Patient> patients = patientRepository.findAll();
+        
         List<PatientDto> patientsDto = new ArrayList<>();
 
         for (Patient p : patients) {
