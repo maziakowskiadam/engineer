@@ -1,6 +1,6 @@
 package com.maziakowskiadam.databaseservice.service;
 
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDataDto;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
 import com.maziakowskiadam.databaseservice.dto.AddPatientDto;

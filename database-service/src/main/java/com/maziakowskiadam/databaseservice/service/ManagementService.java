@@ -46,8 +46,8 @@ public class ManagementService {
             if (!optManagement.isPresent()) {
                 Management management = new Management();
                 management.setFirstName(managementDto.getFirstName());
-                management.setLastName(managementDto.getFirstName());
-                management.setDepartment(managementDto.getFirstName());
+                management.setLastName(managementDto.getLastName());
+                management.setDepartment(managementDto.getDepartment());
                 management.setIdentityId(identityId);
                 managementRepository.save(management);
             } else {

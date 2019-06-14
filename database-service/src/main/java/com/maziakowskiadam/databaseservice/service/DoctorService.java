@@ -2,7 +2,7 @@ package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.AddDoctorDto;
 import com.maziakowskiadam.databaseservice.dto.DoctorDto;
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.entity.Doctor;
 import com.maziakowskiadam.databaseservice.entity.Specialization;
 import com.maziakowskiadam.databaseservice.repository.DoctorRepository;

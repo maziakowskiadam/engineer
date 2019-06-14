@@ -2,7 +2,7 @@ package com.maziakowskiadam.databaseservice.service;
 
 
 import com.maziakowskiadam.databaseservice.dto.AppointmentDto;
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.entity.*;
 import com.maziakowskiadam.databaseservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;

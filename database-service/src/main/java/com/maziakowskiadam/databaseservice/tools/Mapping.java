@@ -1,5 +1,6 @@
-package com.maziakowskiadam.databaseservice.dto;
+package com.maziakowskiadam.databaseservice.tools;
 
+import com.maziakowskiadam.databaseservice.dto.*;
 import com.maziakowskiadam.databaseservice.entity.*;
 
 public class Mapping {

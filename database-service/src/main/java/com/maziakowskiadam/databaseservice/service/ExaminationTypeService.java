@@ -1,7 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.ExaminationTypeDto;
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.entity.ExaminationType;
 import com.maziakowskiadam.databaseservice.repository.ExaminationTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.ResultDto;
 import com.maziakowskiadam.databaseservice.entity.Appointment;
 import com.maziakowskiadam.databaseservice.entity.Result;

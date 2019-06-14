@@ -1,6 +1,6 @@
 package com.maziakowskiadam.databaseservice.service;
 
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.RoomDto;
 import com.maziakowskiadam.databaseservice.entity.Room;
 import com.maziakowskiadam.databaseservice.repository.RoomRepository;

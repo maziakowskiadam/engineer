@@ -6,7 +6,6 @@ import { AddExaminationTypeDto } from 'src/app/shared/models/dtos/AddExamination
 @Component({
     selector: 'app-add-examination-type',
     templateUrl: './add-examination-type.component.html',
-    styleUrls: ['./add-examination-type.component.scss'],
 })
 export class AddExaminationTypeComponent {
 
@@ -18,11 +17,10 @@ export class AddExaminationTypeComponent {
 
     constructor(
         private apiDataService: ApiDataService
-    ) {}
+    ) { }
 
     onSubmit(): void {
-        this.apiDataService.addExaminationType(this.examinationType).subscribe(result => {
-            console.log(result);
+        this.apiDataService.addExaminationType(this.examinationType).subscribe(() => {
         });
         this.examinationType.name = '';
         this.examinationType.description = '';

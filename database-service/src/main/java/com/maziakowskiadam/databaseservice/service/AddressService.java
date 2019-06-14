@@ -1,7 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 import com.maziakowskiadam.databaseservice.dto.AddressDto;
-import com.maziakowskiadam.databaseservice.dto.Mapping;
+import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.entity.Address;
 import com.maziakowskiadam.databaseservice.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;

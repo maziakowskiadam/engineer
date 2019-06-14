@@ -5,7 +5,6 @@ import { AddRoomDto } from 'src/app/shared/models/dtos/AddRoomDto';
 @Component({
     selector: 'app-add-room',
     templateUrl: './add-room.component.html',
-    styleUrls: ['./add-room.component.scss']
 })
 export class AddRoomComponent {
 
@@ -21,8 +20,7 @@ export class AddRoomComponent {
     ) { }
 
     onSubmit() {
-        this.apiDataService.addRoom(this.room).subscribe(result => {
-            console.log(result);
+        this.apiDataService.addRoom(this.room).subscribe(() => {
         });
         this.room.number = '';
         this.room.building = '';
