@@ -30,12 +30,11 @@ export class AddDoctorComponent {
     ) { }
 
     onSubmit(): void {
-        console.log(this.doctor);
         this.registerService.addDoctor({
             identity: this.doctorIdentity,
             doctor: this.doctor
         }).subscribe(() => {
-            this.router.navigate(['../doctors-list'], {relativeTo: this.route});
+            this.router.navigate(['../doctors-list'], { relativeTo: this.route });
         }, error => {
             alert('Nie udało się dodać lekarza');
             console.error(error);

@@ -165,7 +165,7 @@ public class PatientService {
             return "Patient couldn't be edited.";
 //        }
     }
-
+    @Transactional
     public boolean addPatientUnauthorized(AddPatientDto addPatientDto) {
         String identityId;
         try {

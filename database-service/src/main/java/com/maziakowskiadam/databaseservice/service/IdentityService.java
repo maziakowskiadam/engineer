@@ -14,6 +14,10 @@ public class IdentityService {
 
     private static String IDENTITY_URL = "http://localhost:5000";
 
+    public String registerManagement(IdentityDto identityDto) {
+        return sendRequest(identityDto, "RegisterManagement");
+    }
+
     public String registerPatientIdentity(IdentityDto identityDto) {
         return sendRequest(identityDto, "RegisterPatient");
     }

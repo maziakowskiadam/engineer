@@ -10,6 +10,7 @@ import { AddPatientComponent } from './components/add-patient/add-patient.compon
 import { DoctorsListComponent } from './components/doctors-list/doctors-list.component';
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
 import { FormsModule } from 'src/app/shared/forms/forms.module';
+import { AddManagementComponent } from './components/add-management/add-management.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,8 @@ import { FormsModule } from 'src/app/shared/forms/forms.module';
         AddExaminationTypeComponent,
         AddPatientComponent,
         DoctorsListComponent,
-        PatientsListComponent
+        PatientsListComponent,
+        AddManagementComponent
     ],
     imports: [
         CommonModule,

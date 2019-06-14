@@ -1,12 +1,24 @@
-package com.maziakowskiadam.databaseservice.dto;
+package com.maziakowskiadam.databaseservice.entity;
 
-public class DoctorDto {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Management {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String identityId;
+
     private String firstName;
+
     private String lastName;
-    private String specialization;
+
+    private String department;
 
     public Long getId() {
         return id;
@@ -40,12 +52,11 @@ public class DoctorDto {
         this.lastName = lastName;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setDepartment(String department) {
+        this.department = department;
     }
-
 }

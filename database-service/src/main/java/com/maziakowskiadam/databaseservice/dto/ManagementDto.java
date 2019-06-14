@@ -1,12 +1,12 @@
 package com.maziakowskiadam.databaseservice.dto;
 
-public class DoctorDto {
+public class ManagementDto {
 
     private Long id;
     private String identityId;
     private String firstName;
     private String lastName;
-    private String specialization;
+    private String department;
 
     public Long getId() {
         return id;
@@ -40,12 +40,11 @@ public class DoctorDto {
         this.lastName = lastName;
     }
 
-    public String getSpecialization() {
-        return specialization;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setDepartment(String department) {
+        this.department = department;
     }
-
 }
