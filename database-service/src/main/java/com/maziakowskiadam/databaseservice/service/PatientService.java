@@ -165,4 +165,61 @@ public class PatientService {
             return "Patient couldn't be edited.";
 //        }
     }
+
+    public boolean addPatientUnauthorized(AddPatientDto addPatientDto) {
+        String identityId;
+        try {
+            identityId = identityService.registerPatientUnauthorizedIdentity(addPatientDto.getIdentity());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
+        if (identityId == null) {
+            return false;
+        }
+
+        try {
+            PatientDataDto patientDataDto = addPatientDto.getPatient();
+            Optional<Patient> optPatient = patientRepository.findPatientByPesel(patientDataDto.getPesel());
+
+            if (!optPatient.isPresent()) {
+                String street = patientDataDto.getStreet();
+                String house = patientDataDto.getHouse();
+                String zipcode = patientDataDto.getZipcode();
+                String city = patientDataDto.getCity();
+                Patient newPatient = new Patient();
+                newPatient.setFirstName(patientDataDto.getFirstName());
+                newPatient.setLastName(patientDataDto.getLastName());
+                newPatient.setPesel(patientDataDto.getPesel());
+                newPatient.setGender(patientDataDto.getGender());
+                newPatient.setIdentityId(identityId);
+
+                Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
+
+                if (optionalAddress.isPresent()) {
+                    Address address = optionalAddress.get();
+                    newPatient.setAddress(address);
+                    patientRepository.save(newPatient);
+                } else {
+                    Address address = new Address();
+                    address.setStreet(street);
+                    address.setHouse(house);
+                    address.setZipcode(zipcode);
+                    address.setCity(city);
+                    addressService.addAddress(address);
+                    Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
+                    newPatient.setAddress(newAddress);
+                    patientRepository.save(newPatient);
+                }
+            } else {
+                throw new Exception("Patient already in database. Pesel duplicated.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        return true;
+    }
 }

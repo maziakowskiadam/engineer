@@ -18,7 +18,7 @@ namespace IdentityService.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class IdentityController: Controller
+    public class IdentityController : Controller
     {
         private readonly IAppIdentityService _identityService;
 
@@ -55,6 +55,15 @@ namespace IdentityService.Controllers
         public async Task<IActionResult> RegisterPatient([FromForm] UserDto user)
         {
             user.Role = "PATIENT";
+
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterPatientUnauthorized([FromForm] UserDto user)
+        {
+            user.Role = "PATIENT_UNAUTHORIZED";
 
             var registerResult = await this._identityService.RegisterAsync(user);
             return Ok(registerResult);
