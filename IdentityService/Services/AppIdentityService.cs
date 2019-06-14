@@ -18,7 +18,7 @@ namespace IdentityService.Services
         private static readonly List<string> Roles = new List<string>
         {
             "PATIENT_UNAUTHORIZED",
-            "PATIENT",
+            "PATIENT_UNAUTHORIZED",
             "DOCTOR",
             "MANAGEMENT"
         };
@@ -120,6 +120,25 @@ namespace IdentityService.Services
             return newUser.Id;
         }
 
+        public async Task<bool> AuthorizeUserById(string id)
+        {
+            var user =_context.Users.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+            {
+                return false;
+            }
+
+            var removeResult = await this._userManager.RemoveFromRoleAsync(user, "PATIENT_UNAUTHORIZED");
+            if (!removeResult.Succeeded)
+            {
+                return false;
+            }
+
+            var addingResult = await this._userManager.AddToRoleAsync(user, "PATIENT");
+            
+            return addingResult.Succeeded;
+        }
+        
         private void EnsureRolesCreated()
         {
             if (!this._context.Roles.Any())

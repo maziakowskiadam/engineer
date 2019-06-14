@@ -9,6 +9,7 @@ using System.Text;
 using System;
 using System.Linq;
 using IdentityService.DTOs;
+using IdentityService.Services;
 
 
 namespace IdentityService.Controllers
@@ -18,12 +19,14 @@ namespace IdentityService.Controllers
     public class PatientsController : Controller
     {
         private readonly AppDbContext context;
+        private readonly IAppIdentityService identityService;
 
-        public PatientsController(AppDbContext context)
+        public PatientsController(AppDbContext context, IAppIdentityService identityService)
         {
             this.context = context;
+            this.identityService = identityService;
         }
-
+        
         [HttpGet]
         public IActionResult All()
         {
@@ -44,6 +47,12 @@ namespace IdentityService.Controllers
 
 
             return Ok(result);
+        }
+
+        public async Task<IActionResult> Authorize([FromForm] string identityId)
+        {
+            await this.identityService.AuthorizeUserById(identityId);
+            return Ok();
         }
 
     }
