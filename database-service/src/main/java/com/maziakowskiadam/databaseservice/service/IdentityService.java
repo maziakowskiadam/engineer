@@ -18,6 +18,9 @@ public class IdentityService {
         return sendRequest(identityDto, "RegisterPatient");
     }
 
+    public String registerPatientUnauthorizedIdentity(IdentityDto identityDto) {
+        return sendRequest(identityDto, "RegisterPatientUnauthorized");
+    }
 
     public String registerDoctorIdentity(IdentityDto identityDto) {
         return sendRequest(identityDto, "RegisterDoctor");

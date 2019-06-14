@@ -42,6 +42,14 @@ public class PatientController {
                 : new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/addUnauthorized")
+    public ResponseEntity addPatientUnauthorized(@RequestBody AddPatientDto addPatientDto) {
+        return patientService.addPatientUnauthorized(addPatientDto)
+                ? new ResponseEntity(HttpStatus.OK)
+                : new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
     @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("delete/{id}")
     public String deletePatient(@PathVariable Long id) {
