@@ -96,4 +96,42 @@ public class AppointmentService {
             return "Appointment not deleted.";
         }
     }
+
+    public List<AppointmentDto> getAppointmentsForDoctor(String doctorIdentityId) {
+
+        Doctor doctor = doctorRepository.findByIdentityId(doctorIdentityId);
+
+        List<Appointment> appointments = appointmentRepository.findAllByDoctor(doctor);
+        List<AppointmentDto> dtos = new ArrayList<>();
+
+        for (Appointment a : appointments) {
+            dtos.add(Mapping.appointmentAsDto(a));
+        }
+
+        return dtos;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

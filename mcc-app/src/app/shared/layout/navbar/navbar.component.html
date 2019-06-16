@@ -1,14 +1,12 @@
-<mat-toolbar
-    *ngIf="url !== 'identity'"
-    color="primary">
+<mat-toolbar *ngIf="url !== 'identity'" color="primary">
     <mat-toolbar-row>
 
-        <span>MCC</span>
+        <a href="/" style="color: white;">MCC</a>
 
         <ng-container [ngSwitch]="url">
             <app-management-navbar *ngSwitchCase="'management'"></app-management-navbar>
         </ng-container>
-        
+
 
 
     </mat-toolbar-row>

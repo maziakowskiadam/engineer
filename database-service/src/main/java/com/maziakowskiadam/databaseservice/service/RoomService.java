@@ -6,6 +6,7 @@ import com.maziakowskiadam.databaseservice.entity.Room;
 import com.maziakowskiadam.databaseservice.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ public class RoomService {
     @Autowired
     RoomRepository roomRepository;
 
-    public String addRoom(RoomDto dto) {
+
+    public boolean addRoom(RoomDto dto) {
 
         try {
             Optional<Room> optionalRoom = roomRepository.findRoomByNumberAndFloor(dto.getNumber(), dto.getFloor());
@@ -31,7 +33,7 @@ public class RoomService {
                 newRoom.setDescription(dto.getDescription());
 
                 roomRepository.save(newRoom);
-                return "Room added.";
+                return true;
             } else {
                 throw new Exception("Room already in database");
             }
@@ -39,7 +41,7 @@ public class RoomService {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Room not added.";
+            return false;
         }
 
     }

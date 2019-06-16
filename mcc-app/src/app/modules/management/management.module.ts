@@ -15,6 +15,7 @@ import { PatientsListComponent } from './components/patients-list/patients-list.
 import { FormsModule } from 'src/app/shared/forms/forms.module';
 import { AddManagementComponent } from './components/add-management/add-management.component';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
+import { PatientAuthorizeComponent } from './components/patient-authorize/patient-authorize.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { AddAppointmentComponent } from './components/add-appointment/add-appoin
         DoctorsListComponent,
         PatientsListComponent,
         AddManagementComponent,
-        AddAppointmentComponent
+        AddAppointmentComponent,
+        PatientAuthorizeComponent
     ],
     imports: [
         CommonModule,

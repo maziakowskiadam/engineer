@@ -1,4 +1,5 @@
 export interface Patient {
+    id?: number;
     firstName: string;
     lastName: string;
     pesel: string;
@@ -7,4 +8,7 @@ export interface Patient {
     house: string;
     zipcode: string;
     city: string;
+
+    identityId?: string;
+    role?: string;
 }

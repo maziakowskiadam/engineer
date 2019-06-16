@@ -1,0 +1,31 @@
+<app-card *ngIf="patient; else noPatient" [title]="'Autoryzacja pacjent'">
+    <app-card-body>
+        <div class="row">
+            <div class="col">
+                <p>
+                    Autoryzujesz tożsamość pacjenta. Upewnij się, że dane są poprawne: <br>
+                </p>
+                <p>
+                    Imię: {{ patient.firstName }} <br>
+                    Nazwisko: {{ patient.lastName }} <br>
+                    PESEL: {{ patient.pesel }}
+                </p>
+            </div>
+        </div>
+    </app-card-body>
+    <app-card-footer>
+        <div class="row">
+            <div class="col text-left">
+                <button class="btn btn-warning" routerLink="../list-patients">Anuluj</button>
+            </div>
+            <div class="col text-right">
+                <button class="btn btn-success" (click)="authorize()">Zatwierdź</button>
+            </div>
+        </div>
+    </app-card-footer>
+</app-card>
+
+
+<ng-template #noPatient>
+    Wystąpił błąd - brak pacjenta
+</ng-template>

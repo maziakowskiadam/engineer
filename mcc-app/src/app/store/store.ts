@@ -1,7 +1,13 @@
 import { DoctorsState } from './states/doctors.state';
 import { IdentityState } from './states/identity.state';
+import { PatientsState } from './states/patients.state';
+import { AppointmentsState } from './states/appointments.state';
+import { RoomsState } from './states/rooms.state';
 
 export const states = [
     IdentityState,
-    DoctorsState
+    DoctorsState,
+    PatientsState,
+    AppointmentsState,
+    RoomsState
 ];

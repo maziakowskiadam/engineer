@@ -7,5 +7,6 @@ namespace IdentityService.Services
     {
         Task<UserAuthenticationResultDto> LoginAsync(UserDto userDto);
         Task<string> RegisterAsync(UserDto userDto);
+        Task<bool> AuthorizeUserById(string id);
     }
 }

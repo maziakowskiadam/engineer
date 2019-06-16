@@ -44,4 +44,9 @@ public class AppointmentController {
     public String deleteAppointment(@PathVariable Long id) {
         return appointmentService.deleteAppointment(id);
     }
+
+    @GetMapping("/doctor/{doctorIdentityId}")
+    public List<AppointmentDto> getAppointmentsForDoctor(@PathVariable String doctorIdentityId) {
+        return appointmentService.getAppointmentsForDoctor(doctorIdentityId);
+    }
 }

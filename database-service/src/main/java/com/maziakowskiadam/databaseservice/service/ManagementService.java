@@ -23,7 +23,7 @@ public class ManagementService {
 
         String identityId;
         try {
-            identityId = identityService.registerPatientIdentity(addManagementDto.getIdentity());
+            identityId = identityService.registerManagement(addManagementDto.getIdentity());
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;

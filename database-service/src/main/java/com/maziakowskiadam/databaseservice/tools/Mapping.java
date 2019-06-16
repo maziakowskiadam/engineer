@@ -40,6 +40,7 @@ public class Mapping {
         patientDto.setPesel(patient.getPesel());
         patientDto.setGender(patient.getGender());
         patientDto.setAddressId(patient.getAddress().getId());
+        patientDto.setIdentityId(patient.getIdentityId());
 
         return patientDto;
     }
@@ -64,6 +65,8 @@ public class Mapping {
         dto.setTime(appointment.getTime());
         dto.setPatientId(appointment.getPatient().getId());
         dto.setDoctorId(appointment.getDoctor().getId());
+        dto.setRoomId(appointment.getRoom().getId());
+        dto.setExaminationTypeId(appointment.getExaminationType().getId());
 
         return dto;
     }
