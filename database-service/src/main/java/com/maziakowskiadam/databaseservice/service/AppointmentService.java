@@ -9,7 +9,6 @@ import com.maziakowskiadam.databaseservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +43,7 @@ public class AppointmentService {
 
                 Appointment appointment = new Appointment();
                 appointment.setDate(addAppointmentDto.getDate());
-                appointment.setTime(addAppointmentDto.getTime());
+                appointment.setTime(addAppointmentDto.getStartTime());
                 appointment.setDoctor(doctor);
 
                 return appointment;
