@@ -1,5 +1,6 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.maziakowskiadam.databaseservice.dto.UserRoleDto;
 import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDataDto;
@@ -195,4 +196,17 @@ public class PatientService {
     }
 
 
+    public boolean authorizePatient(String identityId) {
+
+        try {
+
+
+            identityService.authorizePatient(identityId);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

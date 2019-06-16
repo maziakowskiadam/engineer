@@ -19,6 +19,8 @@ public class IdentityService {
 
     private static String IDENTITY_URL = "http://localhost:5000";
 
+//    public String
+
     public String registerManagement(IdentityDto identityDto) {
         return sendRequest(identityDto, "RegisterManagement");
     }
@@ -35,6 +37,22 @@ public class IdentityService {
         return sendRequest(identityDto, "RegisterDoctor");
     }
 
+    public String authorizePatient(String identityId) {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
+        map.add("identityId", identityId);
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.postForObject(IDENTITY_URL + "/Patients/Authorize", request, String.class);
+
+        return result;
+
+    }
+
     public List<UserRoleDto> getUserRoles() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -47,6 +65,7 @@ public class IdentityService {
 
         return Arrays.asList(result);
     }
+
 
 
     private String sendRequest(IdentityDto identityDto, String path) {
@@ -64,5 +83,6 @@ public class IdentityService {
 
         return result;
     }
+
 
 }

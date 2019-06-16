@@ -22,6 +22,14 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
+    @PostMapping("/authorize")
+    public ResponseEntity authorizePatient(@RequestBody String identityId ) {
+        return patientService.authorizePatient(identityId)
+                ? new ResponseEntity(HttpStatus.OK)
+                : new ResponseEntity(HttpStatus.BAD_REQUEST);
+    }
+
+
 //    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("/all")
     public List<PatientDto> getPatients() {

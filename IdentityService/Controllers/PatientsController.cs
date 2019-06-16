@@ -26,11 +26,11 @@ namespace IdentityService.Controllers
             this.context = context;
             this.identityService = identityService;
         }
-        
+
         [HttpGet]
         public IActionResult All()
         {
-            var patientRoles = new string[]{"PATIENT", "PATIENT_UNAUTHORIZED"};
+            var patientRoles = new string[] { "PATIENT", "PATIENT_UNAUTHORIZED" };
 
             var result = this.context.Roles
                 .Where(r => patientRoles.Contains(r.Name))
@@ -48,7 +48,7 @@ namespace IdentityService.Controllers
 
             return Ok(result);
         }
-
+        [HttpPost]
         public async Task<IActionResult> Authorize([FromForm] string identityId)
         {
             await this.identityService.AuthorizeUserById(identityId);
