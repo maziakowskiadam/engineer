@@ -6,6 +6,7 @@ import { Doctor } from 'src/app/shared/models/entities/Doctor';
 import { AddAppointment } from '../../models/AddAppointment';
 import * as moment from 'moment';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-add-appointment',
@@ -26,7 +27,9 @@ export class AddAppointmentComponent {
 
     constructor(
         private store: Store,
-        private apiDataService: ApiDataService
+        private apiDataService: ApiDataService,
+        private router: Router,
+        private route: ActivatedRoute
     ) {
         this.store.dispatch(new GetAllDoctors());
         this.store.select(DoctorsState.doctors)
@@ -87,6 +90,7 @@ export class AddAppointmentComponent {
         this.apiDataService.addAppointments(this.appointments)
             .subscribe(() => {
                 alert('Dodano wizyty');
+                this.router.navigate(['../doctors-list'], { relativeTo: this.route });
             }, error => {
                 alert('Wystąpił błąd');
                 console.error(error);

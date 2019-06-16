@@ -33,21 +33,20 @@ public class AppointmentService {
 
     public boolean addAppointments(AddAppointmentDto[] addAppointmentDtos) {
         try {
-            Stream<AddAppointmentDto> stream = Arrays.stream(addAppointmentDtos);
-            Stream<Doctor> doctorStream = doctorRepository.findAll().stream();
-
-            List<Appointment> appointments = stream.map(addAppointmentDto -> {
-                Doctor doctor = doctorStream.filter(d -> d.getId() == addAppointmentDto.getDoctorId())
-                        .findFirst()
-                        .get();
+            List<Appointment> appointments = new ArrayList<>();
+            for (AddAppointmentDto addAppointmentDto : addAppointmentDtos) {
+                Optional<Doctor> doctor = doctorRepository.findById(addAppointmentDto.getDoctorId());
+                if (!doctor.isPresent()) {
+                    throw new Exception("No doctor");
+                }
 
                 Appointment appointment = new Appointment();
                 appointment.setDate(addAppointmentDto.getDate());
                 appointment.setTime(addAppointmentDto.getTimeStart());
-                appointment.setDoctor(doctor);
+                appointment.setDoctor(doctor.get());
 
-                return appointment;
-            }).collect(Collectors.toList());
+                appointments.add(appointment);
+            }
 
             appointmentRepository.saveAll(appointments);
         } catch (Exception e) {
