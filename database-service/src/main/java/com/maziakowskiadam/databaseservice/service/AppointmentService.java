@@ -1,6 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
 
+import com.maziakowskiadam.databaseservice.dto.AddAppointmentDto;
 import com.maziakowskiadam.databaseservice.dto.AppointmentDto;
 import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.entity.*;
@@ -9,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class AppointmentService {
@@ -27,60 +31,31 @@ public class AppointmentService {
     @Autowired
     RoomRepository roomRepository;
 
-    @Autowired
-    ExaminationTypeRepository examinationTypeRepository;
-
-
-    public boolean addAppointment(AppointmentDto dto) {
-
+    public boolean addAppointments(AddAppointmentDto[] addAppointmentDtos) {
         try {
-            Appointment newAppointment = new Appointment();
-            Optional<Doctor> optionalDoctor = doctorRepository.findById(dto.getDoctorId());
+            Stream<AddAppointmentDto> stream = Arrays.stream(addAppointmentDtos);
+            Stream<Doctor> doctorStream = doctorRepository.findAll().stream();
 
-            Optional<Appointment> optionalApp = appointmentRepository.findAppointmentByDateAndTimeAndDoctor(dto.getDate(), dto.getTime(), optionalDoctor.get());
-            if (optionalApp.isPresent()) {
-                throw new Exception("This appointment already taken");
-            } else {
-                if (optionalDoctor.isPresent()) {
-                    newAppointment.setDoctor(optionalDoctor.get());
-                } else {
-                    throw new Exception("Doctor doesn't exist!");
-                }
+            List<Appointment> appointments = stream.map(addAppointmentDto -> {
+                Doctor doctor = doctorStream.filter(d -> d.getId() == addAppointmentDto.getDoctorId())
+                        .findFirst()
+                        .get();
 
-            }
+                Appointment appointment = new Appointment();
+                appointment.setDate(addAppointmentDto.getDate());
+                appointment.setTime(addAppointmentDto.getTimeStart());
+                appointment.setDoctor(doctor);
 
-            Optional<Patient> optionalPatient = patientRepository.findById(dto.getPatientId());
-            if (optionalPatient.isPresent()) {
-                newAppointment.setPatient(optionalPatient.get());
-            } else {
-                throw new Exception("Patient doesn't exist!");
-            }
+                return appointment;
+            }).collect(Collectors.toList());
 
-
-            Optional<Room> optionalRoom = roomRepository.findById(dto.getRoomId());
-            if (optionalRoom.isPresent()) {
-                newAppointment.setRoom(optionalRoom.get());
-            } else {
-                throw new Exception("Room doesn't exist!");
-            }
-
-            Optional<ExaminationType> optionalType = examinationTypeRepository.findById(dto.getExaminationTypeId());
-            if (optionalRoom.isPresent()) {
-                newAppointment.setExaminationType(optionalType.get());
-            } else {
-                throw new Exception("Examination type doesn't exist!");
-            }
-
-            newAppointment.setDate(dto.getDate());
-            newAppointment.setTime(dto.getTime());
-
-            appointmentRepository.save(newAppointment);
-
-            return true;
+            appointmentRepository.saveAll(appointments);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+
+        return true;
     }
 
 

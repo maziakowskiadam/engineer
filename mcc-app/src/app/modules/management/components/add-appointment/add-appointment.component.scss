@@ -1,0 +1,29 @@
+.add-appointment {
+    &__add-box {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    &__add-btn {
+        min-width: 100px;
+    }
+
+    &__appointment-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__appointment {
+        padding: 8px;
+        margin: 8px;
+        background: #efefef;
+        border-radius: 4px;
+    }
+
+    &__appointment-date {
+        font-size: 16px;
+        margin-bottom: 4px;
+        display: block;
+    }
+}

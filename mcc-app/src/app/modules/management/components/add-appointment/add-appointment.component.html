@@ -1,0 +1,89 @@
+<div class="container-fluid add-appointment">
+
+    <h4>Seryjne dodawanie wizyt</h4>
+
+    <app-card>
+        <app-card-body>
+            <div class="row">
+                <div class="col-md-4">
+                    <app-date-picker
+                        (dateChange)="onDateChange($event)"></app-date-picker>
+                </div>
+                <div class="col-md-8 form-group">
+                    <label for="doctors">Wybierz lekarza</label>
+                    <select name="doctors" id="doctors" class="form-control"
+                        (change)="onDoctorChange($event)">
+                        <option
+                            *ngFor="let doctor of doctors"
+                            [value]="doctor.id">
+                            {{ doctor.firstName }} {{ doctor.lastName }} ({{ doctor.specialization }})
+                            </option>
+                    </select>
+                </div>
+            </div>
+        </app-card-body>
+    </app-card>
+
+    <br><br>
+
+    <app-card *ngIf="selectedDoctor">
+        <app-card-body>
+            <div class="row">
+                <div class="col-md form-group">
+                    <label for="timeStart">Godzina rozpoczęcia</label>
+                    <input type="time" id="timeStart" class="form-control" [(ngModel)]="timeStart">
+                </div>
+                <div class="col-md form-group">
+                    <label for="time">Czas trwania [min]</label>
+                    <input type="number" id="time" class="form-control" [(ngModel)]="time">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="appCount">Ile wizyt</label>
+                    <input type="number" id="appCount" class="form-control" [(ngModel)]="appCount">
+                </div>
+                <div class="col add-appointment__add-box">
+                    <button class="btn btn-success add-appointment__add-btn"
+                        (click)="add()">Dodaj</button>
+                </div>
+            </div>
+        </app-card-body>
+    </app-card>
+
+    <br><br>
+
+    <app-card *ngIf="selectedDoctor">
+        <app-card-body>
+            <div class="row">
+                <div class="col">
+                    <div class="add-appointment__appointment-list" *ngIf="visibleAppointments.length; else noAppointment">
+                        <div class="add-appointment__appointment"
+                            *ngFor="let appointment of visibleAppointments">
+                            <span class="add-appointment__appointment-date">{{ appointment.date }}</span>
+                            <span class="add-appointment__appointment-time">{{ appointment.timeStart }} – {{ appointment.timeEnd }}</span>
+                        </div>
+                    </div>
+                    <ng-template #noAppointment>
+                        <div>
+                            Brak zaplanowanych wizyt
+                        </div>
+                    </ng-template>
+                </div>
+            </div>
+        </app-card-body>
+    </app-card>
+
+    <br><br>
+
+    <app-card *ngIf="appointments.length">
+        <app-card-body>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-success" (click)="save()">Zapisz zmiany</button>
+                </div>
+            </div>
+        </app-card-body>
+    </app-card>
+
+</div>

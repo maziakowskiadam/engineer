@@ -1,5 +1,6 @@
 package com.maziakowskiadam.databaseservice.controller;
 
+import com.maziakowskiadam.databaseservice.dto.AddAppointmentDto;
 import com.maziakowskiadam.databaseservice.dto.AppointmentDto;
 import com.maziakowskiadam.databaseservice.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,16 @@ public class AppointmentController {
     AppointmentService appointmentService;
 
     @PostMapping("/add")
-    public ResponseEntity addAppointment(@RequestBody AppointmentDto dto) {
-        return appointmentService.addAppointment(dto)
-                ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.BAD_REQUEST);
+    public String addAppointment(@RequestBody AppointmentDto dto) {
+        return "FAILED";
     }
 
-
+    @PostMapping("/addMany")
+    public ResponseEntity<Void> addMany(@RequestBody AddAppointmentDto[] addAppointmentDto) {
+        return appointmentService.addAppointments(addAppointmentDto)
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
     @GetMapping("/{id}")
     public AppointmentDto getSingleAppointment(@PathVariable Long id) {
