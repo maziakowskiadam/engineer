@@ -7,6 +7,7 @@ import { AddRoomDto } from '../models/dtos/AddRoomDto';
 import { Doctor } from '../models/entities/Doctor';
 import { AddExaminationTypeDto } from '../models/dtos/AddExaminationTypeDto';
 import { AddPatientDto } from '../models/dtos/AddPatientDto';
+import { AddAppointment } from 'src/app/modules/management/models/AddAppointment';
 
 @Injectable()
 export class ApiDataService {
@@ -38,5 +39,9 @@ export class ApiDataService {
 
     addPatient(patient: AddPatientDto): Observable<string> {
         return this.http.post<string>(`${this.apiUrl}/patients/add`, patient);
+    }
+
+    addAppointments(appointments: AddAppointment[]): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/appointments/addMany`, appointments);
     }
 }

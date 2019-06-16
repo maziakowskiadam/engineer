@@ -6,7 +6,7 @@ import { Doctor } from 'src/app/shared/models/entities/Doctor';
 
 @State<DoctorsStateModel>({
     defaults: {
-        doctors: [],
+        doctors: undefined,
         loading: false
     },
     name: 'DoctorsState'
@@ -22,7 +22,6 @@ export class DoctorsState {
         const state = ctx.getState();
         ctx.setState({
             ...state,
-            doctors: [],
             loading: true
         });
 
