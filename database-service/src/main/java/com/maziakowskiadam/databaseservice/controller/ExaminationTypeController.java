@@ -3,6 +3,8 @@ package com.maziakowskiadam.databaseservice.controller;
 import com.maziakowskiadam.databaseservice.dto.ExaminationTypeDto;
 import com.maziakowskiadam.databaseservice.service.ExaminationTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +18,10 @@ public class ExaminationTypeController {
     ExaminationTypeService examinationTypeService;
 
     @PostMapping("/add")
-    public String addExaminationType(@RequestBody ExaminationTypeDto dto) {
-        return examinationTypeService.addExaminationType(dto);
+    public ResponseEntity addExaminationType(@RequestBody ExaminationTypeDto dto) {
+        return examinationTypeService.addExaminationType(dto)
+                ? new ResponseEntity(HttpStatus.OK)
+                : new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{id}")

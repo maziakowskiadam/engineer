@@ -1,0 +1,29 @@
+<app-card [title]="'Twoje wizyty'">
+    <app-card-body>
+        <div *ngIf="loading; else dataLoaded">Dane są pobierane</div>
+        <ng-template #dataLoaded>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Godzina</th>
+                        <th>Pacjent</th>
+                        <th>Gabinet</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointment of appointments">
+                        <td>{{ appointment.timeStart }}</td>
+                        <td>{{ appointment.patient }}</td>
+                        <td>{{ appointment.room }}</td>
+                        <td>
+                            <button class="btn btn-primary"
+                                [routerLink]="'../appointment/' + appointment.id">Wizyta</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+    </app-card-body>
+</app-card>

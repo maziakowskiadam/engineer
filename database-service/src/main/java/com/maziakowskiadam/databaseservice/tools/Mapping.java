@@ -65,6 +65,8 @@ public class Mapping {
         dto.setTime(appointment.getTime());
         dto.setPatientId(appointment.getPatient().getId());
         dto.setDoctorId(appointment.getDoctor().getId());
+        dto.setRoomId(appointment.getRoom().getId());
+        dto.setExaminationTypeId(appointment.getExaminationType().getId());
 
         return dto;
     }

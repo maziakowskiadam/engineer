@@ -38,7 +38,7 @@ public class ExaminationTypeService {
         }
     }
 
-    public String addExaminationType(ExaminationTypeDto dto) {
+    public boolean addExaminationType(ExaminationTypeDto dto) {
         try {
 
             Optional<ExaminationType> optionalType = examinationTypeRepository.findByName(dto.getName());
@@ -53,10 +53,10 @@ public class ExaminationTypeService {
                 throw new Exception("Type of that name is already in database");
             }
 
-            return "Examination type added.";
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return "Examination type not added. Check the console.";
+            return false;
         }
 
     }

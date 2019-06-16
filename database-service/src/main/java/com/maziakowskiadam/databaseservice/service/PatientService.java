@@ -1,6 +1,5 @@
 package com.maziakowskiadam.databaseservice.service;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.maziakowskiadam.databaseservice.dto.UserRoleDto;
 import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDataDto;
