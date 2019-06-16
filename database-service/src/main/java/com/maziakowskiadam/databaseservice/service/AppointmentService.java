@@ -43,7 +43,7 @@ public class AppointmentService {
 
                 Appointment appointment = new Appointment();
                 appointment.setDate(addAppointmentDto.getDate());
-                appointment.setTime(addAppointmentDto.getStartTime());
+                appointment.setTime(addAppointmentDto.getTimeStart());
                 appointment.setDoctor(doctor);
 
                 return appointment;

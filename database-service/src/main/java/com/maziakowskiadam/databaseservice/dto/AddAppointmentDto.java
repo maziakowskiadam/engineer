@@ -3,7 +3,7 @@ package com.maziakowskiadam.databaseservice.dto;
 public class AddAppointmentDto {
 
     private long doctorId;
-    private String startTime;
+    private String timeStart;
     private String date;
 
     public long getDoctorId() {
@@ -14,12 +14,12 @@ public class AddAppointmentDto {
         this.doctorId = doctorId;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getTimeStart() {
+        return timeStart;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
+    public void setTimeStart(String timeStart) {
+        this.timeStart = timeStart;
     }
 
     public String getDate() {
