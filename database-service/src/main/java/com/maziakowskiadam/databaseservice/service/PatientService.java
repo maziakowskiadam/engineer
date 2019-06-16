@@ -1,5 +1,7 @@
 package com.maziakowskiadam.databaseservice.service;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.maziakowskiadam.databaseservice.dto.UserRoleDto;
 import com.maziakowskiadam.databaseservice.tools.Mapping;
 import com.maziakowskiadam.databaseservice.dto.PatientDataDto;
 import com.maziakowskiadam.databaseservice.dto.PatientDto;
@@ -12,9 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Service
@@ -34,13 +37,19 @@ public class PatientService {
 
     public List<PatientDto> getPatients() {
         List<Patient> patients = patientRepository.findAll();
-        List<PatientDto> patientsDto = new ArrayList<>();
+        Stream<UserRoleDto> userRoles = identityService.getUserRoles().stream();
 
-        for (Patient p : patients) {
-            patientsDto.add(Mapping.patientAsDto(p));
-        }
+        return patients.stream()
+                .map(patient -> {
+                    PatientDto dto = Mapping.patientAsDto(patient);
+                    UserRoleDto role = userRoles.filter(x -> x.getIdentityId().equals(dto.getIdentityId()))
+                            .findFirst()
+                            .get();
 
-        return patientsDto;
+                    dto.setRole(role.getRoleName());
+
+                    return dto;
+                }).collect(Collectors.toList());
     }
 
     public PatientDto getSinglePatient(Long id) {
@@ -65,56 +74,11 @@ public class PatientService {
             return false;
         }
 
-        try {
-            PatientDataDto patientDataDto = addPatientDto.getPatient();
-            Optional<Patient> optPatient = patientRepository.findPatientByPesel(patientDataDto.getPesel());
-
-            if (!optPatient.isPresent()) {
-                String street = patientDataDto.getStreet();
-                String house = patientDataDto.getHouse();
-                String zipcode = patientDataDto.getZipcode();
-                String city = patientDataDto.getCity();
-                Patient newPatient = new Patient();
-                newPatient.setFirstName(patientDataDto.getFirstName());
-                newPatient.setLastName(patientDataDto.getLastName());
-                newPatient.setPesel(patientDataDto.getPesel());
-                newPatient.setGender(patientDataDto.getGender());
-                newPatient.setIdentityId(identityId);
-
-                Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
-
-                if (optionalAddress.isPresent()) {
-                    Address address = optionalAddress.get();
-                    newPatient.setAddress(address);
-                    patientRepository.save(newPatient);
-                } else {
-                    Address address = new Address();
-                    address.setStreet(street);
-                    address.setHouse(house);
-                    address.setZipcode(zipcode);
-                    address.setCity(city);
-                    addressService.addAddress(address);
-                    Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
-                    newPatient.setAddress(newAddress);
-                    patientRepository.save(newPatient);
-                }
-            } else {
-                throw new Exception("Patient already in database. Pesel duplicated.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
-        return true;
+        return addPatientToDb(addPatientDto, identityId);
     }
-
-
-
 
     @Transactional
     public String deletePatientById(Long id) {
-
         try {
             patientRepository.deleteById(id);
             return "Patient deleted.";
@@ -165,6 +129,7 @@ public class PatientService {
             return "Patient couldn't be edited.";
 //        }
     }
+
     @Transactional
     public boolean addPatientUnauthorized(AddPatientDto addPatientDto) {
         String identityId;
@@ -179,6 +144,10 @@ public class PatientService {
             return false;
         }
 
+        return addPatientToDb(addPatientDto, identityId);
+    }
+
+    private boolean addPatientToDb(AddPatientDto addPatientDto, String identityId) {
         try {
             PatientDataDto patientDataDto = addPatientDto.getPatient();
             Optional<Patient> optPatient = patientRepository.findPatientByPesel(patientDataDto.getPesel());
@@ -210,7 +179,10 @@ public class PatientService {
                     addressService.addAddress(address);
                     Address newAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city).get();
                     newPatient.setAddress(newAddress);
+
+
                     patientRepository.save(newPatient);
+
                 }
             } else {
                 throw new Exception("Patient already in database. Pesel duplicated.");
@@ -221,5 +193,20 @@ public class PatientService {
         }
 
         return true;
+    }
+
+
+    public boolean authorizePatient(String identityId) {
+
+        try {
+
+
+            identityService.authorizePatient(identityId);
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -11,6 +11,7 @@ import { DoctorsListComponent } from './components/doctors-list/doctors-list.com
 import { PatientsListComponent } from './components/patients-list/patients-list.component';
 import { FormsModule } from 'src/app/shared/forms/forms.module';
 import { AddManagementComponent } from './components/add-management/add-management.component';
+import { PatientAuthorizeComponent } from './components/patient-authorize/patient-authorize.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AddManagementComponent } from './components/add-management/add-manageme
         AddPatientComponent,
         DoctorsListComponent,
         PatientsListComponent,
-        AddManagementComponent
+        AddManagementComponent,
+        PatientAuthorizeComponent
     ],
     imports: [
         CommonModule,

@@ -8,6 +8,8 @@ public class PatientDto {
     private String pesel;
     private String gender;
     private Long addressId;
+    private String identityId;
+    private String role;
 
     public Long getId() {
         return id;
@@ -55,5 +57,21 @@ public class PatientDto {
 
     public void setAddressId(Long addressId) {
         this.addressId = addressId;
+    }
+
+    public String getIdentityId() {
+        return identityId;
+    }
+
+    public void setIdentityId(String identityId) {
+        this.identityId = identityId;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

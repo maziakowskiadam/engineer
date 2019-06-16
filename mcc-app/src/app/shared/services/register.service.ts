@@ -34,5 +34,8 @@ export class RegisterService {
         return this.http.post<void>(`${this.apiUrl}/management/add`, addManagementDto);
     }
 
+    authorizePatient(identityId: string): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/patients/authorize`, identityId);
+    }
 
 }

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb5150c6-ae4a-4a7f-bef8-440e4eb3e0fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Backup/IdentityService.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Controllers/IdentityController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Controllers/PatientsController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Controllers/ValuesController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/DTOs/IdentityRoleDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/DTOs/UserAuthenticationResultDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/DTOs/UserDto.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Entities/AppDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Entities/AppRole.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Entities/AppUser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/IdentityService.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/IdentityService.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/IdentityService.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Migrations/20190523172805_SetupIdentity.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Migrations/20190523172805_SetupIdentity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Program.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Properties/launchSettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Services/AppIdentityService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Services/IAppIdentityService.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/Startup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/UpgradeLog.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../oldf_IdentityService/appsettings.json" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Controllers/PatientsController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <marker date="1560532785313" expanded="false" signature="6:318" ph="..." />
+                <marker date="1560532785313" expanded="true" signature="358:1316" ph="{...}" />
+                <marker date="1560532785313" expanded="true" signature="466:1314" ph="{...}" />
+                <marker date="1560532785313" expanded="true" signature="576:632" ph="{...}" />
+                <marker date="1560532785313" expanded="true" signature="686:1307" ph="{...}" />
+                <marker date="1560532785313" expanded="true" signature="1114:1236" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/appsettings.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="95" selection-start-line="2" selection-start-column="95" selection-end-line="2" selection-end-column="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controllers/IdentityController.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="18" />
+              <folding>
+                <marker date="1560531822800" expanded="false" signature="6:419" ph="..." />
+                <marker date="1560531822800" expanded="true" signature="459:2527" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="567:2525" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="730:803" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="896:1134" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="1020:1087" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="1229:1371" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="1473:1650" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="1764:1954" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="2055:2231" ph="{...}" />
+                <marker date="1560531822800" expanded="true" signature="2336:2516" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Controllers/IdentityController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Controllers/PatientsController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/appsettings.json" />
+        <option value="$PROJECT_DIR$/Controllers/PatientsController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.IdentityService/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.IdentityService/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="IdentityService" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="IdentityService" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="IdentityService" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="IdentityService" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="IdentityService" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Controllers" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.IdentityService">
+    <configuration name="IdentityService" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/IdentityService.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IdentityService" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IdentityService: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/IdentityService.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value=".NETCoreApp,Version=v2.2" />
+      <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb5150c6-ae4a-4a7f-bef8-440e4eb3e0fb" name="Default Changelist" comment="" />
+      <created>1560532032875</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560532032875</updated>
+      <workItem from="1560532034622" duration="755000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="755000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="REST Client" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Build" weight="0.32891566" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Controllers/IdentityController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="62" column="8" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="18" />
+          <folding>
+            <marker date="1560531822800" expanded="false" signature="6:419" ph="..." />
+            <marker date="1560531822800" expanded="true" signature="459:2527" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="567:2525" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="730:803" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="896:1134" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="1020:1087" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="1229:1371" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="1473:1650" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="1764:1954" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="2055:2231" ph="{...}" />
+            <marker date="1560531822800" expanded="true" signature="2336:2516" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appsettings.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="95" selection-start-line="2" selection-start-column="95" selection-end-line="2" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controllers/PatientsController.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <marker date="1560532785313" expanded="false" signature="6:318" ph="..." />
+            <marker date="1560532785313" expanded="true" signature="358:1316" ph="{...}" />
+            <marker date="1560532785313" expanded="true" signature="466:1314" ph="{...}" />
+            <marker date="1560532785313" expanded="true" signature="576:632" ph="{...}" />
+            <marker date="1560532785313" expanded="true" signature="686:1307" ph="{...}" />
+            <marker date="1560532785313" expanded="true" signature="1114:1236" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

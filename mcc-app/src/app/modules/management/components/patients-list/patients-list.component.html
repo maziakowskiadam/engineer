@@ -1,1 +1,30 @@
-List pacjentów będzie tuuuuu
+<app-card [title]="'Pacjenci'">
+    <app-card-body>
+        <div *ngIf="loading; else dataLoaded">Dane są pobierane</div>
+        <ng-template #dataLoaded>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>PESEL</th>
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let patient of patients">
+                        <td>{{ patient.firstName }}</td>
+                        <td>{{ patient.lastName }}</td>
+                        <td>{{ patient.pesel }}</td>
+                        <td>
+                            <button *ngIf="patient.role === 'PATIENT_UNAUTHORIZED'" class="btn btn-link"
+                                [routerLink]="'../patient-authorize/' + patient.id">Aktywuj</button>
+                            <button class="btn btn-link">Umów</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+
+    </app-card-body>
+</app-card>
