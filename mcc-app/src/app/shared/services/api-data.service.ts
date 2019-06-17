@@ -60,4 +60,8 @@ export class ApiDataService {
         return this.http.get<Room[]>(`${this.apiUrl}/rooms/all`);
     }
 
+    getAllAppointments(): Observable<Appointment[]> {
+        return this.http.get<Appointment[]>(`${this.apiUrl}/appointments/all`);
+    }
+
 }

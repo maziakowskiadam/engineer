@@ -12,16 +12,6 @@ export class SetPatients {
     constructor(public patients: Patient[]) { }
 }
 
-export class GetAppointments {
-    public static readonly type = '[AppointmentsState] GetAppointments';
-}
-
-export class SetAppointments {
-    public static readonly type = '[AppointmentsState] SetAppointments';
-
-    constructor(public appointments: Appointment[]) { }
-}
-
 export class GetRooms {
     public static readonly type = '[RoomsState] GetRooms';
 }

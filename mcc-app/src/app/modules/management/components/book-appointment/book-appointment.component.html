@@ -1,0 +1,32 @@
+<app-card [title]="'Umów wizytę'">
+    <app-card-body>
+        <ng-container *ngIf="doctorsLoading; else dataLoaded">
+            <div class="row">
+                <div class="col">
+                    Pobieranie danych
+                </div>
+            </div>
+        </ng-container>
+        
+        <ng-template #dataLoaded>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="doctor">Wybierz lekarza</label>
+                    <select name="doctor" id="doctor" class="form-control"
+                        (change)="onSelectedDoctorChange($event.target.value)">
+                        <option *ngFor="let doctor of doctors"
+                            [value]="doctor.id">
+                            {{ doctor.firstName }} {{ doctor.lastName }} ({{ doctor.specialization }})
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="date">Wybierz datę</label>
+                    <input type="date" name="date" id="date" class="form-control" (blur)="onSelectedDateChange($event.target.value)">
+                </div>
+            </div>
+            <ng-container></ng-container>
+        </ng-template>
+        
+    </app-card-body>
+</app-card>

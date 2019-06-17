@@ -16,6 +16,7 @@ import { FormsModule } from 'src/app/shared/forms/forms.module';
 import { AddManagementComponent } from './components/add-management/add-management.component';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 import { PatientAuthorizeComponent } from './components/patient-authorize/patient-authorize.component';
+import { BookAppointmentComponent } from './components/book-appointment/book-appointment.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { PatientAuthorizeComponent } from './components/patient-authorize/patien
         PatientsListComponent,
         AddManagementComponent,
         AddAppointmentComponent,
-        PatientAuthorizeComponent
+        PatientAuthorizeComponent,
+        BookAppointmentComponent
     ],
     imports: [
         CommonModule,

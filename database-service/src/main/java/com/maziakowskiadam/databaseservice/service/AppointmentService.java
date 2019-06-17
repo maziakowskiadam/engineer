@@ -66,7 +66,6 @@ public class AppointmentService {
     }
 
     public List<AppointmentDto> getAllAppointments() {
-
         List<Appointment> appointments = appointmentRepository.findAll();
         List<AppointmentDto> dtos = new ArrayList<>();
 
