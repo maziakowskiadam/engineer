@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,19 +37,29 @@ public class PatientService {
 
     public List<PatientDto> getPatients() {
         List<Patient> patients = patientRepository.findAll();
-        Stream<UserRoleDto> userRoles = identityService.getUserRoles().stream();
+        List<UserRoleDto> roles = identityService.getUserRoles();
+        List<PatientDto> patientDtos = new ArrayList<>();
 
-        return patients.stream()
-                .map(patient -> {
-                    PatientDto dto = Mapping.patientAsDto(patient);
-                    UserRoleDto role = userRoles.filter(x -> x.getIdentityId().equals(dto.getIdentityId()))
-                            .findFirst()
-                            .get();
+        for (Patient p : patients) {
+            patientDtos.add(Mapping.patientAsDto(p));
+        }
 
-                    dto.setRole(role.getRoleName());
+        return patientDtos;
 
-                    return dto;
-                }).collect(Collectors.toList());
+
+//        Stream<UserRoleDto> userRoles = identityService.getUserRoles().stream();
+//
+//        return patients.stream()
+//                .map(patient -> {
+//                    PatientDto dto = Mapping.patientAsDto(patient);
+//                    UserRoleDto role = userRoles.filter(x -> x.getIdentityId().equals(dto.getIdentityId()))
+//                            .findFirst()
+//                            .get();
+//
+//                    dto.setRole(role.getRoleName());
+//
+//                    return dto;
+//                }).collect(Collectors.toList());
     }
 
     public PatientDto getSinglePatient(Long id) {
@@ -162,6 +173,7 @@ public class PatientService {
                 newPatient.setPesel(patientDataDto.getPesel());
                 newPatient.setGender(patientDataDto.getGender());
                 newPatient.setIdentityId(identityId);
+
 
                 Optional<Address> optionalAddress = addressRepository.findAddressByStreetAndHouseAndZipcodeAndCity(street, house, zipcode, city);
 

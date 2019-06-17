@@ -37,7 +37,7 @@ public class PatientController {
         return patientService.getPatients();
     }
 
-    @Before(@BeforeElement(value = JwtTokenFilter.class))
+//    @Before(@BeforeElement(value = JwtTokenFilter.class))
     @GetMapping("/{id}")
     public PatientDto getSinglePatient(@PathVariable Long id) {
         return patientService.getSinglePatient(id);
