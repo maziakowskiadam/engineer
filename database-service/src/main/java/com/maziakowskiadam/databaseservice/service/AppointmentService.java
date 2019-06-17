@@ -66,7 +66,6 @@ public class AppointmentService {
     }
 
     public List<AppointmentDto> getAllAppointments() {
-
         List<Appointment> appointments = appointmentRepository.findAll();
         List<AppointmentDto> dtos = new ArrayList<>();
 
@@ -110,7 +109,23 @@ public class AppointmentService {
         return dtos;
     }
 
+    public boolean setPatient(Long appointmentId, Long patientId) {
+        Optional<Patient> patient = this.patientRepository.findPatientById(patientId);
+        if (!patient.isPresent()) {
+            return false;
+        }
 
+        Optional<Appointment> optionalAppointment = this.appointmentRepository.findAppointmentById(appointmentId);
+        if (!optionalAppointment.isPresent() || optionalAppointment.get().getPatient() != null) {
+            return false;
+        }
+
+        Appointment appointment = optionalAppointment.get();
+        appointment.setPatient(patient.get());
+        appointmentRepository.save(appointment);
+
+        return true;
+    }
 
 
 

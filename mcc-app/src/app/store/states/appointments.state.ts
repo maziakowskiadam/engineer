@@ -1,8 +1,8 @@
 import { AppointmentsStateModel } from '../models/AppointmentsStateModel';
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
-import { GetAppointments, SetAppointments } from '../actions/StateActions';
 import { Appointment } from 'src/app/shared/models/entities/Appointment';
+import { GetAppointments, SetAppointments, GetAllAppointments } from '../actions/AppointmentsActions';
 
 
 @State<AppointmentsStateModel>({
@@ -38,6 +38,18 @@ export class AppointmentsState {
             loading: false,
             appointments
         });
+    }
+
+    @Action(GetAllAppointments)
+    GetAllAppointments(ctx: StateContext<AppointmentsStateModel>, action: GetAllAppointments) {
+        ctx.patchState({
+            loading: true
+        });
+
+        return this.apiDataService.getAllAppointments()
+            .subscribe(appointments => {
+                ctx.patchState(new SetAppointments(appointments));
+            });
     }
 
     @Selector()

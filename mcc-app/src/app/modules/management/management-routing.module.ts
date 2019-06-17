@@ -10,6 +10,7 @@ import { PatientsListComponent } from './components/patients-list/patients-list.
 import { AddManagementComponent } from './components/add-management/add-management.component';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 import { PatientAuthorizeComponent } from './components/patient-authorize/patient-authorize.component';
+import { BookAppointmentComponent } from './components/book-appointment/book-appointment.component';
 
 const routes: Routes = [
     {
@@ -55,6 +56,10 @@ const routes: Routes = [
     {
         path: 'patient-authorize/:patientId',
         component: PatientAuthorizeComponent
+    },
+    {
+        path: 'book-appointment/:patientId',
+        component: BookAppointmentComponent
     }
 ];
 
