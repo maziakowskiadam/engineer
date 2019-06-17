@@ -1,0 +1,69 @@
+<app-card [title]="'Nadchodzące wizyty'">
+    <app-card-body>
+        <!-- <div *ngIf="loading; else dataLoaded">Dane są pobierane</div> -->
+        <!-- <ng-template #dataLoaded> -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Godzina</th>
+                    <th>Lekarz</th>
+                    <!-- <th>Akcje</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let appointment of appointments">
+                        <td>{{ appointment.timeStart }}</td>
+                        <td>{{ appointment.patient }}</td>
+                        <td>{{ appointment.room }}</td>
+                        <td> -->
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>
+                        <!-- <button class="btn btn-warning"
+                            [routerLink]="'../appointment/' + appointment.id">Odwołaj</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </ng-template> -->
+
+    </app-card-body>
+</app-card>
+<br><br>
+<app-card [title]="'Odbyte wizyty'">
+    <app-card-body>
+        <!-- <div *ngIf="loading; else dataLoaded">Dane są pobierane</div> -->
+        <!-- <ng-template #dataLoaded> -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Godzina</th>
+                    <th>Lekarz</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let appointment of appointments">
+                        <td>{{ appointment.timeStart }}</td>
+                        <td>{{ appointment.patient }}</td>
+                        <td>{{ appointment.room }}</td>
+                        <td> -->
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>
+                        <button class="btn btn-warning"
+                            [routerLink]="'../appointment/' + appointment.id">Wyniki</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- </ng-template> -->
+
+    </app-card-body>
+</app-card>
