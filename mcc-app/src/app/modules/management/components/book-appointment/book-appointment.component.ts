@@ -8,6 +8,8 @@ import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
 import { Appointment } from 'src/app/_old_pages/appointments-page/appointments-page.component';
 import { GetAllAppointments } from 'src/app/store/actions/AppointmentsActions';
 import { AppointmentsState } from 'src/app/store/states/appointments.state';
+import { ApiDataService } from 'src/app/shared/services/api-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-book-appointment',
@@ -23,13 +25,19 @@ export class BookAppointmentComponent implements OnDestroy {
 
     onDestroy$: Subject<void> = new Subject();
 
-    appointments: Appointment[];
-    visibleAppointments: Appointment[];
+    appointments: Appointment[] = [];
+    visibleAppointments: Appointment[] = [];
+
+    patientId: number;
 
     constructor(
-        private store: Store
+        private route: ActivatedRoute,
+        private store: Store,
+        private apiDataService: ApiDataService
     ) {
         window['book'] = this;
+
+        this.patientId = parseFloat(this.route.snapshot.paramMap.get('patientId'));
 
         this.store.dispatch(new GetAllDoctors());
         this.store.dispatch(new GetAllAppointments());
@@ -79,10 +87,20 @@ export class BookAppointmentComponent implements OnDestroy {
 
         this.visibleAppointments = this.appointments
             .filter(appointment => appointment.date === this.selectedDate
-                && appointment.doctor === `${this.selectedDoctor.firstName} ${this.selectedDoctor.lastName}`);
+                && appointment.doctorId === this.selectedDoctor.id)
+            .filter(appointment => !appointment.patientId);
+    }
 
-        // if (appointments)
-        console.log(this);
+    book(appointmenId: number): void {
+        this.apiDataService.bookAppointment(appointmenId, this.patientId)
+            .subscribe(() => {
+                alert('Dodano wizytę');
+                this.store.dispatch(new GetAllDoctors());
+                this.store.dispatch(new GetAllAppointments());
+            }, error => {
+                alert('Wystąpił błąd');
+                console.error(error);
+            });
     }
 
 

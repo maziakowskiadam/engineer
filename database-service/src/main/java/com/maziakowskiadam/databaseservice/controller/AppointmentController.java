@@ -30,6 +30,13 @@ public class AppointmentController {
                 : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/setPatient/{appointmentId}")
+    public ResponseEntity<Void> setPatient(@PathVariable Long appointmentId, @RequestBody Long patientId) {
+        return this.appointmentService.setPatient(appointmentId, patientId)
+            ? new ResponseEntity<>(HttpStatus.OK)
+            : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
     @GetMapping("/{id}")
     public AppointmentDto getSingleAppointment(@PathVariable Long id) {
         return appointmentService.getSingleAppointment(id);

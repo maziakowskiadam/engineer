@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+    Optional<Appointment> findAppointmentById(Long id);
+
     Optional<Appointment> findAppointmentByDateAndTime(String date, String time);
 
     Optional<Appointment> findAppointmentByDateAndTimeAndDoctor(String date, String time, Doctor doctor);

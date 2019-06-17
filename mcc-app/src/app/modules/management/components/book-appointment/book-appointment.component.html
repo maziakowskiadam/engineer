@@ -25,7 +25,22 @@
                     <input type="date" name="date" id="date" class="form-control" (blur)="onSelectedDateChange($event.target.value)">
                 </div>
             </div>
-            <ng-container></ng-container>
+            <br><br>
+            <div class="row">
+                <div class="col" *ngIf="visibleAppointments.length; else noAppointments">
+                    <div class="appointment-row" *ngFor="let app of visibleAppointments">
+                        {{ app.date }} {{ app.time }} <button class="btn btn-link" (click)="book(app.id)">Umów</button>
+                    </div>
+                </div>
+                <ng-template #noAppointments>
+                    <div class="col">
+                        Brak wizyt
+                    </div>
+                </ng-template>
+                
+            </div>
+
+
         </ng-template>
         
     </app-card-body>
