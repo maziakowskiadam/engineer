@@ -63,10 +63,22 @@ public class Mapping {
         dto.setId(appointment.getId());
         dto.setDate(appointment.getDate());
         dto.setTime(appointment.getTime());
-        dto.setPatientId(appointment.getPatient().getId());
-        dto.setDoctorId(appointment.getDoctor().getId());
-        dto.setRoomId(appointment.getRoom().getId());
-        dto.setExaminationTypeId(appointment.getExaminationType().getId());
+
+        if (appointment.getPatient() != null) {
+            dto.setPatientId(appointment.getPatient().getId());
+        }
+
+        if (appointment.getDoctor() != null) {
+            dto.setDoctorId(appointment.getDoctor().getId());
+        }
+
+        if (appointment.getExaminationType() != null) {
+            dto.setRoomId(appointment.getRoom().getId());
+        }
+
+        if (appointment.getExaminationType() != null) {
+            dto.setExaminationTypeId(appointment.getExaminationType().getId());
+        }
 
         return dto;
     }

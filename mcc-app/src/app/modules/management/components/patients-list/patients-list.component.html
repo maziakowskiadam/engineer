@@ -17,9 +17,15 @@
                         <td>{{ patient.lastName }}</td>
                         <td>{{ patient.pesel }}</td>
                         <td>
-                            <button *ngIf="patient.role === 'PATIENT_UNAUTHORIZED'" class="btn btn-link"
-                                [routerLink]="'../patient-authorize/' + patient.id">Aktywuj</button>
-                            <button class="btn btn-link">Umów</button>
+                            <button *ngIf="patient.role === 'PATIENT_UNAUTHORIZED'"
+                                class="btn btn-link"
+                                [routerLink]="'../patient-authorize/' + patient.id">
+                                Aktywuj
+                            </button>
+                            <button class="btn btn-link"
+                                [routerLink]="'../book-appointment/' + patient.id">
+                                Umów
+                            </button>
                         </td>
                     </tr>
                 </tbody>

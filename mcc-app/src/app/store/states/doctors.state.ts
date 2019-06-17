@@ -1,7 +1,7 @@
 import { State, Action, StateContext, Selector } from '@ngxs/store';
 import { DoctorsStateModel } from '../models/DoctorsStateModel';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
-import { GetAllDoctors } from '../actions/DoctorsActions';
+import { GetAllDoctors, SetDoctors } from '../actions/DoctorsActions';
 import { Doctor } from 'src/app/shared/models/entities/Doctor';
 
 @State<DoctorsStateModel>({
@@ -18,21 +18,28 @@ export class DoctorsState {
     ) { }
 
     @Action(GetAllDoctors)
-    getAllDoctors(ctx: StateContext<DoctorsStateModel>): void {
+    getAllDoctors(ctx: StateContext<DoctorsStateModel>) {
         const state = ctx.getState();
         ctx.setState({
             ...state,
             loading: true
         });
 
-        this.apiDataService.getDoctors()
+        return this.apiDataService.getDoctors()
             .subscribe(doctors => {
-                ctx.setState({
-                    ...state,
-                    doctors,
-                    loading: false
-                });
+                ctx.dispatch(new SetDoctors(doctors));
             });
+    }
+
+    @Action(SetDoctors)
+    setDoctors(ctx: StateContext<DoctorsStateModel>, action: SetDoctors) {
+        const { doctors } = action;
+        const state = ctx.getState();
+        ctx.setState({
+            ...state,
+            doctors,
+            loading: false
+        });
     }
 
     @Selector()
