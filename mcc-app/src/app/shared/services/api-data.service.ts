@@ -11,6 +11,7 @@ import { AddAppointment } from 'src/app/modules/management/models/AddAppointment
 import { Patient } from '../models/entities/Patient';
 import { Appointment } from '../models/entities/Appointment';
 import { Room } from '../models/entities/Room';
+import { Result } from '../models/entities/Result';
 
 @Injectable()
 export class ApiDataService {
@@ -52,8 +53,8 @@ export class ApiDataService {
         return this.http.get<Patient[]>(`${this.apiUrl}/patients/all`);
     }
 
-    getAppointments(doctorIdentityId: string): Observable<Appointment[]> {
-        return this.http.get<Appointment[]>(`${this.apiUrl}/appointments/doctor/${doctorIdentityId}`);
+    getAppointments(): Observable<Appointment[]> {
+        return this.http.get<Appointment[]>(`${this.apiUrl}/appointments/all`);
     }
 
     getRooms(): Observable<Room[]> {
@@ -68,4 +69,11 @@ export class ApiDataService {
         return this.http.post<void>(`${this.apiUrl}/appointments/setPatient/${appointmentId}`, patientId);
     }
 
+    addResult(result: Result): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/results/add`, result);
+    }
+
+    finishAppointment(appointmentId: number) {
+        return this.http.post<any>(`${this.apiUrl}/appointments/finish/`, appointmentId);
+    }
 }

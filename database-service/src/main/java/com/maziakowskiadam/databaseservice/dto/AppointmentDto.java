@@ -12,6 +12,15 @@ public class AppointmentDto {
     private List<Long> resultIds;
     private Long roomId;
     private Long examinationTypeId;
+    private boolean isDone;
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
 
     public Long getId() {
         return id;

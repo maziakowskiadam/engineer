@@ -8,6 +8,7 @@ import com.maziakowskiadam.databaseservice.entity.*;
 import com.maziakowskiadam.databaseservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -127,25 +128,23 @@ public class AppointmentService {
         return true;
     }
 
+    @Transactional
+    public boolean finishAppointment(Long appointmentId) {
 
+        try {
+            Optional<Appointment> optionalAppointment = appointmentRepository.findAppointmentById(appointmentId);
 
+            if (optionalAppointment.isPresent()) {
+                optionalAppointment.get().setDone(true);
+                return true;
+            } else {
+                return false;
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }

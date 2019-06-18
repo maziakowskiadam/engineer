@@ -78,6 +78,7 @@ public class Mapping {
         dto.setId(appointment.getId());
         dto.setDate(appointment.getDate());
         dto.setTime(appointment.getTime());
+        dto.setDone(appointment.isDone());
 
         if (appointment.getPatient() != null) {
             dto.setPatientId(appointment.getPatient().getId());
@@ -126,7 +127,6 @@ public class Mapping {
 
         dto.setId(result.getId());
         dto.setObservations(result.getObservations());
-        dto.setProcedures(result.getProcedures());
         dto.setConclusions(result.getConclusions());
         dto.setRecommendations(result.getRecommendations());
         dto.setAppointmentId(result.getAppointment().getId());

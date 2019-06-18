@@ -23,7 +23,7 @@ public class ResultService {
     @Autowired
     AppointmentRepository appointmentRepository;
 
-    public String addResult(ResultDto dto) {
+    public boolean addResult(ResultDto dto) {
 
         try {
             Optional<Appointment> optionalAppointment = appointmentRepository.findById(dto.getAppointmentId());
@@ -31,18 +31,17 @@ public class ResultService {
             if (optionalAppointment.isPresent()) {
                 Result newResult = new Result();
                 newResult.setObservations(dto.getObservations());
-                newResult.setProcedures(dto.getProcedures());
                 newResult.setConclusions(dto.getConclusions());
                 newResult.setRecommendations(dto.getRecommendations());
                 newResult.setAppointment(optionalAppointment.get());
                 resultRepository.save(newResult);
 
             }
-            return "Result added.";
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Result not added. Check the console";
+            return false;
         }
     }
 

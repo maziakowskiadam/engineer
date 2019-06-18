@@ -37,6 +37,13 @@ public class AppointmentController {
             : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
+    @PostMapping("/finish")
+    public ResponseEntity finishAppointment(@RequestBody Long appointmentId) {
+        return this.appointmentService.finishAppointment(appointmentId)
+                ? new ResponseEntity<>(HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
     @GetMapping("/{id}")
     public AppointmentDto getSingleAppointment(@PathVariable Long id) {
         return appointmentService.getSingleAppointment(id);

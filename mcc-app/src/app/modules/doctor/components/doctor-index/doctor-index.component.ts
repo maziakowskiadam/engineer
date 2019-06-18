@@ -59,7 +59,8 @@ export class DoctorIndexComponent implements OnDestroy {
                             id: appointment.id,
                             patient: patient ? `${patient.firstName} ${patient.lastName}` : '-',
                             room: room ? `${room.number}` : '-',
-                            timeStart: appointment.time
+                            timeStart: appointment.time,
+                            date: appointment.date,
                         };
                     });
                 });
