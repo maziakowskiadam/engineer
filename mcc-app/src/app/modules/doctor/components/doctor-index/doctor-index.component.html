@@ -17,15 +17,13 @@
                         <td>{{ appointment.date }}</td>
                         <td>{{ appointment.timeStart }}</td>
                         <td>{{ appointment.patient }}</td>
-                        <!-- <td>{{ appointment.room }}</td> -->
                         <td>
-                            <button class="btn btn-primary"
+                            <button *ngIf="appointment.patient !== '-'" class="btn btn-primary"
                                 [routerLink]="'../appointment/' + appointment.id">Wizyta</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </ng-template>
-
     </app-card-body>
 </app-card>

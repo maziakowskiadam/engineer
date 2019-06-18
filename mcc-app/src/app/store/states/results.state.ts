@@ -11,7 +11,7 @@ import { Result } from 'src/app/shared/models/entities/Result';
     name: 'ResultsState',
     defaults: {
         results: [],
-        loading: false
+        loading: false,
     },
 })
 export class ResultsState {

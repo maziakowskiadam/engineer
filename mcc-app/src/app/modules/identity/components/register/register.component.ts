@@ -13,12 +13,13 @@ export class RegisterComponent {
     constructor(
         private registerService: RegisterService,
         private router: Router
-    ) {}
+    ) { }
 
     onSubmit(patient: AddPatientDto): void {
         this.registerService.addPatientUnauthorized(patient)
             .subscribe(
                 () => {
+                    alert('Zarejestrowałeś się');
                     this.router.navigateByUrl('/');
                 },
                 error => {

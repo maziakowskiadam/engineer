@@ -45,7 +45,17 @@ export class DoctorAppointmentComponent implements OnInit {
             .subscribe(
                 () => {
                     alert('Dodano wynik do wizyty')
-                    this.router.navigate(['../../index'], { relativeTo: this.route });
+                    // this.router.navigate(['../../index'], { relativeTo: this.route });
+                    this.apiDataService.finishAppointment(this.result.appointmentId)
+                        .subscribe(
+                            () => {
+                                alert('Zakończono wizytę')
+                                this.router.navigate(['../../index'], { relativeTo: this.route });
+                            },
+                            error => {
+                                alert('Nie udało się zakończyć wizyty');
+                                console.error(error);
+                            });
                 },
                 error => {
                     alert('Nie udało się dodać wyniku');
@@ -54,15 +64,6 @@ export class DoctorAppointmentComponent implements OnInit {
     }
 
     onFinish(): void {
-        this.apiDataService.finishAppointment(this.result.appointmentId)
-            .subscribe(
-                () => {
-                    alert('Zakończono wizytę')
-                    this.router.navigate(['../../index'], { relativeTo: this.route });
-                },
-                error => {
-                    alert('Nie udało się zakończyć wizyty');
-                    console.error(error);
-                });
+
     }
 }
