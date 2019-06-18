@@ -63,4 +63,13 @@ public class ResultService {
     }
 
 
+    public List<ResultDto> getAllResults() {
+        List<Result> results = resultRepository.findAll();
+        List<ResultDto> dtos = new ArrayList<>();
+
+        for (Result r : results) {
+            dtos.add(Mapping.resultAsDto(r));
+        }
+        return dtos;
+    }
 }

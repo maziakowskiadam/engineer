@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { PatientIndexComponent } from './components/patient-index/patient-index.component';
+import { PatientResultsComponent } from './components/patient-results/patient-results.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,10 @@ const routes: Routes = [
         path: 'index',
         component: PatientIndexComponent
     },
-
+    {
+        path: 'results/:appointmentId',
+        component: PatientResultsComponent
+    }
 
 ];
 

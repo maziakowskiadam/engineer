@@ -47,7 +47,38 @@ export class PatientIndexComponent {
                     if (this.loading) {
                         return;
                     }
-                    this.appointments = appointments.filter(appointment => appointment.patientId === 1)
+                    this.appointments = appointments.filter(appointment => appointment.patientId === 1 && appointment.done === false)
+                        .map(appointment => {
+                            const doctor = doctors.find(d => d.id === appointment.doctorId);
+                            return {
+                                id: appointment.id,
+                                date: appointment.date,
+                                timeStart: appointment.time,
+                                doctor: doctor ? `${doctor.firstName} ${doctor.lastName}` : '-'
+                            };
+                        }).reverse();
+                }
+            );
+
+
+
+        combineLatest(
+            loading$,
+            appointments$,
+            doctors$
+        )
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(
+                ([
+                    loading,
+                    appointmentsDone,
+                    doctors,
+                ]) => {
+                    this.loading = loading;
+                    if (this.loading) {
+                        return;
+                    }
+                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true)
                         .map(appointment => {
                             const doctor = doctors.find(d => d.id === appointment.doctorId);
                             return {

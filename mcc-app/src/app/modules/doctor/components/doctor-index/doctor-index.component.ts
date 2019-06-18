@@ -52,7 +52,7 @@ export class DoctorIndexComponent implements OnDestroy {
                         return;
                     }
 
-                    this.appointments = appointments.map(appointment => {
+                    this.appointments = appointments.filter(appointment => appointment.done === false).map(appointment => {
                         const patient = patients.find(p => p.id === appointment.patientId);
                         const room = rooms.find(r => r.id === appointment.roomId);
                         return {

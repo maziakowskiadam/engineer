@@ -31,4 +31,9 @@ public class ResultController {
         return resultService.getResultsForAppointment(id);
     }
 
+    @GetMapping("all")
+    public List<ResultDto> getAllResults() {
+        return resultService.getAllResults();
+    }
+
 }

@@ -76,4 +76,8 @@ export class ApiDataService {
     finishAppointment(appointmentId: number) {
         return this.http.post<any>(`${this.apiUrl}/appointments/finish/`, appointmentId);
     }
+
+    getResults(): Observable<Result[]> {
+        return this.http.get<Result[]>(`${this.apiUrl}/results/all`);
+    }
 }
