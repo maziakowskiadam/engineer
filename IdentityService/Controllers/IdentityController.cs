@@ -31,7 +31,7 @@ namespace IdentityService.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm] UserDto user)
+        public async Task<IActionResult> Login(UserDto user)
         {
             var loginResult = await this._identityService.LoginAsync(user);
 
@@ -41,14 +41,6 @@ namespace IdentityService.Controllers
             }
 
             return Ok(loginResult);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Register([FromForm] UserDto user)
-        {
-            var registerResult = await this._identityService.RegisterAsync(user);
-
-            return Ok(registerResult);
         }
 
         [HttpPost]
@@ -87,7 +79,19 @@ namespace IdentityService.Controllers
             return Ok(registerResult);
         }
 
-
+        [HttpPost]
+        public async Task<IActionResult> AddSuperAdmin()
+        {
+            var user = new UserDto
+            {
+                Email = "admin@example.com",
+                Password = "superAdmin123",
+                Role = "MANAGEMENT"
+            };
+            
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
 
     }
 }

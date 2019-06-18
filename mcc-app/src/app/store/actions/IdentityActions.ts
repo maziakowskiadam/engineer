@@ -7,5 +7,5 @@ export class LoginIdentity {
 
 export class SetIdentity {
     static readonly type = '[IdentityState] SetIdentity';
-    constructor(public token: string, public role: IdentityRole) {}
+    constructor(public token: string, public role: IdentityRole, public id: string = null) {}
 }

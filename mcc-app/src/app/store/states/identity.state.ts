@@ -7,6 +7,7 @@ import { ApiIdentityService } from 'src/app/shared/services/api-identity.service
 @State<IdentityStateModel>({
     name: 'IdentityState',
     defaults: {
+        id: null,
         jwt: null,
         role: null
     }
@@ -21,8 +22,8 @@ export class IdentityState {
     LoginIdentity(ctx: StateContext<IdentityStateModel>, action: LoginIdentity): void {
         const { login, password } = action;
         this.apiIdentityService.login(login, password)
-            .subscribe(({ token, role }) => {
-                ctx.dispatch(new SetIdentity(token, role));
+            .subscribe(({ token, role, id }) => {
+                ctx.dispatch(new SetIdentity(token, role, id));
             }, () => { // In case of error
                 ctx.dispatch(new SetIdentity(null, null));
             });
@@ -30,11 +31,12 @@ export class IdentityState {
 
     @Action(SetIdentity)
     SetIdentity(ctx: StateContext<IdentityStateModel>, action: SetIdentity): void {
-        const { token, role } = action;
+        const { token, role, id } = action;
         ctx.patchState({
             ...ctx.getState(),
             jwt: token,
-            role
+            role,
+            id
         });
     }
 
@@ -46,6 +48,11 @@ export class IdentityState {
     @Selector()
     static role(state: IdentityStateModel): IdentityRole {
         return state.role;
+    }
+
+    @Selector()
+    static id(state: IdentityStateModel): string {
+        return state.id;
     }
 
 }

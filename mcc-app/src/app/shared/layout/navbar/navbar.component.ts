@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { SetIdentity } from 'src/app/store/actions/IdentityActions';
 
@@ -14,7 +14,8 @@ export class NavbarComponent {
 
     constructor(
         private router: Router,
-        private store: Store
+        private store: Store,
+        private route: ActivatedRoute
     ) {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -24,8 +25,11 @@ export class NavbarComponent {
     }
 
     logout(): void {
-        this.store.dispatch(new SetIdentity(null, null));
-        this.router.navigate(['']);
+        this.store.dispatch(new SetIdentity(null, null)).subscribe(() => {
+            setTimeout(() => {
+                this.router.navigate(['../../'], { relativeTo: this.route });
+            });
+        });
     }
 
 }
