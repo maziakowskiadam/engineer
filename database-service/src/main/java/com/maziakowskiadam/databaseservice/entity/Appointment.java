@@ -31,6 +31,8 @@ public class Appointment {
     @ManyToOne
     private ExaminationType examinationType;
 
+    private boolean isDone = false;
+
     public Long getId() {
         return id;
     }
@@ -93,5 +95,13 @@ public class Appointment {
 
     public void setExaminationType(ExaminationType examinationType) {
         this.examinationType = examinationType;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 }

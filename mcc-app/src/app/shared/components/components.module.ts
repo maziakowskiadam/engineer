@@ -13,7 +13,8 @@ const components = [
     CardComponent,
     CardFooterComponent,
     InputFieldComponent,
-    DatePickerComponent
+    DatePickerComponent,
+
 ];
 
 @NgModule({
@@ -29,4 +30,4 @@ const components = [
         components
     ]
 })
-export class ComponentsModule {}
+export class ComponentsModule { }

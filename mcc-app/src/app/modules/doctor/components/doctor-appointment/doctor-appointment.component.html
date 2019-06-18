@@ -1,0 +1,38 @@
+<app-card [title]="'Opis wizyty'">
+
+    <app-card-body>
+        <div class="form-group">
+            <label for="observations">Obserwacje:</label>
+            <textarea class="form-control" id="observations" rows="3" [(ngModel)]="result.observations"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="conclusions">Wnioski:</label>
+            <textarea class="form-control" id="conclusions" rows="3" [(ngModel)]="result.conclusions"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="recommendations">Zalecenia:</label>
+            <textarea class="form-control" id="recommendations" rows="3"
+                [(ngModel)]="result.recommendations"></textarea>
+        </div>
+    </app-card-body>
+
+    <br><br>
+
+
+</app-card>
+
+<app-card>
+    <app-card-body>
+        <div class="row">
+            <div class="col text-left">
+                <a class="btn btn-warning" routerLink="../../index">Anuluj</a>
+            </div>
+            <!-- <div class="col text-center">
+                <a class="btn btn-success text-white" (click)="">Dodaj opis</a>
+            </div> -->
+            <div class="col text-right">
+                <a class="btn btn-danger text-white" (click)="onSave()">Dodaj opis i zakończ wizytę</a>
+            </div>
+        </div>
+    </app-card-body>
+</app-card>

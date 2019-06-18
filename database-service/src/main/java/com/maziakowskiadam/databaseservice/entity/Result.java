@@ -13,7 +13,6 @@ public class Result {
 
     private String observations;
 
-    private String procedures;
 
     private String conclusions;
 
@@ -37,14 +36,6 @@ public class Result {
 
     public void setObservations(String observations) {
         this.observations = observations;
-    }
-
-    public String getProcedures() {
-        return procedures;
-    }
-
-    public void setProcedures(String procedures) {
-        this.procedures = procedures;
     }
 
     public String getConclusions() {

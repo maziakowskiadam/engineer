@@ -2,8 +2,13 @@ package com.maziakowskiadam.databaseservice.tools;
 
 import com.maziakowskiadam.databaseservice.dto.*;
 import com.maziakowskiadam.databaseservice.entity.*;
+import com.maziakowskiadam.databaseservice.service.IdentityService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class Mapping {
+
 
     public static AddressDto addressAsDto(Address address) {
 
@@ -32,6 +37,10 @@ public class Mapping {
 
     public static PatientDto patientAsDto(Patient patient) {
 
+
+        IdentityService identityService = new IdentityService();
+        List<UserRoleDto> userRoles = identityService.getUserRoles();
+
         PatientDto patientDto = new PatientDto();
 
         patientDto.setId(patient.getId());
@@ -41,6 +50,12 @@ public class Mapping {
         patientDto.setGender(patient.getGender());
         patientDto.setAddressId(patient.getAddress().getId());
         patientDto.setIdentityId(patient.getIdentityId());
+        for (UserRoleDto u : userRoles) {
+            if (u.getIdentityId().equals(patient.getIdentityId())) {
+                patientDto.setRole(u.getRoleName());
+            }
+        }
+
 
         return patientDto;
     }
@@ -63,6 +78,7 @@ public class Mapping {
         dto.setId(appointment.getId());
         dto.setDate(appointment.getDate());
         dto.setTime(appointment.getTime());
+        dto.setDone(appointment.isDone());
 
         if (appointment.getPatient() != null) {
             dto.setPatientId(appointment.getPatient().getId());
@@ -111,13 +127,10 @@ public class Mapping {
 
         dto.setId(result.getId());
         dto.setObservations(result.getObservations());
-        dto.setProcedures(result.getProcedures());
         dto.setConclusions(result.getConclusions());
         dto.setRecommendations(result.getRecommendations());
         dto.setAppointmentId(result.getAppointment().getId());
 
         return dto;
     }
-
-
 }
