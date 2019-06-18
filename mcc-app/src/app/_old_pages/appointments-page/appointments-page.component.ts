@@ -49,6 +49,8 @@ export interface Appointment {
     date?: string;
     time?: string;
     doctor?: string;
+    doctorId?: number;
     examType?: string;
     room?: string;
+    patientId?: number;
 }

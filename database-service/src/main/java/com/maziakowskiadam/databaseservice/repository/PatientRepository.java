@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
+    Optional<Patient> findPatientById(Long id);
+
     Optional<Patient> findPatientByPesel(String pesel);
 
 }
