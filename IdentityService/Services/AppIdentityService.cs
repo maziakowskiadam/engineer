@@ -17,7 +17,7 @@ namespace IdentityService.Services
     {
         private static readonly List<string> Roles = new List<string>
         {
-            "PATIENT_UNAUTHORIZED",
+            "PATIENT",
             "PATIENT_UNAUTHORIZED",
             "DOCTOR",
             "MANAGEMENT"
@@ -83,7 +83,8 @@ namespace IdentityService.Services
             return new UserAuthenticationResultDto
             {
                 Role = role,
-                Token = handler.WriteToken(token)
+                Token = handler.WriteToken(token),
+                Id = dbUser.Id
             };
         }
 

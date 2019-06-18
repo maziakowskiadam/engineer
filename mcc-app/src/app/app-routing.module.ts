@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ManagementGuardService } from './modules/management/management-guard.service';
 import { DoctorGuardService } from './modules/doctor/doctor-guard.service';
+import { PatientGuardService } from './modules/patient/patient-guard.service';
 
 const routes: Routes = [
     {
@@ -24,7 +25,8 @@ const routes: Routes = [
     },
     {
         path: 'patient',
-        loadChildren: () => import('./modules/patient/patient.module').then(mod => mod.PatientModule)
+        loadChildren: () => import('./modules/patient/patient.module').then(mod => mod.PatientModule),
+        canActivate: [PatientGuardService]
     }
 ];
 
