@@ -27,3 +27,35 @@
         </ng-template>
     </app-card-body>
 </app-card>
+
+<br><br>
+
+<app-card [title]="'Odbyte wizyty'">
+    <app-card-body>
+        <div *ngIf="loading; else doneDataLoaded">Dane są pobierane</div>
+        <ng-template #doneDataLoaded>
+            <table class="table" style="table-layout: fixed">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Godzina</th>
+                        <th>Pacjent</th>
+                        <!-- <th>Gabinet</th> -->
+                        <th>Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let appointmentDone of appointmentsDone">
+                        <td>{{ appointmentDone.date }}</td>
+                        <td>{{ appointmentDone.timeStart }}</td>
+                        <td>{{ appointmentDone.patient }}</td>
+                        <td>
+                            <button class="btn btn-primary"
+                                [routerLink]="'../results/' + appointmentDone.id">Wyniki</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+    </app-card-body>
+</app-card>
