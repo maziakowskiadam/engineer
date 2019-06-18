@@ -17,6 +17,7 @@ import { GetAppointments } from 'src/app/store/actions/AppointmentsActions';
 export class DoctorIndexComponent implements OnDestroy {
 
     appointments: AppointmentListItem[];
+    appointmentsDone: AppointmentListItem[];
     loading: boolean;
 
     onDestroy$: Subject<void> = new Subject();
@@ -66,13 +67,35 @@ export class DoctorIndexComponent implements OnDestroy {
                         });
                 });
 
-        // store.select(AppointmentsState.appointments)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(appointments => this.appointments = appointments);
-
-        // store.select(AppointmentsState.loading)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(loading => this.loading = loading);
+        combineLatest(
+            loading$,
+            appointments$,
+            patients$
+        )
+            .pipe(takeUntil(this.onDestroy$))
+            .subscribe(
+                ([
+                    loading,
+                    appointmentsDone,
+                    patients,
+                ]) => {
+                    this.loading = loading;
+                    if (this.loading) {
+                        return;
+                    }
+                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true)
+                        .map(appointment => {
+                            const patient = patients.find(patient => patient.id === appointment.patientId);
+                            return {
+                                id: appointment.id,
+                                patient: patient ? `${patient.firstName} ${patient.lastName}` : '-',
+                                room: '-',
+                                timeStart: appointment.time,
+                                date: appointment.date,
+                            };
+                        }).reverse();
+                }
+            );
     }
 
     ngOnDestroy() {

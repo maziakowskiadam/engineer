@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { DoctorRoutingModule } from './doctor-routing.module';
 import { DoctorIndexComponent } from './components/doctor-index/doctor-index.component';
 import { DoctorAppointmentComponent } from './components/doctor-appointment/doctor-appointment.component';
+import { DoctorResultsComponent } from './components/doctor-results/doctor-results.component';
 
 
 @NgModule({
     declarations: [
         DoctorIndexComponent,
-        DoctorAppointmentComponent
+        DoctorAppointmentComponent,
+        DoctorResultsComponent
     ],
     imports: [
         CommonModule,
