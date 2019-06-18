@@ -52,16 +52,18 @@ export class DoctorIndexComponent implements OnDestroy {
                         return;
                     }
 
-                    this.appointments = appointments.map(appointment => {
-                        const patient = patients.find(p => p.id === appointment.patientId);
-                        const room = rooms.find(r => r.id === appointment.roomId);
-                        return {
-                            id: appointment.id,
-                            patient: `${patient.firstName} ${patient.lastName}`,
-                            room: `Gabinet ${room.number}`,
-                            timeStart: appointment.time
-                        };
-                    });
+                    this.appointments = appointments.filter(appointment => appointment.doctorId === 1
+                        && appointment.done === false).map(appointment => {
+                            const patient = patients.find(p => p.id === appointment.patientId);
+                            const room = rooms.find(r => r.id === appointment.roomId);
+                            return {
+                                id: appointment.id,
+                                patient: patient ? `${patient.firstName} ${patient.lastName}` : '-',
+                                room: room ? `${room.number}` : '-',
+                                timeStart: appointment.time,
+                                date: appointment.date,
+                            };
+                        });
                 });
     }
 

@@ -17,13 +17,11 @@
                         <td>{{ patient.lastName }}</td>
                         <td>{{ patient.pesel }}</td>
                         <td>
-                            <button *ngIf="patient.role === 'PATIENT_UNAUTHORIZED'"
-                                class="btn btn-link"
+                            <button *ngIf="patient.role === 'PATIENT_UNAUTHORIZED'" class="btn btn-primary"
                                 [routerLink]="'../patient-authorize/' + patient.id">
                                 Aktywuj
                             </button>
-                            <button class="btn btn-link"
-                                [routerLink]="'../book-appointment/' + patient.id">
+                            <button class="btn btn-link" [routerLink]="'../book-appointment/' + patient.id">
                                 Umów
                             </button>
                         </td>

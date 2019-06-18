@@ -22,7 +22,7 @@ export class AppointmentsState {
             loading: true
         });
 
-        return this.apiDataService.getAppointments('d0325d96-5ef4-46dd-bdea-8638718217ee')
+        return this.apiDataService.getAppointments()
             .subscribe(appointments => {
                 ctx.dispatch(new SetAppointments(appointments));
             });

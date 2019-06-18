@@ -1,0 +1,13 @@
+<app-card>
+    <app-card-body class="" *ngFor="let result of results">
+        <h5>Obserwacje:</h5>
+        <p>{{result.observations}}</p>
+        <h5>Wnioski:</h5>
+        <p>{{result.conclusions}}</p>
+        <h5>Zalecenia:</h5>
+        <p>{{result.recommendations}}</p>
+    </app-card-body>
+    <app-card-footer>
+        <button class="btn btn-warning" routerLink="../../">Powrót</button>
+    </app-card-footer>
+</app-card>

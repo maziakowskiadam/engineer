@@ -1,0 +1,82 @@
+    <div class="container-fluid">
+        <app-card>
+            <app-card-body>
+                <button class="btn btn-primary btn-block" style="padding: 20px; font-size: 20px">Umów wizytę</button>
+            </app-card-body>
+        </app-card>
+    </div>
+
+    <br><br>
+
+    <div class="container-fluid">
+        <app-card [title]="'Nadchodzące wizyty'">
+            <app-card-body>
+                <div *ngIf="loading; else dataLoaded">Dane są pobierane</div>
+                <ng-template #dataLoaded>
+                    <table class="table" style="table-layout: fixed">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Godzina</th>
+                                <th>Lekarz</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let appointment of appointments">
+                                <td>{{appointment.date}}</td>
+                                <td>{{appointment.timeStart}}</td>
+                                <td>{{appointment.doctor}}</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </ng-template>
+
+
+            </app-card-body>
+        </app-card>
+    </div>
+
+    <br><br>
+
+    <div class="container-fluid">
+        <app-card [title]="'Odbyte wizyty'">
+            <app-card-body>
+
+
+                <!-- <div *ngIf="loading; else dataLoaded">Dane są pobierane</div>
+                <ng-template #dataLoaded> -->
+
+
+                <table class="table" style="table-layout: fixed">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Godzina</th>
+                            <th>Lekarz</th>
+                            <th>Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let appointmentDone of appointmentsDone">
+                            <td>{{appointmentDone.date}}</td>
+                            <td>{{appointmentDone.timeStart}}</td>
+                            <td>{{appointmentDone.doctor}}</td>
+                            <td>
+                                <button class="btn btn-primary"
+                                    [routerLink]="'../results/' + appointmentDone.id">Wyniki</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <!-- </ng-template> -->
+
+
+            </app-card-body>
+        </app-card>
+    </div>
