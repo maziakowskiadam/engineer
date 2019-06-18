@@ -2,12 +2,13 @@ import { Component, OnDestroy } from '@angular/core';
 import { Appointment } from 'src/app/shared/models/entities/Appointment';
 import { Subject, combineLatest } from 'rxjs';
 import { Store } from '@ngxs/store';
-import { GetAppointments, GetPatients, GetRooms } from 'src/app/store/actions/StateActions';
+import { GetPatients, GetRooms } from 'src/app/store/actions/StateActions';
 import { AppointmentsState } from 'src/app/store/states/appointments.state';
 import { takeUntil } from 'rxjs/operators';
 import { PatientsState } from 'src/app/store/states/patients.state';
 import { AppointmentListItem } from '../../models/AppointmentListItem';
 import { RoomsState } from 'src/app/store/states/rooms.state';
+import { GetAppointments } from 'src/app/store/actions/AppointmentsActions';
 
 @Component({
     selector: 'app-doctor-index',
@@ -62,14 +63,6 @@ export class DoctorIndexComponent implements OnDestroy {
                         };
                     });
                 });
-
-        // store.select(AppointmentsState.appointments)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(appointments => this.appointments = appointments);
-
-        // store.select(AppointmentsState.loading)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(loading => this.loading = loading);
     }
 
     ngOnDestroy() {

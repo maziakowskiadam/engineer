@@ -44,14 +44,6 @@ namespace IdentityService.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromForm] UserDto user)
-        {
-            var registerResult = await this._identityService.RegisterAsync(user);
-
-            return Ok(registerResult);
-        }
-
-        [HttpPost]
         public async Task<IActionResult> RegisterPatient([FromForm] UserDto user)
         {
             user.Role = "PATIENT";
@@ -87,7 +79,19 @@ namespace IdentityService.Controllers
             return Ok(registerResult);
         }
 
-
+        [HttpPost]
+        public async Task<IActionResult> AddSuperAdmin()
+        {
+            var user = new UserDto
+            {
+                Email = "admin@example.com",
+                Password = "superAdmin123",
+                Role = "MANAGEMENT"
+            };
+            
+            var registerResult = await this._identityService.RegisterAsync(user);
+            return Ok(registerResult);
+        }
 
     }
 }
