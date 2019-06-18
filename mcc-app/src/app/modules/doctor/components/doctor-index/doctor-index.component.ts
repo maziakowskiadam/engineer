@@ -9,6 +9,10 @@ import { PatientsState } from 'src/app/store/states/patients.state';
 import { AppointmentListItem } from '../../models/AppointmentListItem';
 import { RoomsState } from 'src/app/store/states/rooms.state';
 import { GetAppointments } from 'src/app/store/actions/AppointmentsActions';
+import { DoctorsState } from 'src/app/store/states/doctors.state';
+import { IdentityState } from 'src/app/store/states/identity.state';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
+import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
 
 @Component({
     selector: 'app-doctor-index',
@@ -25,19 +29,24 @@ export class DoctorIndexComponent implements OnDestroy {
         store.dispatch([
             new GetAppointments(),
             new GetPatients(),
-            new GetRooms()
+            new GetRooms(),
+            new GetAllDoctors()
         ]);
 
         const appointments$ = store.select(AppointmentsState.appointments);
         const loading$ = store.select(AppointmentsState.loading);
         const patients$ = store.select(PatientsState.patients);
+        const doctors$ = store.select(DoctorsState.doctors);
         const rooms$ = store.select(RoomsState.rooms);
+        const identityId$ = store.select(IdentityState.id);
 
         combineLatest(
             loading$,
             appointments$,
             patients$,
-            rooms$
+            rooms$,
+            doctors$,
+            identityId$
         )
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(
@@ -45,14 +54,21 @@ export class DoctorIndexComponent implements OnDestroy {
                     loading,
                     appointments,
                     patients,
-                    rooms
+                    rooms,
+                    doctors,
+                    identityId
                 ]) => {
                     this.loading = loading;
                     if (loading) {
                         return;
                     }
 
-                    this.appointments = appointments.filter(appointment => appointment.doctorId === 1
+                    const doctor = doctors.find(d => d.identityId === identityId);
+                    if (!doctor) {
+                        return;
+                    }
+
+                    this.appointments = appointments.filter(appointment => appointment.doctorId === doctor.id
                         && appointment.done === false).map(appointment => {
                             const patient = patients.find(p => p.id === appointment.patientId);
                             const room = rooms.find(r => r.id === appointment.roomId);
@@ -65,14 +81,6 @@ export class DoctorIndexComponent implements OnDestroy {
                             };
                         });
                 });
-
-        // store.select(AppointmentsState.appointments)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(appointments => this.appointments = appointments);
-
-        // store.select(AppointmentsState.loading)
-        //     .pipe(takeUntil(this.onDestroy$))
-        //     .subscribe(loading => this.loading = loading);
     }
 
     ngOnDestroy() {

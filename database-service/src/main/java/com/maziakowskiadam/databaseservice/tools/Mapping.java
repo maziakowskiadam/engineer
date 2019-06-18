@@ -31,6 +31,7 @@ public class Mapping {
         doctorDto.setFirstName(doctor.getFirstName());
         doctorDto.setLastName(doctor.getLastName());
         doctorDto.setSpecialization(doctor.getSpec().getName());
+        doctorDto.setIdentityId(doctor.getIdentityId());
 
         return doctorDto;
     }

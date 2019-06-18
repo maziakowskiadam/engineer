@@ -69,6 +69,10 @@ export class ApiDataService {
         return this.http.post<void>(`${this.apiUrl}/appointments/setPatient/${appointmentId}`, patientId);
     }
 
+    bookSelf(appointmentId: number, patientId: string): Observable<void> {
+        return this.http.post<void>(`${this.apiUrl}/appointments/setSelf/${appointmentId}`, patientId);
+    }
+
     addResult(result: Result): Observable<void> {
         return this.http.post<void>(`${this.apiUrl}/results/add`, result);
     }
