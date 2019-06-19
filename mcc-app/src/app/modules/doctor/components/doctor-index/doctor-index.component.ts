@@ -86,7 +86,9 @@ export class DoctorIndexComponent implements OnDestroy {
         combineLatest(
             loading$,
             appointments$,
-            patients$
+            patients$,
+            doctors$,
+            identityId$
         )
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(
@@ -94,12 +96,21 @@ export class DoctorIndexComponent implements OnDestroy {
                     loading,
                     appointmentsDone,
                     patients,
+                    doctors,
+                    identityId
                 ]) => {
                     this.loading = loading;
                     if (this.loading) {
                         return;
                     }
-                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true)
+
+                    const doctor = doctors.find(d => d.identityId === identityId);
+                    if (!doctor) {
+                        return;
+                    }
+
+                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true &&
+                        appointment.doctorId === doctor.id)
                         .map(appointment => {
                             const patient = patients.find(x => x.id === appointment.patientId);
                             return {

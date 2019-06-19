@@ -29,7 +29,14 @@ export class LoginComponent {
     onSubmit(): void {
         this.wasRequestSent = true;
         this.loading = true;
-        this.store.dispatch(new LoginIdentity(this.email, this.password));
+        this.store.dispatch(new LoginIdentity(this.email, this.password))
+            .subscribe(() => {
+
+            }, error => {
+                alert('wystąpił błąd')
+                console.log(error);
+            }
+            );
     }
 
     handleLoginResult(jwt): void {

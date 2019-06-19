@@ -20,7 +20,7 @@ export class RegisterComponent {
             .subscribe(
                 () => {
                     alert('Zarejestrowałeś się');
-                    this.router.navigateByUrl('/');
+                    this.router.navigate(['identity/login']);
                 },
                 error => {
                     alert('Wystąpił błąd');

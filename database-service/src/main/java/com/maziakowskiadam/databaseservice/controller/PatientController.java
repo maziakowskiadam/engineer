@@ -14,58 +14,51 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/patients")
-@CrossOrigin()
-public class PatientController {
+    @RestController
+    @RequestMapping("/patients")
+    @CrossOrigin()
+    public class PatientController {
 
-    @Autowired
-    PatientService patientService;
+        @Autowired
+        PatientService patientService;
 
-    @PostMapping("/authorize")
-    public ResponseEntity authorizePatient(@RequestBody String identityId ) {
-        return patientService.authorizePatient(identityId)
-                ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
+        @PostMapping("/authorize")
+        public ResponseEntity authorizePatient(@RequestBody String identityId ) {
+            return patientService.authorizePatient(identityId)
+                    ? new ResponseEntity(HttpStatus.OK)
+                    : new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
+        @GetMapping("/all")
+        public List<PatientDto> getPatients() {
 
-//    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
-    @GetMapping("/all")
-    public List<PatientDto> getPatients() {
+            return patientService.getPatients();
+        }
 
-        return patientService.getPatients();
-    }
+        @GetMapping("/{id}")
+        public PatientDto getSinglePatient(@PathVariable Long id) {
+            return patientService.getSinglePatient(id);
+        }
 
-//    @Before(@BeforeElement(value = JwtTokenFilter.class))
-    @GetMapping("/{id}")
-    public PatientDto getSinglePatient(@PathVariable Long id) {
-        return patientService.getSinglePatient(id);
-    }
+        @PostMapping("/add")
+        public ResponseEntity addPatient(@RequestBody AddPatientDto addPatientDto) {
+            return patientService.addPatient(addPatientDto)
+                    ? new ResponseEntity(HttpStatus.OK)
+                    : new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
-//    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
-    @PostMapping("/add")
-    public ResponseEntity addPatient(@RequestBody AddPatientDto addPatientDto) {
-        return patientService.addPatient(addPatientDto)
-                ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
+        @PostMapping("/addUnauthorized")
+        public ResponseEntity addPatientUnauthorized(@RequestBody AddPatientDto addPatientDto) {
+            return patientService.addPatientUnauthorized(addPatientDto)
+                    ? new ResponseEntity(HttpStatus.OK)
+                    : new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
 
-    @PostMapping("/addUnauthorized")
-    public ResponseEntity addPatientUnauthorized(@RequestBody AddPatientDto addPatientDto) {
-        return patientService.addPatientUnauthorized(addPatientDto)
-                ? new ResponseEntity(HttpStatus.OK)
-                : new ResponseEntity(HttpStatus.BAD_REQUEST);
-    }
-
-
-    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @GetMapping("delete/{id}")
     public String deletePatient(@PathVariable Long id) {
         return patientService.deletePatientById(id);
     }
 
-    @Before(@BeforeElement(value = JwtTokenFilter.class, flags = {JwtConfig.DOCTOR, JwtConfig.MANAGEMENT}))
     @PostMapping("/edit/{id}")
     @ResponseBody
     public String editAddress(@PathVariable Long id, @RequestBody AddPatientDto addPatientDto) {

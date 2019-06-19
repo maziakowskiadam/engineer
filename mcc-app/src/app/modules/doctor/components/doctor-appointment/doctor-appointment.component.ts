@@ -24,8 +24,8 @@ export class DoctorAppointmentComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private store: Store,
         private router: Router,
+        private store: Store,
         private apiDataService: ApiDataService
     ) { }
 

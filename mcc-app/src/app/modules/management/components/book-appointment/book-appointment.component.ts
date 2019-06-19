@@ -9,7 +9,7 @@ import { Appointment } from 'src/app/_old_pages/appointments-page/appointments-p
 import { GetAllAppointments } from 'src/app/store/actions/AppointmentsActions';
 import { AppointmentsState } from 'src/app/store/states/appointments.state';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-book-appointment',
@@ -32,6 +32,7 @@ export class BookAppointmentComponent implements OnDestroy {
 
     constructor(
         private route: ActivatedRoute,
+        private router: Router,
         private store: Store,
         private apiDataService: ApiDataService
     ) {
@@ -97,6 +98,7 @@ export class BookAppointmentComponent implements OnDestroy {
                 alert('Dodano wizytę');
                 this.store.dispatch(new GetAllDoctors());
                 this.store.dispatch(new GetAllAppointments());
+                this.router.navigate(['../../index'], { relativeTo: this.route });
             }, error => {
                 alert('Wystąpił błąd');
                 console.error(error);

@@ -28,6 +28,7 @@ export class NavbarComponent {
         this.store.dispatch(new SetIdentity(null, null)).subscribe(() => {
             setTimeout(() => {
                 this.router.navigate(['../../'], { relativeTo: this.route });
+                this.router.navigate(['identity/login']);
             });
         });
     }
