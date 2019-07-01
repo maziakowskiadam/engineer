@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subject, combineLatest } from 'rxjs';
 import { Appointment } from 'src/app/_old_pages/appointments-page/appointments-page.component';
 import { Doctor } from 'src/app/shared/models/entities/Doctor';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { ApiDataService } from 'src/app/shared/services/api-data.service';
 import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
@@ -34,7 +34,8 @@ export class BookComponent implements OnDestroy {
     patientID: number;
 
     constructor(
-        // private route: ActivatedRoute,
+        private route: ActivatedRoute,
+        private router: Router,
         private store: Store,
         private apiDataService: ApiDataService
     ) {
@@ -107,6 +108,8 @@ export class BookComponent implements OnDestroy {
                 alert('Dodano wizytę');
                 this.store.dispatch(new GetAllDoctors());
                 this.store.dispatch(new GetAllAppointments());
+                this.router.navigate(['patient/index']);
+
             }, error => {
                 alert('Wystąpił błąd');
                 console.error(error);

@@ -18,8 +18,8 @@
                         <td>{{ appointment.timeStart }}</td>
                         <td>{{ appointment.patient }}</td>
                         <td>
-                            <button *ngIf="appointment.patient !== '-'" class="btn btn-primary"
-                                [routerLink]="'../appointment/' + appointment.id">Wizyta</button>
+                            <button *ngIf="appointment.patient !== '-'" class="btn btn-success"
+                                [routerLink]="'../appointment/' + appointment.id">Rozpocznij wizytę</button>
                         </td>
                     </tr>
                 </tbody>
@@ -50,7 +50,7 @@
                         <td>{{ appointmentDone.timeStart }}</td>
                         <td>{{ appointmentDone.patient }}</td>
                         <td>
-                            <button class="btn btn-primary"
+                            <button class="btn btn-secondary"
                                 [routerLink]="'../results/' + appointmentDone.id">Wyniki</button>
                         </td>
                     </tr>

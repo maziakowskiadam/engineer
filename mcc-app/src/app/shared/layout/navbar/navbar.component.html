@@ -1,7 +1,7 @@
 <mat-toolbar *ngIf="url !== 'identity'" color="primary">
     <mat-toolbar-row>
 
-        <a href="/" style="color: white;">MCC</a>
+        <a href="/" class="btn btn-link text-white btn-mcc" style="font-size: 20px">MCC</a>
 
         <ng-container [ngSwitch]="url">
             <app-management-navbar *ngSwitchCase="'management'"></app-management-navbar>
@@ -10,7 +10,7 @@
         <div class="navbar-separator"></div>
 
         <div class="navbar-right">
-            <button class="navbar__logout-btn btn btn-link" (click)="logout()">Wyloguj</button>
+            <button class="navbar__logout-btn btn btn-light" (click)="logout()">Wyloguj</button>
         </div>
 
     </mat-toolbar-row>

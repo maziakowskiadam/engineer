@@ -7,6 +7,8 @@ import { GetAllDoctors } from 'src/app/store/actions/DoctorsActions';
 import { AppointmentsState } from 'src/app/store/states/appointments.state';
 import { DoctorsState } from 'src/app/store/states/doctors.state';
 import { takeUntil } from 'rxjs/operators';
+import { IdentityState } from 'src/app/store/states/identity.state';
+import { PatientsState } from 'src/app/store/states/patients.state';
 
 @Component({
     selector: 'app-patient-index',
@@ -30,11 +32,15 @@ export class PatientIndexComponent {
         const loading$ = store.select(AppointmentsState.loading);
         const appointments$ = store.select(AppointmentsState.appointments);
         const doctors$ = store.select(DoctorsState.doctors);
+        const patients$ = store.select(PatientsState.patients);
+        const identityId$ = store.select(IdentityState.id);
 
         combineLatest(
             loading$,
             appointments$,
-            doctors$
+            doctors$,
+            patients$,
+            identityId$
         )
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(
@@ -42,12 +48,22 @@ export class PatientIndexComponent {
                     loading,
                     appointments,
                     doctors,
+                    patients,
+                    identityId
                 ]) => {
                     this.loading = loading;
                     if (this.loading) {
                         return;
                     }
-                    this.appointments = appointments.filter(appointment => appointment.patientId === 1 && appointment.done === false)
+
+                    const patient = patients.find(p => p.identityId === identityId);
+                    if (!patient) {
+                        return;
+                    }
+
+
+                    this.appointments = appointments.filter(appointment => appointment.patientId === patient.id
+                        && appointment.done === false)
                         .map(appointment => {
                             const doctor = doctors.find(d => d.id === appointment.doctorId);
                             return {
@@ -65,7 +81,9 @@ export class PatientIndexComponent {
         combineLatest(
             loading$,
             appointments$,
-            doctors$
+            doctors$,
+            patients$,
+            identityId$
         )
             .pipe(takeUntil(this.onDestroy$))
             .subscribe(
@@ -73,12 +91,21 @@ export class PatientIndexComponent {
                     loading,
                     appointmentsDone,
                     doctors,
+                    patients,
+                    identityId
                 ]) => {
                     this.loading = loading;
                     if (this.loading) {
                         return;
                     }
-                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true)
+
+                    const patient = patients.find(p => p.identityId === identityId);
+                    if (!patient) {
+                        return;
+                    }
+
+                    this.appointmentsDone = appointmentsDone.filter(appointment => appointment.done === true &&
+                        appointment.patientId === patient.id)
                         .map(appointment => {
                             const doctor = doctors.find(d => d.id === appointment.doctorId);
                             return {
