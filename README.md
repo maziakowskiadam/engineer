@@ -6,3 +6,9 @@ It has been divided into 3 main parts:
 * IdentityService - C# library responsible for authentication and authorization.
 * database-service - Spring REST API
 * mcc-app - Angular 8 front end that binds all parts together
+
+The main idea of this application is to divide users into 3 types: Patients, Doctors and Administration.
+Each type has their own screen and functionalities.
+- Patients can view possible appointments,
+- Doctors can view only their patients data and their appointments,
+- Administration activates new patients' accounts, can appoint patients, check all doctors' appointments
